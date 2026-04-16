@@ -32,41 +32,6 @@ export default function CaseStudy() {
 
   // Mocking the case studies data
   const caseStudies: Record<string, CaseStudyData> = {
-    'waterloo-library': {
-      contentSections: [
-        {
-          heading: "The Problem",
-          body: [
-            "Students with disabilities at Ontario universities face daily barriers by design. A student hits a barrier, finds a workaround, and says nothing. Leadership sees zero complaints, concludes there is no problem, and the cycle continues. This silence is not satisfaction; it is structurally produced."
-          ]
-        },
-        {
-          heading: "Systems Mapping Methodology",
-          subheading: "Moving from service-design to systems-design.",
-          body: [
-            "We approached accessibility not as an operational service problem, but as a structural one. We utilized the Iceberg Model to map events (inaccessible websites, 3+ year fix timelines), patterns (crisis-driven responses, champion dependency), structures (decentralized governance, compliance-only culture), and mental models (ableism as a root cause)."
-          ]
-        },
-        {
-          heading: "Key Findings",
-          list: [
-            "Compliance culture reduces urgency for proactive accessibility.",
-            "Responsibility is dangerously diffuse across disparate units.",
-            "Institutions rely on individual 'champions' rather than sustainable structural support.",
-            "Multi-layer approval processes create bottlenecks that stall implementation.",
-            "Student silence is misread as satisfaction, suppressing 7 reform-enabling feedback loops."
-          ]
-        },
-        {
-          heading: "Proposed Levers for Change",
-          list: [
-            "Chief Digital Accessibility Officer (CDAO): Creates a single point of accountability with cross-departmental authority.",
-            "Accessibility-by-Default (in WCMS): Automated validation before content publication prevents barriers before they exist.",
-            "Public Accountability Dashboard: Makes system failures visible to leadership, bypassing the 'User Adaptation Masking' that currently hides them."
-          ]
-        }
-      ]
-    },
     'aida': {
       title: 'Aida Finalists Presentation Pitch',
       pdf: '/case-studies/FInal Copy of Aida - Finalists Presentation Pitch.pdf',
