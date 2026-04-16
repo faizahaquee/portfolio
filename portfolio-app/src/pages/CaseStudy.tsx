@@ -633,17 +633,21 @@ export default function CaseStudy() {
 
           {/* Project Images Gallery */}
           {caseStudy.images && caseStudy.images.length > 0 && (
-            <div className="mt-16 space-y-12 mb-24">
+            <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-24">
               {caseStudy.images.map((img, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 bg-white"
+                  transition={{ duration: 0.5, delay: Math.min(idx * 0.1, 0.5) }}
+                  className="w-full rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 bg-white group"
                 >
-                  <img src={img} alt={`${caseStudy.title} Preview ${idx + 1}`} className="w-full h-auto" />
+                  <img 
+                    src={img} 
+                    alt={`${caseStudy.title} Preview ${idx + 1}`} 
+                    className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105" 
+                  />
                 </motion.div>
               ))}
             </div>
