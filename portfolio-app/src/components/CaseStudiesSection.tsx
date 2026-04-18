@@ -125,7 +125,7 @@ export default function CaseStudiesSection() {
           </div>
         </div>
         
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 max-w-6xl mx-auto justify-items-center">
           <AnimatePresence>
             {filteredStudies.map((study) => (
               <CaseStudyCard key={study.id} study={study} />

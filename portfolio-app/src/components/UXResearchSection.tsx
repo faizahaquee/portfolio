@@ -64,7 +64,7 @@ export default function UXResearchSection() {
           </div>
         </div>
         
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto justify-items-center">
           <AnimatePresence>
             {filteredStudies.map((study) => (
               <motion.div 
