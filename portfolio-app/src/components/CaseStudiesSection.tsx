@@ -24,16 +24,6 @@ const caseStudies = [
     description: 'A comprehensive visual redesign leveraging original ideation and Design Systems Thinking for the Indigo Bookstore app experience.',
   },
   {
-    id: 'cineplex',
-    title: 'Cineplex Experience',
-    type: 'UX/UI Prototype',
-    color: 'bg-red-500',
-    coverImg: '/case-studies/Cineplex Project (Copy) 2/home screen.png',
-    figmaLink: 'https://www.figma.com/proto/HEgJMef4EcRUDtk8FDEB3I/Cineplex-Project--Copy-?node-id=402-223&p=f&t=feNQEz0QBOcNqkQc-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=402%3A223&show-proto-sidebar=1',
-    tags: ['User Flows', 'Figma Make'],
-    description: 'Redesigning the Cineplex mobile experience focusing on ticketing seating and guest checkout flows.',
-  },
-  {
     id: 'waterloo-library',
     title: 'Waterloo Library',
     type: 'UX/UI Prototype',
@@ -42,16 +32,6 @@ const caseStudies = [
     figmaLink: 'https://www.figma.com/proto/kG9s2zxmrjHX5M5WcevSza/DEI613-A2-Assignment?node-id=55-1970&p=f&t=dt1mYgqenvuulneh-1&scaling=scale-down&content-scaling=fixed&page-id=52%3A1667&starting-point-node-id=55%3A1970&show-proto-sidebar=1',
     tags: ['Inclusive Design', 'Accessibility'],
     description: 'A digital interface applying Inclusive Design to improve navigation and accessibility in the Waterloo Public Library.',
-  },
-  {
-    id: 'aida',
-    title: 'Aida Pitch',
-    type: 'Product Design',
-    color: 'bg-purple-500',
-    coverImg: '/case-studies/Aida - AgeTech Expo/home screen.png',
-    figmaLink: 'https://www.figma.com/proto/zggkbVpGLIkuJ3USRzxX3C/Aida---AgeTech-Expo?node-id=1-97&t=Je8PrwhrEKtd0ZMC-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A97',
-    tags: ['Deep Thinking', 'Google Gemini', 'Manual Ideation'],
-    description: 'Finalists pitch for an AI powered symptom tracking tool. Leveraged deep conceptual thinking and Interaction Design.',
   }
 ];
 
