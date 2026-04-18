@@ -1,9 +1,26 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
 export default function HeroSection() {
   const containerRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Mouse position for cursor glow
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springX = useSpring(cursorX, { stiffness: 150, damping: 15, mass: 0.5 });
+  const springY = useSpring(cursorY, { stiffness: 150, damping: 15, mass: 0.5 });
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 150); // offset by half the width of the glow
+      cursorY.set(e.clientY - 150);
+    };
+    window.addEventListener('mousemove', moveCursor);
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+    };
+  }, [cursorX, cursorY]);
 
   const floatingImages = [
     { src: '/sticker_0.png', className: 'w-24 md:w-32 rotate-[-8deg] top-[5%] left-[8%]' },
@@ -23,11 +40,52 @@ export default function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative w-full min-h-[110vh] bg-[var(--color-bg-base)] overflow-hidden flex flex-col pt-6 px-6 md:px-12">
+      
+      {/* Background Gray Wave Orbs */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30">
+        <motion.div 
+          animate={{ 
+            x: ['-5%', '5%', '-5%'], 
+            y: ['-5%', '10%', '-5%'],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gray-300 blur-[100px] mix-blend-multiply"
+        />
+        <motion.div 
+          animate={{ 
+            x: ['5%', '-5%', '5%'], 
+            y: ['10%', '-5%', '10%'],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-gray-400 blur-[120px] mix-blend-multiply"
+        />
+        <motion.div 
+          animate={{ 
+            x: ['-10%', '10%', '-10%'], 
+            y: ['-10%', '5%', '-10%'],
+            scale: [1.1, 0.9, 1.1]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-20%] left-[20%] w-[70vw] h-[70vw] rounded-full bg-gray-200 blur-[150px] mix-blend-multiply"
+        />
+      </div>
+
+      {/* Mouse Follow Glow */}
+      <motion.div
+        className="fixed top-0 left-0 w-[300px] h-[300px] bg-pink-300/30 rounded-full blur-[80px] pointer-events-none z-50 mix-blend-screen"
+        style={{
+          x: springX,
+          y: springY,
+        }}
+      />
+
       {/* Top Nav - Now Sticky! */}
       <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-widest font-sans font-bold z-[100]">
         <span className="text-[#111] z-10 drop-shadow-sm">©2026</span>
         <span className="hidden md:inline text-[#111] z-10 drop-shadow-sm">Faiza Haque</span>
-        <span className="text-[#111] z-10 drop-shadow-sm">UX Researcher</span>
+        <span className="text-[#111] z-10 drop-shadow-sm">Product Designer</span>
         <div className="relative z-20">
           <button 
             onClick={() => setMenuOpen(!menuOpen)}
@@ -81,7 +139,7 @@ export default function HeroSection() {
         ))}
 
         {/* Huge Serif Typography */}
-        <div className="relative z-10 mb-24">
+        <div className="relative z-10 mb-24 mt-16">
           <div className="flex flex-col text-center md:text-left text-[16vw] md:text-[9rem] lg:text-[11.5rem] leading-[0.8] tracking-tight font-serif text-[#111] relative pointer-events-none selection:bg-[#FF8CD1] selection:text-white z-10">
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
@@ -89,23 +147,15 @@ export default function HeroSection() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="md:ml-[8%]"
             >
-              Creative
+              Product Designer
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="md:-ml-[2%] z-10"
+              className="md:ml-[15%] z-10 italic text-[#FF8CD1] mt-4 md:mt-8"
             >
-              UX Researcher
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="md:ml-[20%] z-10"
-            >
-              <span className="italic text-[#FF8CD1]">Systems</span> Designer
+              Faiza Haque
             </motion.div>
           </div>
         </div>

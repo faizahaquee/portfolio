@@ -570,66 +570,77 @@ export default function CaseStudy() {
             )}
           </div>
 
-          {/* PDF View (Above Content if provided) */}
-          {caseStudy.pdf && (
-            <div className="mb-24">
-              {id === 'digital-accessibility' ? (
-                <div className="text-center">
-                  <a 
-                    href={caseStudy.pdf}
-                    download
-                    className="inline-flex items-center gap-3 border-2 border-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
-                  >
-                    Download Case Study PDF (49MB) 
-                  </a>
-                  <p className="text-gray-500 mt-4 text-sm">Large file size may cause preview errors.</p>
-                </div>
-              ) : (
-                <div className="w-full h-[80vh] rounded-3xl overflow-hidden border border-gray-100 shadow-xl bg-white relative group">
-                  <object data={caseStudy.pdf} type="application/pdf" className="w-full h-full absolute inset-0 z-10">
-                    <p className="p-8 text-center text-gray-500 font-sans">Your browser does not support inline PDFs. <br/><br/><a href={caseStudy.pdf} className="text-[#FF8CD1] underline font-bold uppercase tracking-widest text-xs">Download the PDF</a>.</p>
-                  </object>
+          {/* PDF View and Text Side-by-Side */}
+          <div className="flex flex-col lg:flex-row gap-12 mt-12 mb-24">
+            
+            {/* Left side: Text Content */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-20">
+              {/* Extracted Content Sections (Editorial Style) */}
+              {caseStudy.contentSections && caseStudy.contentSections.length > 0 && (
+                <div className="space-y-20 font-sans">
+                  {caseStudy.contentSections.map((section, idx) => (
+                    <div key={idx} className="flex flex-col gap-6">
+                      <div>
+                        <h2 className="text-2xl md:text-3xl font-serif text-black">
+                          {section.heading}
+                        </h2>
+                      </div>
+                      <div className="space-y-6">
+                        {section.subheading && (
+                          <h3 className="text-xl font-serif italic text-[#FF8CD1] mb-4">
+                            "{section.subheading}"
+                          </h3>
+                        )}
+                        {section.body && section.body.map((p, pIdx) => (
+                          <p key={pIdx} className="text-lg text-gray-600 leading-relaxed font-sans font-light">
+                            {p}
+                          </p>
+                        ))}
+                        {section.list && (
+                          <ul className="space-y-4 text-lg text-gray-600 font-sans font-light list-none mt-4">
+                            {section.list.map((li, lIdx) => (
+                              <li key={lIdx} className="relative pl-6">
+                                <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-[#FF8CD1]"></span>
+                                {li}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
-          )}
 
-          {/* Extracted Content Sections (Editorial Style) */}
-          {caseStudy.contentSections && caseStudy.contentSections.length > 0 && (
-            <div className="space-y-20 mb-20 font-sans pt-8">
-              {caseStudy.contentSections.map((section, idx) => (
-                <div key={idx} className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16">
+            {/* Right side: Sticky PDF Viewer */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="lg:sticky lg:top-24 flex flex-col gap-8">
+                {caseStudy.pdf && (
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-serif text-black sticky top-8">
-                      {section.heading}
-                    </h2>
-                  </div>
-                  <div className="space-y-6">
-                    {section.subheading && (
-                      <h3 className="text-xl font-serif italic text-[#FF8CD1] mb-6">
-                        "{section.subheading}"
-                      </h3>
-                    )}
-                    {section.body && section.body.map((p, pIdx) => (
-                      <p key={pIdx} className="text-lg text-gray-600 leading-relaxed font-sans font-light">
-                        {p}
-                      </p>
-                    ))}
-                    {section.list && (
-                      <ul className="space-y-4 text-lg text-gray-600 font-sans font-light list-none mt-6">
-                        {section.list.map((li, lIdx) => (
-                          <li key={lIdx} className="relative pl-6">
-                            <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-[#FF8CD1]"></span>
-                            {li}
-                          </li>
-                        ))}
-                      </ul>
+                    {id === 'digital-accessibility' ? (
+                      <div className="text-center p-8 border border-gray-100 rounded-3xl bg-gray-50">
+                        <a 
+                          href={caseStudy.pdf}
+                          download
+                          className="inline-flex items-center gap-3 border-2 border-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
+                        >
+                          Download Case Study PDF (49MB) 
+                        </a>
+                        <p className="text-gray-500 mt-4 text-sm">Large file size may cause preview errors.</p>
+                      </div>
+                    ) : (
+                      <div className="w-full h-[70vh] rounded-3xl overflow-hidden border border-gray-100 shadow-xl bg-white relative group">
+                        <object data={caseStudy.pdf} type="application/pdf" className="w-full h-full absolute inset-0 z-10">
+                          <p className="p-8 text-center text-gray-500 font-sans">Your browser does not support inline PDFs. <br/><br/><a href={caseStudy.pdf} className="text-[#FF8CD1] underline font-bold uppercase tracking-widest text-xs">Download the PDF</a>.</p>
+                        </object>
+                      </div>
                     )}
                   </div>
-                </div>
-              ))}
+                )}
+              </div>
             </div>
-          )}
+          </div>
 
           {/* Project Images Gallery */}
           {caseStudy.images && caseStudy.images.length > 0 && (

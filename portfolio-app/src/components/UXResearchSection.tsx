@@ -12,14 +12,6 @@ const caseStudies = [
     description: 'A comprehensive project detailing design systems thinking and cross functional agile strategy, utilizing Google Gemini for deep strategic thinking.',
   },
   {
-    id: 'digital-accessibility',
-    title: 'Digital Accessibility Gaps - Map the System',
-    type: 'Systems Mapping',
-    coverImg: '/case-studies/MTS Case Study Cover.PNG',
-    tags: ['Accessibility', 'Systems Thinking', 'UX Research'],
-    description: 'A detailed analysis and mapping of digital accessibility gaps, providing actionable insights for inclusive system design.',
-  },
-  {
     id: 'partiful',
     title: 'Partiful App',
     type: 'UX Audit',
