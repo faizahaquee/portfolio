@@ -613,57 +613,54 @@ export default function CaseStudy() {
               )}
             </div>
 
-            {/* Right side: Sticky PDF Viewer */}
-            <div className="w-full lg:w-1/2 relative">
-              <div className="lg:sticky lg:top-24 flex flex-col gap-8">
-                {caseStudy.pdf && (
-                  <div>
-                    {id === 'digital-accessibility' ? (
-                      <div className="text-center p-8 border border-gray-100 rounded-3xl bg-gray-50">
-                        <a 
-                          href={caseStudy.pdf}
-                          download
-                          className="inline-flex items-center gap-3 border-2 border-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
-                        >
-                          Download Case Study PDF (49MB) 
-                        </a>
-                        <p className="text-gray-500 mt-4 text-sm">Large file size may cause preview errors.</p>
-                      </div>
-                    ) : (
-                      <div className="w-full h-[70vh] rounded-3xl overflow-hidden border border-gray-100 shadow-xl bg-white relative group">
-                        <object data={caseStudy.pdf} type="application/pdf" className="w-full h-full absolute inset-0 z-10">
-                          <p className="p-8 text-center text-gray-500 font-sans">Your browser does not support inline PDFs. <br/><br/><a href={caseStudy.pdf} className="text-[#FF8CD1] underline font-bold uppercase tracking-widest text-xs">Download the PDF</a>.</p>
-                        </object>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+            {/* Right side: Visual Assets */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-12">
+              {caseStudy.pdf && (
+                <div>
+                  {id === 'digital-accessibility' ? (
+                    <div className="text-center p-8 border border-gray-100 rounded-3xl bg-gray-50">
+                      <a 
+                        href={caseStudy.pdf}
+                        download
+                        className="inline-flex items-center gap-3 border-2 border-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
+                      >
+                        Download Case Study PDF (49MB) 
+                      </a>
+                      <p className="text-gray-500 mt-4 text-sm">Large file size may cause preview errors.</p>
+                    </div>
+                  ) : (
+                    <div className="w-full h-[70vh] rounded-3xl overflow-hidden border border-gray-100 shadow-xl bg-white relative group">
+                      <object data={caseStudy.pdf} type="application/pdf" className="w-full h-full absolute inset-0 z-10">
+                        <p className="p-8 text-center text-gray-500 font-sans">Your browser does not support inline PDFs. <br/><br/><a href={caseStudy.pdf} className="text-[#FF8CD1] underline font-bold uppercase tracking-widest text-xs">Download the PDF</a>.</p>
+                      </object>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Project Images Gallery (Stacked beside text) */}
+              {caseStudy.images && caseStudy.images.length > 0 && (
+                <div className="flex flex-col gap-8">
+                  {caseStudy.images.map((img, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.5 }}
+                      className="w-full rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 bg-white group"
+                    >
+                      <img 
+                        src={img} 
+                        alt={`${caseStudy.title} Screen ${idx + 1}`} 
+                        className="w-full h-auto object-cover" 
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-
-          {/* Project Images Gallery */}
-          {caseStudy.images && caseStudy.images.length > 0 && (
-            <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-24">
-              {caseStudy.images.map((img, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: Math.min(idx * 0.1, 0.5) }}
-                  className="w-full rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 bg-white group"
-                >
-                  <img 
-                    src={img} 
-                    alt={`${caseStudy.title} Preview ${idx + 1}`} 
-                    className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105" 
-                  />
-                </motion.div>
-              ))}
-            </div>
-          )}
-
         </motion.div>
       </div>
     </div>

@@ -52,30 +52,6 @@ export default function AboutSection() {
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight text-[#111]">About Me</h2>
               <div className="w-20 h-1 bg-[#FF8CD1] mt-6"></div>
             </motion.div>
-
-            {/* Me PNG (Oblong Frame Design) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="mt-12 relative flex justify-center md:justify-start"
-            >
-              <div className="relative group">
-                <div className="w-56 md:w-64 aspect-[3/4] bg-white rounded-[4rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border border-gray-100 p-3 relative z-10 overflow-hidden mt-0 transition-transform duration-500 group-hover:-translate-y-2">
-                  <div className="w-full h-full rounded-[3.2rem] overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-700 bg-gray-100">
-                    <img 
-                      src="/me.png" 
-                      alt="Faiza Haque" 
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* Right Column (Scrolls) */}

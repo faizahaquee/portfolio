@@ -145,9 +145,21 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="md:ml-[8%]"
+              className="md:ml-[8%] flex flex-col md:flex-row items-center md:items-center justify-center md:justify-start gap-4 md:gap-8"
             >
-              Product Designer
+              <span>Product</span>
+              <motion.div 
+                whileHover={{ scale: 1.08, rotate: -4, y: -5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="w-[20vw] h-[14vw] md:w-[13rem] md:h-[9rem] lg:w-[16rem] lg:h-[11rem] rounded-[100px] overflow-hidden border-[4px] lg:border-[8px] border-white shadow-[0_20px_40px_rgba(0,0,0,0.15)] pointer-events-auto bg-gray-100"
+              >
+                <img 
+                  src="/me.png" 
+                  alt="Faiza" 
+                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500" 
+                />
+              </motion.div>
+              <span>Designer</span>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
