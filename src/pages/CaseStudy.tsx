@@ -770,6 +770,20 @@ export default function CaseStudy() {
                           ))}
                         </ul>
                       )}
+
+                      {/* Inline Image for Context */}
+                      {section.image && (
+                        <div 
+                          className="mt-6 mb-8 cursor-pointer rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-shadow group"
+                          onClick={() => setActiveMedia({ type: 'image', src: section.image! })}
+                        >
+                          <img 
+                            src={section.image} 
+                            alt={section.heading} 
+                            className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                          />
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>
