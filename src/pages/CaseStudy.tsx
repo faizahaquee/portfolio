@@ -609,7 +609,7 @@ export default function CaseStudy() {
 
   return (
     <div className="w-full min-h-screen bg-[var(--color-bg-base)] text-[#111]">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
         <button onClick={() => navigate(-1)} className="inline-flex items-center text-gray-400 text-xs font-sans uppercase tracking-widest font-bold mb-16 hover:text-[#FF8CD1] transition-colors cursor-pointer">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Portfolio
         </button>
@@ -686,35 +686,35 @@ export default function CaseStudy() {
           </div>
 
           {/* PDF View and Text Side-by-Side */}
-          <div className="flex flex-col lg:flex-row gap-12 mt-12 mb-24">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mt-12 mb-24">
             
             {/* Left side: Text Content */}
-            <div className="w-full lg:w-1/2 flex flex-col gap-20">
+            <div className="w-full lg:w-[45%] flex flex-col gap-24">
                     {/* Extracted Content Sections (Editorial Style) */}
                     {caseStudy.contentSections && caseStudy.contentSections.length > 0 && (
-                      <div className="space-y-20 font-sans">
+                      <div className="space-y-24 font-sans">
                         {caseStudy.contentSections.map((section, idx) => (
                           <div key={idx} className="flex flex-col gap-6">
                             <div>
-                              <h2 className="text-2xl md:text-3xl font-serif text-black">
+                              <h2 className="text-3xl md:text-4xl font-serif text-black leading-tight">
                                 {section.heading}
                               </h2>
                             </div>
                             <div className="space-y-6">
                               {section.subheading && (
-                                <h3 className="text-xl font-serif italic text-[#FF8CD1] mb-4">
+                                <h3 className="text-xl md:text-2xl font-serif italic text-[#FF8CD1] mb-6">
                                   "{section.subheading}"
                                 </h3>
                               )}
                               {section.body && section.body.map((p, pIdx) => (
-                                <p key={pIdx} className="text-[1.15rem] md:text-xl text-[#111] leading-[1.6] font-sans tracking-[-0.01em]">
+                                <p key={pIdx} className="text-lg md:text-xl text-gray-700 leading-relaxed font-sans font-light">
                                   {p}
                                 </p>
                               ))}
                               {section.list && (
-                                <ul className="space-y-4 text-[1.15rem] md:text-xl text-[#111] leading-[1.6] font-sans tracking-[-0.01em] list-none mt-4">
+                                <ul className="space-y-4 text-lg md:text-xl text-gray-700 leading-relaxed font-sans font-light list-none mt-6">
                                   {section.list.map((li, lIdx) => (
-                                    <li key={lIdx} className="relative pl-6">
+                                    <li key={lIdx} className="relative pl-8">
                                       <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-[#FF8CD1]"></span>
                                       {li}
                                     </li>
@@ -722,11 +722,11 @@ export default function CaseStudy() {
                                 </ul>
                               )}
                               {section.image && (
-                                <div className="mt-8 mb-4">
+                                <div className="mt-12 mb-6">
                                   <img 
                                     src={section.image} 
                                     alt={section.heading} 
-                                    className="w-full rounded-2xl shadow-lg border border-gray-100"
+                                    className="w-full rounded-2xl shadow-xl border border-gray-100"
                                   />
                                 </div>
                               )}
@@ -738,7 +738,7 @@ export default function CaseStudy() {
                   </div>
 
                   {/* Right side: Visual Assets */}
-                  <div className="w-full lg:w-1/2 flex flex-col gap-12">
+                  <div className="w-full lg:w-[55%] flex flex-col gap-16">
                     {caseStudy.pdf && (
                       <div>
                         {id === 'digital-accessibility' ? (
