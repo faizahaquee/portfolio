@@ -1,4 +1,5 @@
-import { Download, FileText } from 'lucide-react';
+import { Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function ResumeSection() {
   return (
@@ -12,15 +13,12 @@ export default function ResumeSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">
-            <a 
-              href="/faiza_resume_ux_ui.pdf" 
-              target="_blank" 
-              rel="noreferrer"
+            <Link 
+              to="/resume"
               className="flex items-center justify-center gap-3 bg-[#FF8CD1] text-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-white transition-all shadow-lg"
             >
-              <FileText className="w-5 h-5" />
-              View Resume
-            </a>
+              View Full Resume
+            </Link>
             
             <a 
               href="/faiza_resume_ux_ui.pdf" 

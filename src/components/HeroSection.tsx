@@ -82,7 +82,7 @@ export default function HeroSection() {
       />
 
       {/* Top Nav - Now Sticky! */}
-      <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-widest font-sans font-bold z-[100]">
+      <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-widest font-sans font-bold z-[100] bg-white/50 backdrop-blur-md rounded-full shadow-lg p-2">
         <span className="text-[#111] z-10 drop-shadow-sm">©2026</span>
         <span className="hidden md:inline text-[#111] z-10 drop-shadow-sm">Faiza Haque</span>
         <span className="text-[#111] z-10 drop-shadow-sm">Product Designer</span>
@@ -103,14 +103,17 @@ export default function HeroSection() {
                 className="absolute right-0 top-12 bg-white border border-gray-200 shadow-2xl rounded-2xl w-48 py-4 flex flex-col overflow-hidden"
               >
                 {menuLinks.map((link) => (
-                  <a 
+                  <button 
                     key={link.name} 
-                    href={link.href} 
-                    onClick={() => setMenuOpen(false)}
-                    className="px-6 py-3 hover:bg-[#FF8CD1] hover:text-white transition-colors text-black text-xs"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      const el = document.querySelector(link.href);
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-left px-6 py-3 hover:bg-[#FF8CD1] hover:text-white transition-colors text-black text-xs font-sans uppercase tracking-widest"
                   >
                     {link.name}
-                  </a>
+                  </button>
                 ))}
               </motion.div>
             )}
@@ -137,6 +140,26 @@ export default function HeroSection() {
             <img src={img.src} className="w-full h-full object-contain pointer-events-none drop-shadow-xl" alt="Decorative Sticker" />
           </motion.div>
         ))}
+
+        {/* Value Prop */}
+        <div className="max-w-2xl font-serif text-3xl md:text-[2.75rem] leading-[1.15] md:ml-[8%] relative z-20 p-6 md:p-8 rounded-3xl bg-white/40 backdrop-blur-md shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] pointer-events-auto mb-12">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-black mb-8"
+          >
+            I help product teams solve complex user challenges by creating scalable design systems and intuitive interfaces.
+          </motion.p>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="text-gray-600"
+          >
+            Balancing functional needs with beautiful, crafted aesthetics to build inclusive, end-to-end digital experiences.
+          </motion.p>
+        </div>
 
         {/* Huge Serif Typography */}
         <div className="relative z-10 mb-24 mt-16">
@@ -172,25 +195,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Bottom Text Block with Frosted Glass */}
-        <div className="max-w-2xl font-serif text-3xl md:text-[2.75rem] leading-[1.15] md:ml-[8%] relative z-20 p-6 md:p-8 rounded-3xl bg-white/40 backdrop-blur-md shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] border border-white/50 pointer-events-none">
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-black mb-8"
-          >
-            I'm Faiza, a Waterloo-based multidisciplinary designer specializing in Systems Thinking and Interaction Design.
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="text-gray-600 mb-8"
-          >
-            Holding a Master's in Digital Experience Innovation at the University of Waterloo, I focus on building inclusive, end-to-end digital experiences.
-          </motion.p>
-        </div>
       </div>
     </section>
   );

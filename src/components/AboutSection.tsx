@@ -5,9 +5,16 @@ export default function AboutSection() {
   const containerRef = useRef<HTMLElement>(null);
   
   const skills = [
-    'Deep Thinking', 'Opencode', 'Figma Make', 'Google Gemini', 'Nanobanana', 
-    'Google Stitch', 'Manual Ideation', 'Problem Discovery', 
-    'Inclusive Design (AODA)', 'Cross-Functional Collaboration'
+    { name: 'Deep Thinking', desc: 'Analyzing complex problems to uncover underlying patterns.' },
+    { name: 'Opencode', desc: 'Accelerating development workflows with AI-driven coding.' },
+    { name: 'Figma Make', desc: 'Rapidly prototyping layouts using generative UI tools.' },
+    { name: 'Google Gemini', desc: 'Enhancing research and content strategy through AI.' },
+    { name: 'Nanobanana', desc: 'Streamlining creative processes for faster iteration.' },
+    { name: 'Google Stitch', desc: 'Seamlessly integrating tools and automating processes.' },
+    { name: 'Manual Ideation', desc: 'Sketching and exploring foundational concepts by hand.' },
+    { name: 'Problem Discovery', desc: 'Identifying true user needs before rushing to solutions.' },
+    { name: 'Inclusive Design (AODA)', desc: 'Ensuring accessible digital experiences for all users.' },
+    { name: 'Cross-Functional Collaboration', desc: 'Bridging the gap between engineering, product, and design.' }
   ];
 
   const backgroundStickers = [
@@ -82,11 +89,17 @@ export default function AboutSection() {
             
             <div className="pt-8">
               <h3 className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-6">Core Competencies</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {skills.map(skill => (
-                  <span key={skill} className="px-4 py-2 bg-[#F8F7F3] border border-gray-200 text-gray-700 text-xs uppercase tracking-widest font-semibold rounded-full hover:border-black transition-colors cursor-default">
-                    {skill}
-                  </span>
+                  <div key={skill.name} className="relative group">
+                    <span className="inline-block px-4 py-2 bg-[#F8F7F3] border border-gray-200 text-gray-700 text-xs uppercase tracking-widest font-semibold rounded-full hover:border-[#FF8CD1] transition-colors cursor-help relative z-10">
+                      {skill.name}
+                    </span>
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#111] text-white text-[10px] font-sans px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-center shadow-xl">
+                      {skill.desc}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#111]"></div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -94,13 +107,19 @@ export default function AboutSection() {
             <div className="pt-8 flex flex-col gap-4">
               <p className="text-lg font-serif">In my spare time, I am always creating, whether it be through graphic design work and photography. Feel free to check some of my work here!</p>
               <div className="flex gap-4">
-                <a href="#graphic-design" className="inline-block border border-black rounded-full px-6 py-2 text-xs font-sans font-medium uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+                <button onClick={() => document.querySelector('#graphic-design')?.scrollIntoView({ behavior: 'smooth' })} className="inline-block border border-black rounded-full px-6 py-2 text-xs font-sans font-medium uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
                   Graphic Design
-                </a>
-                <a href="#photography" className="inline-block border border-black rounded-full px-6 py-2 text-xs font-sans font-medium uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+                </button>
+                <button onClick={() => document.querySelector('#photography')?.scrollIntoView({ behavior: 'smooth' })} className="inline-block border border-black rounded-full px-6 py-2 text-xs font-sans font-medium uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
                   Photography
-                </a>
+                </button>
               </div>
+            </div>
+
+            <div className="pt-12 mt-12 border-t border-gray-200">
+              <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="inline-flex items-center justify-center gap-3 bg-[#FF8CD1] text-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-lg w-full md:w-auto">
+                Get In Touch
+              </a>
             </div>
           </motion.div>
 

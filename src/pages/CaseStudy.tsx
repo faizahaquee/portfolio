@@ -19,6 +19,7 @@ type CaseStudyData = {
   description?: string;
   contentSections?: ContentSection[];
   figmaLink?: string;
+  miroLink?: string;
 };
 
 export default function CaseStudy() {
@@ -32,6 +33,98 @@ export default function CaseStudy() {
 
   // Mocking the case studies data
   const caseStudies: Record<string, CaseStudyData> = {
+    'mozilla': {
+      title: 'Mozilla Design Sprint: AI Workspace Mode',
+      figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
+      miroLink: 'https://miro.com/app/live-embed/uXjVGkNPxTQ=/?embedMode=view_only_without_ui&moveToViewport=-10322%2C-5409%2C13848%2C6556&embedId=244032640937',
+      images: [
+        "/case-studies/mozilla/Organize and Analyze UX Research with AI-Powered Workspace.mp4",
+        "/case-studies/mozilla/Rounf 1 Prototype User Testing.mp4",
+        "/case-studies/mozilla/SWOT.png",
+        "/case-studies/mozilla/KPI's.png",
+        "/case-studies/mozilla/User Testing Overview.png"
+      ],
+      description: 'A 2-week intensive design sprint pitching a context-aware, proactive AI browsing experience centered on transparency and privacy for Mozilla.',
+      contentSections: [
+        {
+          heading: "Sprint Overview",
+          subheading: "Project Details & Roles",
+          list: [
+            "Duration: 2 weeks",
+            "My Roles: UX Design + Storytelling Lead, UI Designer + Prototyper",
+            "Addressed to: Eric Pang (Senior UX Designer, Toronto), Emanuela Damiani (Senior UX Manager, San Francisco), Taylor Silva (Product Designer, California)"
+          ]
+        },
+        {
+          heading: "The Problem Statement",
+          body: [
+            "Today, we're exploring the key challenges of integrating AI into a browser, focusing on context, control, and trust. We aim to design an AI that understands user needs within their browsing environment while remaining transparent and privacy-conscious.",
+            "This raises important questions: how should the AI communicate what it knows and does, and how can users stay in control of their data? If the assistant remembers user information, we must also ensure that memory is managed clearly and with consent.",
+            "These challenges guide our approach to creating an AI that not only assists but empowers users in a trustworthy way."
+          ],
+          image: '/case-studies/mozilla/Problem Statement.png'
+        },
+        {
+          heading: "How Might We & KPIs",
+          body: [
+            "Our “How Might We” focuses on creating a context-aware, proactive AI browsing experience centered on transparency, user control, and privacy. The goal is for AI to seamlessly gather and organize information across tabs into useful insights without constant user input.",
+            "At the same time, users remain fully aware and in control of what the AI does, accesses, and remembers. It's about balancing proactivity with autonomy."
+          ],
+          image: "/case-studies/mozilla/HMW.png"
+        },
+        {
+          heading: "Personas",
+          body: [
+            "To better understand our users, we developed three personas: The student, who juggles multiple tabs while researching; The working professional, who needs efficiency and accuracy; And the leisure browser, who values simplicity and privacy.",
+            "Across all three, we found a common frustration: too much information, but not enough clarity."
+          ],
+          image: "/case-studies/mozilla/Personas.png"
+        },
+        {
+          heading: "Early Concepts and Research",
+          body: [
+            "Understanding what's already out there is crucial. It gives us a benchmark and helps identify gaps and opportunities for innovation.",
+            "Next, we focused on persona development. Creating detailed user personas allows us to tailor our solutions to meet the specific needs of our diverse user base. It also ensures that we're not just building technology but crafting experiences that resonate with real people.",
+            "Lastly, we conducted thorough market research to understand user demands and industry trends. This research provides us with insights that guide strategic decisions and help predict future needs."
+          ],
+          image: "/case-studies/mozilla/Brainstorming.png"
+        },
+        {
+          heading: "Proposed Product",
+          list: [
+            "Human-like forgetting: Irrelevant data fades over time, mimicking natural memory.",
+            "Memory Dashboard: User control is central—everything operates with explicit permission, giving full visibility and control over stored data.",
+            "Contextual overlays: We reduce the “copy-paste tax” by using overlays that anticipate needs, minimizing effort and cognitive load.",
+            "Transparency: Built in with real-time indicators showing what the AI processes and which tabs it uses—so users are always informed."
+          ],
+          image: "/case-studies/mozilla/Proposed Product.png"
+        },
+        {
+          heading: "Initial Sketches & Ideation",
+          body: [
+            "We started with rough sketches to explore layout and interaction ideas. This helped us think through where the AI should appear, how users interact with it, and how to keep it visible without being intrusive.",
+            "These early ideas guided our later designs in prototyping."
+          ],
+          image: "/case-studies/mozilla/Sketches.png"
+        },
+        {
+          heading: "Early Stage Prototyping",
+          body: [
+            "The initial iterations started with Google Stitch—these AI tools helped us put together our ideas and visualize the core functionalities effectively. This was an important step in bringing our concepts to life.",
+            "Once we had a solid foundation, we transitioned our prototype into Figma Make. This move enabled us to create more interactive elements, allowing us to simulate user interactions and gather more detailed feedback in later testing.",
+            "Each interaction aligned with our vision for user control and transparency."
+          ],
+          image: "/case-studies/mozilla/Early prototyping.png"
+        },
+        {
+          heading: "User Testing & Next Steps",
+          body: [
+            "Through rigorous user testing, we identified key areas where trust and transparency could be further solidified. Moving forward, the focus will be on refining the Memory Dashboard’s granularity and pushing our high-fidelity prototypes into code to validate the contextual overlay interactions within a live browser environment."
+          ],
+          image: "/case-studies/mozilla/Key Findings from User Testing.png"
+        }
+      ]
+    },
     'aida': {
       title: 'Aida Finalists Presentation Pitch',
       pdf: '/case-studies/FInal Copy of Aida - Finalists Presentation Pitch.pdf',
@@ -534,19 +627,41 @@ export default function CaseStudy() {
               
               <div className="flex flex-col items-start gap-8 mb-8">
                 {caseStudy.description && (
-                  <p className="text-xl md:text-2xl font-serif text-gray-500 max-w-2xl leading-relaxed">
+                  <p className="text-xl md:text-2xl font-serif text-gray-500 max-w-2xl leading-relaxed mb-8">
                     {caseStudy.description}
                   </p>
                 )}
 
                 {caseStudy.figmaLink && (
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href={caseStudy.figmaLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 border border-black rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
+                    >
+                      Open Figma Prototype ↗
+                    </a>
+                    {caseStudy.miroLink && (
+                      <a 
+                        href={caseStudy.miroLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-colors"
+                      >
+                        View Miro Board ↗
+                      </a>
+                    )}
+                  </div>
+                )}
+                {!caseStudy.figmaLink && caseStudy.miroLink && (
                   <a 
-                    href={caseStudy.figmaLink}
+                    href={caseStudy.miroLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 border border-black rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
+                    className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-colors"
                   >
-                    Open Full Prototype ↗
+                    View Miro Board ↗
                   </a>
                 )}
               </div>
@@ -606,6 +721,15 @@ export default function CaseStudy() {
                                   ))}
                                 </ul>
                               )}
+                              {section.image && (
+                                <div className="mt-8 mb-4">
+                                  <img 
+                                    src={section.image} 
+                                    alt={section.heading} 
+                                    className="w-full rounded-2xl shadow-lg border border-gray-100"
+                                  />
+                                </div>
+                              )}
                             </div>
                           </div>
                         ))}
@@ -650,11 +774,22 @@ export default function CaseStudy() {
                             transition={{ duration: 0.5 }}
                             className="w-full rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 bg-white group"
                           >
-                            <img 
-                              src={img} 
-                              alt={`${caseStudy.title} Screen ${idx + 1}`} 
-                              className="w-full h-auto object-cover" 
-                            />
+                            {img.endsWith('.mp4') || img.endsWith('.mov') ? (
+                              <video 
+                                src={img} 
+                                controls 
+                                autoPlay 
+                                loop 
+                                muted 
+                                className="w-full h-auto object-cover"
+                              />
+                            ) : (
+                              <img 
+                                src={img} 
+                                alt={`${caseStudy.title} Asset ${idx + 1}`} 
+                                className="w-full h-auto object-cover" 
+                              />
+                            )}
                           </motion.div>
                         ))}
                       </div>

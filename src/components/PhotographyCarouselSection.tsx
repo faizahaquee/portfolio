@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import Lightbox from './Lightbox';
 
 export default function PhotographyCarouselSection() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const photos = [
     '/photography/IMG_8730.jpg',
     '/photography/IMG_8736.jpg',
@@ -48,6 +51,7 @@ export default function PhotographyCarouselSection() {
             <div 
               key={idx} 
               className="relative w-[300px] md:w-[450px] aspect-[4/5] rounded-xl overflow-hidden shrink-0 shadow-lg cursor-pointer"
+              onClick={() => setSelectedImage(src)}
             >
               <img 
                 src={src} 
@@ -64,6 +68,7 @@ export default function PhotographyCarouselSection() {
           ))}
         </motion.div>
       </div>
+      <Lightbox src={selectedImage} onClose={() => setSelectedImage(null)} />
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import Lightbox from './Lightbox';
 
 export default function GraphicDesignSection() {
   const containerRef = useRef(null);
@@ -7,6 +8,7 @@ export default function GraphicDesignSection() {
     target: containerRef,
     offset: ["start end", "end start"]
   });
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
     { src: '/graphic-designs/CLUB AKIRA LOGO-02.png', className: 'w-40 md:w-56 -top-12 left-[10%]' },
@@ -34,6 +36,7 @@ export default function GraphicDesignSection() {
             transition={{ duration: 0.8, delay: idx * 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
             className={`absolute z-10 hover:z-30 transition-transform duration-500 hover:scale-110 cursor-pointer shadow-2xl rounded-sm ${img.className}`}
+            onClick={() => setSelectedImage(img.src)}
           >
             <div className="relative group w-full h-full">
               <img 
@@ -74,6 +77,7 @@ export default function GraphicDesignSection() {
         </motion.p>
       </div>
 
+      <Lightbox src={selectedImage} onClose={() => setSelectedImage(null)} />
     </section>
   );
 }
