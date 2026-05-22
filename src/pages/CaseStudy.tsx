@@ -40,7 +40,7 @@ export default function CaseStudy() {
       figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
       miroLink: 'https://miro.com/app/live-embed/uXjVGkNPxTQ=/?embedMode=view_only_without_ui&moveToViewport=-10322%2C-5409%2C13848%2C6556&embedId=244032640937',
       images: [
-        "/case-studies/mozilla/Organize and Analyze UX Research with AI-Powered Workspace.mp4",
+        "/case-studies/mozilla/Full Video Walkthrough.mov",
         "/case-studies/mozilla/Rounf 1 Prototype User Testing.mp4",
         "/case-studies/mozilla/SWOT.png",
         "/case-studies/mozilla/KPI's.png",
