@@ -29,6 +29,19 @@ export default function HeroSection() {
     { src: '/sticker_8.png', className: 'w-28 md:w-40 rotate-[5deg] bottom-[10%] right-[15%]' }
   ];
 
+  const skills = [
+    { name: 'Deep Thinking', desc: 'Analyzing complex problems to uncover underlying patterns.' },
+    { name: 'Opencode', desc: 'Accelerating development workflows with AI-driven coding.' },
+    { name: 'Figma Make', desc: 'Rapidly prototyping layouts using generative UI tools.' },
+    { name: 'Google Gemini', desc: 'Enhancing research and content strategy through AI.' },
+    { name: 'Nanobanana', desc: 'Streamlining creative processes for faster iteration.' },
+    { name: 'Google Stitch', desc: 'Seamlessly integrating tools and automating processes.' },
+    { name: 'Manual Ideation', desc: 'Sketching and exploring foundational concepts by hand.' },
+    { name: 'Problem Discovery', desc: 'Identifying true user needs before rushing to solutions.' },
+    { name: 'Inclusive Design (AODA)', desc: 'Ensuring accessible digital experiences for all users.' },
+    { name: 'Cross-Functional Collaboration', desc: 'Bridging the gap between engineering, product, and design.' }
+  ];
+
   const menuLinks = [
     { name: 'About', href: '#about' },
     { name: 'UI Prototypes', href: '#projects' },
@@ -39,7 +52,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-[110vh] bg-[var(--color-bg-base)] overflow-hidden flex flex-col pt-6 px-6 md:px-12">
+    <section ref={containerRef} className="relative w-full min-h-[90vh] bg-[var(--color-bg-base)] overflow-hidden flex flex-col pt-6 px-6 md:px-12">
       
       {/* Background Gray Wave Orbs */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30">
@@ -122,7 +135,7 @@ export default function HeroSection() {
       </nav>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col justify-start pt-32 max-w-7xl mx-auto w-full relative z-10 pb-20">
+      <div className="flex-1 flex flex-col justify-start pt-24 max-w-7xl mx-auto w-full relative z-10 pb-10">
         
         {/* Floating Images (Draggable) */}
         {floatingImages.map((img, i) => (
@@ -193,6 +206,26 @@ export default function HeroSection() {
               Balancing functional needs with beautiful, crafted aesthetics to build inclusive, end-to-end digital experiences.
             </motion.p>
           </div>
+
+          {/* Core Competencies */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="max-w-2xl mt-8 relative z-20 pointer-events-auto flex flex-wrap gap-2 justify-center md:justify-start"
+          >
+            {skills.map(skill => (
+              <div key={skill.name} className="relative group">
+                <span className="inline-block px-3 py-1.5 bg-white/60 backdrop-blur-md border border-white/50 text-gray-800 text-[10px] uppercase tracking-widest font-bold rounded-full hover:bg-white hover:border-[#FF8CD1] transition-colors cursor-help shadow-sm">
+                  {skill.name}
+                </span>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#111] text-white text-[10px] font-sans px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-center shadow-xl">
+                  {skill.desc}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#111]"></div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
       </div>
