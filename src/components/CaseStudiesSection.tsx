@@ -49,7 +49,9 @@ const caseStudies = [
 
 function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], span2?: boolean }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isImageHovered, setIsImageHovered] = useState(false);
   
   // Custom cursor logic
   const cursorX = useMotionValue(-100);
@@ -64,6 +66,21 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
         // Calculate position relative to the card container
         cursorX.set(e.clientX - rect.left);
         cursorY.set(e.clientY - rect.top);
+        
+        // Check if mouse is within the image container
+        if (imageRef.current) {
+          const imgRect = imageRef.current.getBoundingClientRect();
+          if (
+            e.clientX >= imgRect.left && 
+            e.clientX <= imgRect.right && 
+            e.clientY >= imgRect.top && 
+            e.clientY <= imgRect.bottom
+          ) {
+            setIsImageHovered(true);
+          } else {
+            setIsImageHovered(false);
+          }
+        }
       }
     };
     
@@ -72,21 +89,34 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
     }
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      setIsImageHovered(false);
     };
   }, [isHovered, cursorX, cursorY]);
+
+  // Determine frame style based on format
+  const isMobile = study.format === 'mobile';
+  
+  // Determine if it needs a browser frame (e.g., mozilla)
+  const isBrowser = study.id === 'mozilla';
+  
+  // Tablet frame for others (loblaws, airbnb)
+  const isTablet = study.id === 'loblaws' || study.id === 'airbnb';
 
   return (
     <Link 
       to={`/case-study/${study.id}`}
       ref={cardRef}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`group relative block w-full bg-[#FAFAFA] border border-gray-200/60 rounded-[32px] overflow-hidden cursor-none ${span2 ? 'lg:col-span-2' : 'lg:col-span-1'}`}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsImageHovered(false);
+      }}
+      className={`group relative block w-full bg-[#FAFAFA] border border-gray-200/60 rounded-[32px] overflow-hidden ${isImageHovered ? 'cursor-none' : 'cursor-pointer'} ${span2 ? 'lg:col-span-2' : 'lg:col-span-1'}`}
       style={{ transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}
     >
       {/* Custom Hover Cursor Badge */}
       <AnimatePresence>
-        {isHovered && (
+        {isHovered && isImageHovered && (
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -107,12 +137,35 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
 
       <div className="flex flex-col h-full w-full">
         {/* Media Container (Fixed Height) */}
-        <div className="relative w-full h-[350px] md:h-[450px] overflow-hidden bg-black flex items-center justify-center">
-          <img 
-            src={study.coverImg} 
-            alt={study.title} 
-            className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-          />
+        <div 
+          ref={imageRef}
+          className="relative w-full h-[350px] md:h-[450px] overflow-hidden bg-gray-50 flex items-center justify-center p-8 md:p-12"
+        >
+          {isBrowser && (
+            <div className="w-full h-full max-w-[800px] border border-gray-200 rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.1)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              {/* Browser Top Bar */}
+              <div className="h-8 w-full bg-gray-100 flex items-center px-4 gap-2 border-b border-gray-200">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <img src={study.coverImg} alt={study.title} className="w-full h-[calc(100%-32px)] object-cover object-top" />
+            </div>
+          )}
+
+          {isTablet && (
+            <div className="w-full h-full max-w-[600px] border-[12px] border-black rounded-[24px] overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.15)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative">
+              <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
+            </div>
+          )}
+
+          {isMobile && (
+            <div className="h-full aspect-[9/19] max-h-[400px] border-[10px] border-black rounded-[36px] overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.15)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative">
+              {/* Notch */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 rounded-b-[16px] bg-black z-20 pointer-events-none"></div>
+              <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
+            </div>
+          )}
         </div>
 
         {/* High-Density Metadata Row */}
