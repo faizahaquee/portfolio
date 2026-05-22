@@ -96,11 +96,8 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
   // Determine frame style based on format
   const isMobile = study.format === 'mobile';
   
-  // Determine if it needs a browser frame (e.g., mozilla)
-  const isBrowser = study.id === 'mozilla';
-  
-  // Tablet frame for others (loblaws, airbnb)
-  const isTablet = study.id === 'loblaws' || study.id === 'airbnb';
+  // Apply the browser frame to all non-mobile case studies
+  const isBrowser = !isMobile;
 
   return (
     <Link 
@@ -139,30 +136,24 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
         {/* Media Container (Fixed Height) */}
         <div 
           ref={imageRef}
-          className="relative w-full h-[350px] md:h-[450px] overflow-hidden bg-gray-50 flex items-center justify-center p-8 md:p-12"
+          className="relative w-full h-[350px] md:h-[450px] overflow-hidden bg-gray-50 flex items-center justify-center p-6 md:p-8"
         >
           {isBrowser && (
-            <div className="w-full h-full max-w-[800px] border border-gray-200 rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.1)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+            <div className="w-full h-full max-w-[800px] border border-gray-200/60 rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
               {/* Browser Top Bar */}
-              <div className="h-8 w-full bg-gray-100 flex items-center px-4 gap-2 border-b border-gray-200">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              <div className="h-6 md:h-8 w-full bg-gray-100 flex items-center px-3 gap-1.5 border-b border-gray-200">
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
               </div>
               <img src={study.coverImg} alt={study.title} className="w-full h-[calc(100%-32px)] object-cover object-top" />
             </div>
           )}
 
-          {isTablet && (
-            <div className="w-full h-full max-w-[600px] border-[12px] border-black rounded-[24px] overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.15)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative">
-              <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
-            </div>
-          )}
-
           {isMobile && (
-            <div className="h-full aspect-[9/19] max-h-[400px] border-[10px] border-black rounded-[36px] overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.15)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative">
+            <div className="h-full aspect-[9/19] max-h-[400px] border-[6px] border-black rounded-[32px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.1)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative">
               {/* Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 rounded-b-[16px] bg-black z-20 pointer-events-none"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-4 rounded-b-[12px] bg-black z-20 pointer-events-none"></div>
               <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
             </div>
           )}
