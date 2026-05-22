@@ -44,8 +44,7 @@ export default function HeroSection() {
 
   const menuLinks = [
     { name: 'About', href: '#about' },
-    { name: 'UI Prototypes', href: '#projects' },
-    { name: 'UX Research', href: '#ux-research' },
+    { name: 'Selected Works', href: '#projects' },
     { name: 'Graphic Design', href: '#graphic-design' },
     { name: 'Photography', href: '#photography' },
     { name: 'Contact', href: '#contact' },
