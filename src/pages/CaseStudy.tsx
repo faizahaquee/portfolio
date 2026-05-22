@@ -603,6 +603,15 @@ export default function CaseStudy() {
   // Initialize active media
   useEffect(() => {
     if (caseStudy) {
+      // Prioritize video if it's the mozilla case study
+      if (id === 'mozilla' && caseStudy.images && caseStudy.images.length > 0) {
+        const firstVideo = caseStudy.images.find(img => img.endsWith('.mp4') || img.endsWith('.mov'));
+        if (firstVideo) {
+          setActiveMedia({ type: 'video', src: firstVideo });
+          return;
+        }
+      }
+      
       if (caseStudy.figmaLink) {
         setActiveMedia({ type: 'figma', src: caseStudy.figmaLink });
       } else if (caseStudy.images && caseStudy.images.length > 0) {
@@ -617,7 +626,7 @@ export default function CaseStudy() {
         setActiveMedia({ type: 'pdf', src: caseStudy.pdf });
       }
     }
-  }, [caseStudy]);
+  }, [caseStudy, id]);
 
   if (!caseStudy) {
     return (
@@ -652,6 +661,17 @@ export default function CaseStudy() {
             )}
             
             <div className="flex flex-wrap gap-4 mt-2">
+              {caseStudy.images?.some(img => img.endsWith('.mp4') || img.endsWith('.mov')) && (
+                <button 
+                  onClick={() => {
+                    const videoSrc = caseStudy.images!.find(img => img.endsWith('.mp4') || img.endsWith('.mov'))!;
+                    setActiveMedia({ type: 'video', src: videoSrc });
+                  }}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'video' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
+                >
+                  View Prototype Video
+                </button>
+              )}
               {caseStudy.figmaLink && (
                 <button 
                   onClick={() => setActiveMedia({ type: 'figma', src: caseStudy.figmaLink! })}
