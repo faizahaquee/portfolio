@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
 const caseStudies = [
   {
@@ -46,89 +47,98 @@ const caseStudies = [
   }
 ];
 
-function CaseStudyCard({ study }: { study: typeof caseStudies[0] }) {
-  if (study.format === 'mobile') {
-    return (
-      <motion.div 
-        layout
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.4 }}
-        className="group flex flex-col items-center"
-      >
-        {/* Smartphone Mockup Frame */}
-        <Link 
-          to={`/case-study/${study.id}`}
-          className="block w-full max-w-[280px] aspect-[9/19] rounded-[36px] border-[10px] border-black overflow-hidden relative shadow-2xl transition-transform duration-300 group-hover:-translate-y-4 hover:ring-4 hover:ring-[#FF8CD1]/50 bg-black"
-        >
-          {/* Notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 rounded-b-[16px] bg-black z-20 pointer-events-none"></div>
-          
-          {/* Screen Content */}
+function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], span2?: boolean }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  
+  // Custom cursor logic
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springX = useSpring(cursorX, { stiffness: 300, damping: 25, mass: 0.5 });
+  const springY = useSpring(cursorY, { stiffness: 300, damping: 25, mass: 0.5 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (cardRef.current && isHovered) {
+        const rect = cardRef.current.getBoundingClientRect();
+        // Calculate position relative to the card container
+        cursorX.set(e.clientX - rect.left);
+        cursorY.set(e.clientY - rect.top);
+      }
+    };
+    
+    if (isHovered) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isHovered, cursorX, cursorY]);
+
+  return (
+    <Link 
+      to={`/case-study/${study.id}`}
+      ref={cardRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`group relative block w-full bg-[#FAFAFA] border border-gray-200/60 rounded-[32px] overflow-hidden cursor-none ${span2 ? 'lg:col-span-2' : 'lg:col-span-1'}`}
+      style={{ transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}
+    >
+      {/* Custom Hover Cursor Badge */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.2 }}
+            className="absolute z-50 pointer-events-none flex items-center justify-center bg-[#FF8CD1] text-black font-sans uppercase font-bold tracking-widest text-[9px] w-24 h-24 rounded-full shadow-2xl text-center leading-tight"
+            style={{
+              x: springX,
+              y: springY,
+              translateX: '-50%',
+              translateY: '-50%'
+            }}
+          >
+            View<br/>Case Study
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="flex flex-col h-full w-full">
+        {/* Media Container (Fixed Height) */}
+        <div className="relative w-full h-[350px] md:h-[450px] overflow-hidden bg-black flex items-center justify-center">
           <img 
             src={study.coverImg} 
-            alt={`${study.title} App Screen`}
-            className="w-full h-full relative z-10 transition-opacity duration-300 object-cover bg-white"
+            alt={study.title} 
+            className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
           />
-        </Link>
-        <CardContent study={study} />
-      </motion.div>
-    );
-  }
-
-  // Presentation Format (Aspect 4/3)
-  return (
-    <motion.div 
-      layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4 }}
-      className="group flex flex-col items-center w-full"
-    >
-      <Link 
-        to={`/case-study/${study.id}`} 
-        className="block w-full aspect-[4/3] max-w-[400px] rounded-3xl border-[12px] border-black bg-black overflow-hidden relative shadow-2xl transition-transform duration-300 group-hover:-translate-y-4 group-hover:ring-4 group-hover:ring-[#FF8CD1]/50"
-      >
-        <div className="w-full h-full bg-black relative">
-          <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover relative z-10" />
         </div>
-      </Link>
-      <CardContent study={study} />
-    </motion.div>
-  );
-}
 
-function CardContent({ study }: { study: typeof caseStudies[0] }) {
-  return (
-    <div className="mt-8 text-center max-w-xs flex-1 flex flex-col w-full">
-      <h3 className="text-xl font-bold mb-2">{study.title}</h3>
-      <div className="flex flex-wrap gap-1 justify-center mb-4">
-        {study.tags.map(tag => (
-          <span key={tag} className="text-[10px] uppercase font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded">
-            {tag}
-          </span>
-        ))}
+        {/* High-Density Metadata Row */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-6 md:p-8 bg-white/50 backdrop-blur-sm border-t border-gray-100">
+          <div className="flex flex-col gap-1">
+            <h3 className="text-xl md:text-2xl font-serif text-[#111]">{study.title}</h3>
+            <p className="text-[10px] md:text-xs font-sans uppercase tracking-[0.2em] font-bold text-gray-400">
+              {study.type}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2 justify-start md:justify-end max-w-[250px]">
+            {study.tags.slice(0, 2).map((tag, idx) => (
+              <span key={idx} className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
+                {tag}
+              </span>
+            ))}
+            {study.tags.length > 2 && (
+              <span className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
+                +{study.tags.length - 2}
+              </span>
+            )}
+          </div>
+        </div>
       </div>
-      <p className="text-sm text-gray-600 mb-6 flex-1 flex items-start justify-center line-clamp-3">{study.description}</p>
-      
-      <div className="mt-auto flex flex-col items-center gap-3">
-        <Link to={`/case-study/${study.id}`} className="inline-block border-2 border-black rounded-full px-6 py-2 text-sm font-medium hover:bg-black hover:text-white transition-colors w-full">
-          Read Case Study
-        </Link>
-        {study.figmaLink && (
-          <a 
-            href={study.figmaLink} 
-            target="_blank" 
-            rel="noreferrer" 
-            className="text-[10px] font-sans uppercase tracking-widest font-bold text-gray-400 hover:text-[#FF8CD1] transition-colors"
-          >
-            Interactive Prototype ↗
-          </a>
-        )}
-      </div>
-    </div>
+    </Link>
   );
 }
 
@@ -138,19 +148,26 @@ export default function CaseStudiesSection() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-tight text-[#111] mb-4">Selected <span className="italic text-[#FF8CD1]">Works</span></h2>
-          
-        {/* Filter Pills (Removed as per user request) */}
         </div>
         
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-[1400px] mx-auto justify-items-center items-start">
-          <AnimatePresence>
-            {caseStudies.map((study) => (
-              <CaseStudyCard key={study.id} study={study} />
-            ))}
-          </AnimatePresence>
+        {/* Bento Grid Architecture */}
+        <motion.div 
+          layout 
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto items-stretch"
+        >
+          {caseStudies.map((study, index) => {
+            // Asymmetrical span logic:
+            // Index 0 (Mozilla) spans 2, Index 1 (Loblaws) spans 1
+            // Index 2 (Airbnb) spans 1, Index 3 (Indigo) spans 2
+            const isSpan2 = index === 0 || index === 3;
+            
+            return (
+              <BentoCard key={study.id} study={study} span2={isSpan2} />
+            );
+          })}
         </motion.div>
         
-        <div className="pt-24 mt-12 border-t border-gray-100 flex justify-center">
+        <div className="pt-24 mt-16 border-t border-gray-100 flex justify-center">
           <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="inline-flex items-center justify-center gap-3 bg-[#111] text-white rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-[#FF8CD1] transition-all shadow-lg">
             Let's build something
           </a>
