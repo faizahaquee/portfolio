@@ -9,21 +9,20 @@ const caseStudies = [
     type: 'Design Sprint',
     format: 'presentation',
     color: 'bg-yellow-100',
-    coverImg: '/case-studies/mozilla/Brainstorming.png',
+    coverImg: '/case-studies/mozilla/Meet Workspace Mode Cover photo.png',
     figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
     tags: ['UX Design', 'Design Sprint', 'Prototyping', 'AI Integration'],
     description: 'A 2-week intensive design sprint proposing a context-aware, proactive AI browsing experience centered on transparency and privacy for Mozilla.',
   },
   {
-    id: 'indigo',
-    title: 'Indigo Bookstore',
-    type: 'UI & Marketing',
-    format: 'mobile',
-    color: 'bg-blue-600',
-    coverImg: '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/indigo cover.png',
-    figmaLink: 'https://www.figma.com/proto/FdOTACSQ64baOtSdZ56Pfv/Indigo-Book-Club-UI-Prototype?node-id=1-4&p=f&t=RBDFBbfwdv5TGI0G-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4',
-    tags: ['UI Design', 'Interaction Design', 'Manual Ideation'],
-    description: 'A comprehensive visual redesign leveraging original ideation and Design Systems Thinking for the Indigo Bookstore app experience.',
+    id: 'loblaws',
+    title: 'Loblaws',
+    type: 'Project Management',
+    format: 'presentation',
+    color: 'bg-orange-100',
+    coverImg: '/case-studies/loblaws case study cover.png',
+    tags: ['Project Management', 'Sprint Methodologies', 'Google Gemini'],
+    description: 'A comprehensive project detailing design systems thinking and cross functional agile strategy, utilizing Google Gemini for deep strategic thinking.',
   },
   {
     id: 'airbnb',
@@ -36,14 +35,15 @@ const caseStudies = [
     description: 'A thorough feasibility analysis evaluating the viability and strategic implementation of new Airbnb features.',
   },
   {
-    id: 'loblaws',
-    title: 'Loblaws',
-    type: 'Project Management',
-    format: 'presentation',
-    color: 'bg-orange-100',
-    coverImg: '/case-studies/loblaws case study cover.png',
-    tags: ['Project Management', 'Sprint Methodologies', 'Google Gemini'],
-    description: 'A comprehensive project detailing design systems thinking and cross functional agile strategy, utilizing Google Gemini for deep strategic thinking.',
+    id: 'indigo',
+    title: 'Indigo Bookstore',
+    type: 'UI & Marketing',
+    format: 'mobile',
+    color: 'bg-blue-600',
+    coverImg: '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/indigo cover.png',
+    figmaLink: 'https://www.figma.com/proto/FdOTACSQ64baOtSdZ56Pfv/Indigo-Book-Club-UI-Prototype?node-id=1-4&p=f&t=RBDFBbfwdv5TGI0G-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4',
+    tags: ['UI Design', 'Interaction Design', 'Manual Ideation'],
+    description: 'A comprehensive visual redesign leveraging original ideation and Design Systems Thinking for the Indigo Bookstore app experience.',
   }
 ];
 
@@ -168,9 +168,19 @@ export default function CaseStudiesSection() {
         
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 max-w-6xl mx-auto justify-items-center items-start">
           <AnimatePresence>
-            {filteredStudies.map((study) => (
+            {/* First Row: Presentations */}
+            {filteredStudies.filter(s => s.format === 'presentation').map((study) => (
               <CaseStudyCard key={study.id} study={study} />
             ))}
+            
+            {/* Second Row: Mobile (spanning full width if needed or centered) */}
+            {filteredStudies.filter(s => s.format === 'mobile').length > 0 && (
+              <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center w-full mt-8">
+                {filteredStudies.filter(s => s.format === 'mobile').map((study) => (
+                  <CaseStudyCard key={study.id} study={study} />
+                ))}
+              </div>
+            )}
           </AnimatePresence>
         </motion.div>
         

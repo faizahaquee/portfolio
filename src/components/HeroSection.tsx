@@ -141,45 +141,25 @@ export default function HeroSection() {
           </motion.div>
         ))}
 
-        {/* Value Prop */}
-        <div className="max-w-2xl font-serif text-3xl md:text-[2.75rem] leading-[1.15] md:ml-[8%] relative z-20 p-6 md:p-8 rounded-3xl bg-white/40 backdrop-blur-md shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] pointer-events-auto mb-12">
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-black mb-8"
-          >
-            I help product teams solve complex user challenges by creating scalable design systems and intuitive interfaces.
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="text-gray-600"
-          >
-            Balancing functional needs with beautiful, crafted aesthetics to build inclusive, end-to-end digital experiences.
-          </motion.p>
-        </div>
-
         {/* Huge Serif Typography */}
-        <div className="relative z-10 mb-24 mt-16">
-          <div className="flex flex-col text-center md:text-left text-[16vw] md:text-[9rem] lg:text-[11.5rem] leading-[0.8] tracking-tight font-serif text-[#111] relative pointer-events-none selection:bg-[#FF8CD1] selection:text-white z-10">
+        <div className="relative z-10 mb-24 mt-16 flex flex-col items-center">
+          <div className="flex flex-col text-center text-[16vw] md:text-[9rem] lg:text-[11.5rem] leading-[0.8] tracking-tight font-serif text-[#111] relative pointer-events-none selection:bg-[#FF8CD1] selection:text-white z-10">
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="md:ml-[8%] flex flex-col md:flex-row items-center md:items-center justify-center md:justify-start gap-4 md:gap-8"
+              className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8"
             >
               <span>Product</span>
               <motion.div 
                 whileHover={{ scale: 1.08, rotate: -4, y: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                className="w-[20vw] h-[14vw] md:w-[13rem] md:h-[9rem] lg:w-[16rem] lg:h-[11rem] rounded-[100px] overflow-hidden border-[4px] lg:border-[8px] border-white shadow-[0_20px_40px_rgba(0,0,0,0.15)] pointer-events-auto bg-gray-100"
+                className="w-[20vw] h-[20vw] md:w-[9rem] md:h-[9rem] lg:w-[11rem] lg:h-[11rem] rounded-full overflow-hidden border-[4px] lg:border-[6px] border-white shadow-[0_20px_40px_rgba(0,0,0,0.15)] pointer-events-auto bg-gray-100"
               >
                 <img 
                   src="/me.png" 
                   alt="Faiza" 
-                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500" 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
                 />
               </motion.div>
               <span>Designer</span>
@@ -188,10 +168,30 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="md:ml-[15%] z-10 italic text-[#FF8CD1] mt-4 md:mt-8"
+              className="z-10 italic text-[#FF8CD1] mt-4 md:mt-8"
             >
               Faiza Haque
             </motion.div>
+          </div>
+          
+          {/* Value Prop (Moved under title) */}
+          <div className="max-w-2xl font-serif text-2xl md:text-3xl leading-[1.3] relative z-20 p-6 md:p-8 rounded-3xl bg-white/40 backdrop-blur-md shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] pointer-events-auto mt-12 text-center md:text-left">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-black mb-6"
+            >
+              I help product teams solve complex user challenges by creating scalable design systems and intuitive interfaces.
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="text-gray-600 text-xl"
+            >
+              Balancing functional needs with beautiful, crafted aesthetics to build inclusive, end-to-end digital experiences.
+            </motion.p>
           </div>
         </div>
 
