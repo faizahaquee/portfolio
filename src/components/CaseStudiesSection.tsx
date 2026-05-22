@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const caseStudies = [
   {
     id: 'mozilla',
-    title: 'Mozilla Workspace AI',
+    title: 'Mozilla Workspace Mode',
     type: 'Design Sprint',
     format: 'presentation',
     color: 'bg-yellow-100',
@@ -25,7 +25,7 @@ const caseStudies = [
   },
   {
     id: 'airbnb',
-    title: 'Airbnb Feasibility Analysis',
+    title: 'Airbnb',
     type: 'Feasibility Analysis',
     format: 'presentation',
     color: 'bg-gray-100',
@@ -35,7 +35,7 @@ const caseStudies = [
   },
   {
     id: 'indigo',
-    title: 'Indigo Bookstore',
+    title: 'Indigo: New Book Club Community Feature',
     type: 'UI & Marketing',
     format: 'mobile',
     color: 'bg-blue-600',
