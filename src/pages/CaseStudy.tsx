@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 // Defined types for content sections
 type ContentSection = {
@@ -30,6 +30,8 @@ export default function CaseStudy() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  const [activeMedia, setActiveMedia] = useState<{ type: 'image' | 'video' | 'figma' | 'pdf', src: string } | null>(null);
 
   // Mocking the case studies data
   const caseStudies: Record<string, CaseStudyData> = {
@@ -598,6 +600,25 @@ export default function CaseStudy() {
 
   const caseStudy = id ? caseStudies[id] : null;
 
+  // Initialize active media
+  useEffect(() => {
+    if (caseStudy) {
+      if (caseStudy.figmaLink) {
+        setActiveMedia({ type: 'figma', src: caseStudy.figmaLink });
+      } else if (caseStudy.images && caseStudy.images.length > 0) {
+        const firstImg = caseStudy.images[0];
+        setActiveMedia({ 
+          type: firstImg.endsWith('.mp4') || firstImg.endsWith('.mov') ? 'video' : 'image', 
+          src: firstImg 
+        });
+      } else if (caseStudy.contentSections?.some(s => s.image)) {
+        setActiveMedia({ type: 'image', src: caseStudy.contentSections.find(s => s.image)!.image! });
+      } else if (caseStudy.pdf) {
+        setActiveMedia({ type: 'pdf', src: caseStudy.pdf });
+      }
+    }
+  }, [caseStudy]);
+
   if (!caseStudy) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-bg-base)] font-sans">
@@ -609,8 +630,8 @@ export default function CaseStudy() {
 
   return (
     <div className="w-full min-h-screen bg-[var(--color-bg-base)] text-[#111]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
-        <button onClick={() => navigate(-1)} className="inline-flex items-center text-gray-400 text-xs font-sans uppercase tracking-widest font-bold mb-16 hover:text-[#FF8CD1] transition-colors cursor-pointer">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 md:py-16">
+        <button onClick={() => navigate(-1)} className="inline-flex items-center text-gray-400 text-xs font-sans uppercase tracking-widest font-bold mb-8 hover:text-[#FF8CD1] transition-colors cursor-pointer">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Portfolio
         </button>
         
@@ -619,185 +640,171 @@ export default function CaseStudy() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-16 items-start">
-            <div className="flex-1">
-              <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-serif leading-[0.9] tracking-tight mb-8">
-                {caseStudy.title}
-              </h1>
-              
-              <div className="flex flex-col items-start gap-8 mb-8">
-                {caseStudy.description && (
-                  <p className="text-xl md:text-2xl font-serif text-gray-500 max-w-2xl leading-relaxed mb-8">
-                    {caseStudy.description}
-                  </p>
-                )}
-
-                {caseStudy.figmaLink && (
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href={caseStudy.figmaLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center gap-2 border border-black rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
-                    >
-                      Open Figma Prototype ↗
-                    </a>
-                    {caseStudy.miroLink && (
-                      <a 
-                        href={caseStudy.miroLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-colors"
-                      >
-                        View Miro Board ↗
-                      </a>
-                    )}
-                  </div>
-                )}
-                {!caseStudy.figmaLink && caseStudy.miroLink && (
-                  <a 
-                    href={caseStudy.miroLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 rounded-full px-6 py-3 text-sm font-sans font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-colors"
-                  >
-                    View Miro Board ↗
-                  </a>
-                )}
-              </div>
-            </div>
-
-            {/* Interactive Figma Prototype */}
-            {caseStudy.figmaLink && (
-              <div className="flex-shrink-0 w-full lg:w-auto flex justify-center lg:justify-end">
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 to-purple-500 rounded-[50px] blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                  <div className="w-[300px] h-[620px] rounded-[32px] bg-white relative overflow-hidden shadow-2xl">
-                    {/* Figma iframe */}
-                    <iframe 
-                      className="w-full h-full border-none relative z-10" 
-                      src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(caseStudy.figmaLink)}&hide-ui=1`} 
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
+          {/* Header Title Block */}
+          <div className="flex flex-col gap-6 mb-12">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[0.9] tracking-tight">
+              {caseStudy.title}
+            </h1>
+            {caseStudy.description && (
+              <p className="text-lg md:text-xl font-serif text-gray-500 max-w-3xl leading-relaxed">
+                {caseStudy.description}
+              </p>
             )}
-          </div>
-
-          {/* PDF View and Text Side-by-Side */}
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mt-12 mb-24">
             
-            {/* Left side: Text Content */}
-            <div className="w-full lg:w-[45%] flex flex-col gap-24">
-                    {/* Extracted Content Sections (Editorial Style) */}
-                    {caseStudy.contentSections && caseStudy.contentSections.length > 0 && (
-                      <div className="space-y-24 font-sans">
-                        {caseStudy.contentSections.map((section, idx) => (
-                          <div key={idx} className="flex flex-col gap-6">
-                            <div>
-                              <h2 className="text-3xl md:text-4xl font-serif text-black leading-tight">
-                                {section.heading}
-                              </h2>
-                            </div>
-                            <div className="space-y-6">
-                              {section.subheading && (
-                                <h3 className="text-xl md:text-2xl font-serif italic text-[#FF8CD1] mb-6">
-                                  "{section.subheading}"
-                                </h3>
-                              )}
-                              {section.body && section.body.map((p, pIdx) => (
-                                <p key={pIdx} className="text-lg md:text-xl text-gray-700 leading-relaxed font-sans font-light">
-                                  {p}
-                                </p>
-                              ))}
-                              {section.list && (
-                                <ul className="space-y-4 text-lg md:text-xl text-gray-700 leading-relaxed font-sans font-light list-none mt-6">
-                                  {section.list.map((li, lIdx) => (
-                                    <li key={lIdx} className="relative pl-8">
-                                      <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-[#FF8CD1]"></span>
-                                      {li}
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-                              {section.image && (
-                                <div className="mt-12 mb-6">
-                                  <img 
-                                    src={section.image} 
-                                    alt={section.heading} 
-                                    className="w-full rounded-2xl shadow-xl border border-gray-100"
-                                  />
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Right side: Visual Assets */}
-                  <div className="w-full lg:w-[55%] flex flex-col gap-16">
-                    {caseStudy.pdf && (
-                      <div>
-                        {id === 'digital-accessibility' ? (
-                          <div className="text-center p-8 border border-gray-100 rounded-3xl bg-gray-50">
-                            <a 
-                              href={caseStudy.pdf}
-                              download
-                              className="inline-flex items-center gap-3 border-2 border-black rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
-                            >
-                              Download Case Study PDF (49MB) 
-                            </a>
-                            <p className="text-gray-500 mt-4 text-sm">Large file size may cause preview errors.</p>
-                          </div>
-                        ) : (
-                          <div className="w-full h-[70vh] rounded-3xl overflow-hidden border border-gray-100 shadow-xl bg-white relative group">
-                            <object data={caseStudy.pdf} type="application/pdf" className="w-full h-full absolute inset-0 z-10">
-                              <p className="p-8 text-center text-gray-500 font-sans">Your browser does not support inline PDFs. <br/><br/><a href={caseStudy.pdf} className="text-[#FF8CD1] underline font-bold uppercase tracking-widest text-xs">Download the PDF</a>.</p>
-                            </object>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Project Images Gallery (Stacked beside text) */}
-                    {caseStudy.images && caseStudy.images.length > 0 && (
-                      <div className="flex flex-col gap-8">
-                        {caseStudy.images.map((img, idx) => (
-                          <motion.div 
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.5 }}
-                            className="w-full rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 bg-white group"
-                          >
-                            {img.endsWith('.mp4') || img.endsWith('.mov') ? (
-                              <video 
-                                src={img} 
-                                controls 
-                                autoPlay 
-                                loop 
-                                muted 
-                                className="w-full h-auto object-cover"
-                              />
-                            ) : (
-                              <img 
-                                src={img} 
-                                alt={`${caseStudy.title} Asset ${idx + 1}`} 
-                                className="w-full h-auto object-cover" 
-                              />
-                            )}
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
+            <div className="flex flex-wrap gap-4 mt-2">
+              {caseStudy.figmaLink && (
+                <button 
+                  onClick={() => setActiveMedia({ type: 'figma', src: caseStudy.figmaLink! })}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'figma' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
+                >
+                  View Figma Prototype
+                </button>
+              )}
+              {caseStudy.miroLink && (
+                <a 
+                  href={caseStudy.miroLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-colors"
+                >
+                  View Miro Board ↗
+                </a>
+              )}
+              {caseStudy.pdf && (
+                <button 
+                  onClick={() => setActiveMedia({ type: 'pdf', src: caseStudy.pdf! })}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'pdf' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
+                >
+                  View PDF Doc
+                </button>
+              )}
             </div>
           </div>
-        );
-      }
+
+          {/* SPLIT SCREEN LAYOUT: Visuals Left (Sticky) / Text Right (Scroll) */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start relative">
+            
+            {/* Left side: Sticky Visual Assets (approx 55vw) */}
+            <div className="w-full lg:w-[55%] sticky top-8 z-10 flex flex-col">
+               <div className="w-full h-[60vh] lg:h-[75vh] max-h-[800px] bg-white rounded-[32px] border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] overflow-hidden flex items-center justify-center relative p-2 md:p-6">
+                  <AnimatePresence mode="wait">
+                     {activeMedia?.type === 'figma' && (
+                        <motion.iframe
+                           key="figma"
+                           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+                           className="w-full h-full border-none rounded-2xl" 
+                           src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(activeMedia.src)}&hide-ui=1`} 
+                           allowFullScreen
+                        />
+                     )}
+                     {activeMedia?.type === 'pdf' && (
+                        <motion.object
+                           key="pdf"
+                           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+                           data={activeMedia.src} type="application/pdf" className="w-full h-full rounded-2xl"
+                        >
+                           <p className="p-8 text-center text-gray-500 font-sans">Browser does not support inline PDFs. <br/><br/><a href={activeMedia.src} className="text-[#FF8CD1] underline font-bold uppercase tracking-widest text-xs">Download PDF</a></p>
+                        </motion.object>
+                     )}
+                     {activeMedia?.type === 'video' && (
+                        <motion.video
+                           key={activeMedia.src}
+                           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+                           src={activeMedia.src} controls autoPlay loop muted 
+                           className="w-full h-full object-contain rounded-2xl"
+                        />
+                     )}
+                     {activeMedia?.type === 'image' && (
+                        <motion.img
+                           key={activeMedia.src}
+                           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+                           src={activeMedia.src} alt="Visual Artifact" 
+                           className="w-full h-full object-contain rounded-2xl"
+                        />
+                     )}
+                  </AnimatePresence>
+               </div>
+            </div>
+
+            {/* Right side: Scrollable Text Content (approx 45vw) */}
+            <div className="w-full lg:w-[45%] flex flex-col gap-12 pb-32 pt-8 lg:pt-0">
+              
+              {/* Content Sections */}
+              {caseStudy.contentSections && caseStudy.contentSections.length > 0 && (
+                <div className="flex flex-col gap-16 font-sans">
+                  {caseStudy.contentSections.map((section, idx) => (
+                    <motion.div 
+                      key={idx} 
+                      className="flex flex-col gap-4"
+                      onViewportEnter={() => {
+                        if (section.image) {
+                          setActiveMedia({ type: 'image', src: section.image });
+                        }
+                      }}
+                      viewport={{ margin: "-40% 0px -40% 0px" }}
+                    >
+                      <h2 className="text-2xl md:text-3xl font-serif text-black leading-tight border-b border-gray-200 pb-3 mb-2">
+                        {section.heading}
+                      </h2>
+                      
+                      {section.subheading && (
+                        <h3 className="text-lg md:text-xl font-serif italic text-[#FF8CD1]">
+                          "{section.subheading}"
+                        </h3>
+                      )}
+
+                      {section.body && section.body.map((p, pIdx) => (
+                        <p key={pIdx} className="text-[15px] md:text-base text-gray-700 leading-relaxed font-sans">
+                          {p}
+                        </p>
+                      ))}
+
+                      {/* Micro-grid layout for lists to compress vertical space */}
+                      {section.list && (
+                        <ul className={`grid gap-x-6 gap-y-4 text-[15px] md:text-base text-gray-700 leading-relaxed font-sans list-none mt-2 ${section.list.length > 3 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
+                          {section.list.map((li, lIdx) => (
+                            <li key={lIdx} className="relative pl-5">
+                              <span className="absolute left-0 top-2.5 w-1.5 h-1.5 rounded-full bg-[#FF8CD1]"></span>
+                              {li}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Unmapped Images Trigger Blocks (For case studies that use caseStudy.images array instead of section images) */}
+              {caseStudy.images && caseStudy.images.length > 0 && (!caseStudy.contentSections || !caseStudy.contentSections.some(s => s.image)) && (
+                <div className="flex flex-col gap-6 mt-8">
+                  <h3 className="text-lg font-serif italic text-gray-400 border-b border-gray-200 pb-2 mb-4">Project Gallery</h3>
+                  {caseStudy.images.map((img, idx) => (
+                    <motion.div
+                      key={idx}
+                      onViewportEnter={() => setActiveMedia({
+                        type: img.endsWith('.mp4') || img.endsWith('.mov') ? 'video' : 'image',
+                        src: img
+                      })}
+                      viewport={{ margin: "-40% 0px -40% 0px" }}
+                      className="cursor-pointer group flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-[#FF8CD1] hover:bg-pink-50/50 transition-colors"
+                      onClick={() => setActiveMedia({
+                        type: img.endsWith('.mp4') || img.endsWith('.mov') ? 'video' : 'image',
+                        src: img
+                      })}
+                    >
+                      <span className="text-sm font-sans font-bold text-gray-600 group-hover:text-black transition-colors uppercase tracking-widest">
+                        {img.endsWith('.mp4') || img.endsWith('.mov') ? 'Video Asset' : 'Image Asset'} {idx + 1}
+                      </span>
+                      <span className="text-xs font-sans text-gray-400 group-hover:text-[#FF8CD1] transition-colors">View →</span>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
