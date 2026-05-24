@@ -8,7 +8,7 @@ export default function GraphicDesignSection() {
     target: containerRef,
     offset: ["start end", "end start"]
   });
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const images = [
     { src: '/graphic-designs/CLUB AKIRA LOGO-02.png', className: 'w-40 md:w-56 -top-12 left-[10%]' },
@@ -18,6 +18,9 @@ export default function GraphicDesignSection() {
     { src: '/graphic-designs/rose bday poster one.png', className: 'w-32 md:w-48 top-[10%] right-[30%]' },
     { src: '/graphic-designs/rose bday poster 2.png', className: 'w-40 md:w-52 bottom-[5%] left-[40%]' }
   ];
+
+  // Extract just the src urls for the lightbox
+  const imageUrls = images.map(img => img.src);
 
   return (
     <section ref={containerRef} className="py-48 bg-[#111] overflow-hidden relative min-h-[90vh] flex items-center justify-center" id="graphic-design">
@@ -36,7 +39,7 @@ export default function GraphicDesignSection() {
             transition={{ duration: 0.8, delay: idx * 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
             className={`absolute z-10 hover:z-30 transition-transform duration-500 hover:scale-110 cursor-pointer shadow-2xl rounded-sm ${img.className}`}
-            onClick={() => setSelectedImage(img.src)}
+            onClick={() => setSelectedIndex(idx)}
           >
             <div className="relative group w-full h-full">
               <img 
@@ -77,7 +80,7 @@ export default function GraphicDesignSection() {
         </motion.p>
       </div>
 
-      <Lightbox src={selectedImage} onClose={() => setSelectedImage(null)} />
+      <Lightbox images={imageUrls} initialIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />
     </section>
   );
 }

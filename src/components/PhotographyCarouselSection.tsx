@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Lightbox from './Lightbox';
 
 export default function PhotographyCarouselSection() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const photos = [
     '/photography/IMG_8730.jpg',
     '/photography/IMG_8736.jpg',
@@ -47,28 +47,32 @@ export default function PhotographyCarouselSection() {
             repeat: Infinity,
           }}
         >
-          {duplicatedPhotos.map((src, idx) => (
-            <div 
-              key={idx} 
-              className="relative w-[300px] md:w-[450px] aspect-[4/5] rounded-xl overflow-hidden shrink-0 shadow-lg cursor-pointer"
-              onClick={() => setSelectedImage(src)}
-            >
-              <img 
-                src={src} 
-                alt={`Photography ${idx}`} 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-              {/* Frosted Glass Overlay on Hover */}
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <span className="text-white font-sans uppercase tracking-widest text-xs font-bold border border-white/50 px-6 py-2 rounded-full backdrop-blur-md bg-black/20">
-                  View Focus
-                </span>
+          {duplicatedPhotos.map((src, idx) => {
+            // We pass idx % photos.length so it wraps to the original photos array
+            const originalIndex = idx % photos.length;
+            return (
+              <div 
+                key={idx} 
+                className="relative w-[300px] md:w-[450px] aspect-[4/5] rounded-xl overflow-hidden shrink-0 shadow-lg cursor-pointer"
+                onClick={() => setSelectedIndex(originalIndex)}
+              >
+                <img 
+                  src={src} 
+                  alt={`Photography ${idx}`} 
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                {/* Frosted Glass Overlay on Hover */}
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <span className="text-white font-sans uppercase tracking-widest text-xs font-bold border border-white/50 px-6 py-2 rounded-full backdrop-blur-md bg-black/20">
+                    View Focus
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
-      <Lightbox src={selectedImage} onClose={() => setSelectedImage(null)} />
+      <Lightbox images={photos} initialIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />
     </section>
   );
 }
