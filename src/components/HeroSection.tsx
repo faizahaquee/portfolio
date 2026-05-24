@@ -81,26 +81,20 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Top Nav - Now Sticky! */}
-      <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-widest font-sans font-bold z-[100] bg-white/50 backdrop-blur-md rounded-full shadow-lg p-2">
-        <span className="text-[#111] z-10 drop-shadow-sm">©2026</span>
-        <span className="hidden md:inline text-[#111] z-10 drop-shadow-sm">Faiza Haque</span>
-        <span className="text-[#111] z-10 drop-shadow-sm">Product Designer</span>
-        <div className="relative z-20">
-          <button 
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="border border-[#111] backdrop-blur-sm rounded-full px-5 py-2 hover:bg-[#111] hover:text-white transition-colors text-[#111] font-semibold uppercase tracking-widest bg-white/80"
-          >
-            {menuOpen ? 'Close' : 'Menu'}
+      {/* Top Nav (Restored to original absolute position with correct layout) */}
+      <div className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center pt-6 px-6 md:px-12">
+        <span className="font-bold text-sm uppercase tracking-widest font-sans hover:text-[#FF8CD1] transition-colors cursor-pointer">Faiza Haque</span>
+        <div className="relative">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center border border-white/50 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
           </button>
-          
           <AnimatePresence>
             {menuOpen && (
               <motion.div 
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="absolute right-0 top-12 bg-white border border-gray-200 shadow-2xl rounded-2xl w-48 py-4 flex flex-col overflow-hidden"
+                className="absolute right-0 top-14 bg-white/90 backdrop-blur-xl border border-gray-200 shadow-2xl rounded-2xl w-48 py-2 flex flex-col overflow-hidden"
               >
                 {menuLinks.map((link) => (
                   <button 
@@ -110,7 +104,7 @@ export default function HeroSection() {
                       const el = document.querySelector(link.href);
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="text-left px-6 py-3 hover:bg-[#FF8CD1] hover:text-white transition-colors text-black text-xs font-sans uppercase tracking-widest"
+                    className="text-left px-5 py-2.5 hover:bg-[#FF8CD1] hover:text-white transition-colors text-black text-xs font-sans uppercase tracking-widest"
                   >
                     {link.name}
                   </button>
@@ -119,7 +113,7 @@ export default function HeroSection() {
             )}
           </AnimatePresence>
         </div>
-      </nav>
+      </div>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col justify-start pt-32 max-w-7xl mx-auto w-full relative z-10 pb-20">
