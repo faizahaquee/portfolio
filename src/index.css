@@ -5,6 +5,12 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --color-primary: #FF8CD1;
   --color-bg-base: #F8F7F3;
+  --animate-carousel: carousel 30s linear infinite;
+}
+
+@keyframes carousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 body {

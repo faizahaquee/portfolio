@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Lightbox from './Lightbox';
 
@@ -38,14 +37,8 @@ export default function PhotographyCarouselSection() {
 
       {/* Infinite Horizontal Carousel */}
       <div className="relative w-full flex overflow-hidden group">
-        <motion.div 
-          className="flex gap-8 px-4 w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 30,
-            ease: "linear",
-            repeat: Infinity,
-          }}
+        <div 
+          className="flex gap-8 px-4 w-max animate-carousel hover:[animation-play-state:paused]"
         >
           {duplicatedPhotos.map((src, idx) => {
             // We pass idx % photos.length so it wraps to the original photos array
@@ -70,7 +63,7 @@ export default function PhotographyCarouselSection() {
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
       <Lightbox images={photos} initialIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />
     </section>
