@@ -136,25 +136,17 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
         {/* Media Container (Fixed Height) */}
         <div 
           ref={imageRef}
-          className="relative w-full h-[350px] md:h-[450px] overflow-hidden bg-gray-50 flex items-center justify-center p-6 md:p-8"
+          className="relative w-full h-full overflow-hidden bg-gray-50 flex items-center justify-center group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
         >
           {isBrowser && (
-            <div className="w-full h-full max-w-[800px] border border-gray-200/60 rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
-              {/* Browser Top Bar */}
-              <div className="h-6 md:h-8 w-full bg-gray-100 flex items-center px-3 gap-1.5 border-b border-gray-200">
-                <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
-              </div>
-              <img src={study.coverImg} alt={study.title} className="w-full h-[calc(100%-32px)] object-cover object-top" />
+            <div className="presentation-frame w-full h-auto rounded-xl shadow-lg border border-gray-200/60 overflow-hidden">
+              <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-center" />
             </div>
           )}
 
           {isMobile && (
-            <div className="h-full aspect-[9/19] max-h-[400px] border-[6px] border-black rounded-[32px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.1)] flex flex-col bg-white group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative">
-              {/* Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-4 rounded-b-[12px] bg-black z-20 pointer-events-none"></div>
-              <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
+            <div className="phone-mockup-frame w-auto max-h-[550px] mx-auto">
+               <img src={study.coverImg} alt={study.title} className="w-full h-full object-contain" />
             </div>
           )}
         </div>
