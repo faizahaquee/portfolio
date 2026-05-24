@@ -11,16 +11,21 @@ export default function GraphicDesignSection() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const images = [
-    { src: '/graphic-designs/CLUB AKIRA LOGO-02.png', className: 'w-40 md:w-56 -top-12 left-[10%]' },
-    { src: '/graphic-designs/OPEN LETTER.png', className: 'w-48 md:w-64 top-1/4 right-[5%]' },
-    { src: '/graphic-designs/Screenshot 2025-07-12 at 4.28.50 PM.png', className: 'w-36 md:w-48 bottom-1/4 left-[5%]' },
-    { src: '/graphic-designs/Screenshot 2025-07-12 at 4.29.05 PM.png', className: 'w-56 md:w-80 -bottom-16 right-[20%]' },
-    { src: '/graphic-designs/rose bday poster one.png', className: 'w-32 md:w-48 top-[10%] right-[30%]' },
-    { src: '/graphic-designs/rose bday poster 2.png', className: 'w-40 md:w-52 bottom-[5%] left-[40%]' },
-    { src: '/graphic-designs/najms-21st.png', className: 'w-44 md:w-56 top-[20%] left-[30%] rotate-[4deg]' },
-    { src: '/graphic-designs/najms-21st-star.png', className: 'w-36 md:w-48 bottom-[20%] right-[35%] -rotate-[3deg]' },
-    { src: '/graphic-designs/summer-send-off.png', className: 'w-40 md:w-56 top-[45%] left-[2%] -rotate-[6deg]' },
-    { src: '/graphic-designs/tang-cypher.png', className: 'w-48 md:w-64 -top-8 right-[45%] rotate-[2deg]' }
+    { src: '/graphic-designs/CLUB AKIRA LOGO-02.png', className: 'w-40 md:w-56 top-[5%] left-[5%] rotate-[-5deg]' },
+    { src: '/graphic-designs/OPEN LETTER.png', className: 'w-48 md:w-64 top-1/2 right-[5%] rotate-[3deg]' },
+    { src: '/graphic-designs/Screenshot 2025-07-12 at 4.28.50 PM.png', className: 'w-36 md:w-48 bottom-[15%] left-[2%] rotate-[5deg]' },
+    { src: '/graphic-designs/Screenshot 2025-07-12 at 4.29.05 PM.png', className: 'w-56 md:w-72 bottom-[5%] right-[20%] rotate-[-2deg]' },
+    { src: '/graphic-designs/rose bday poster one.png', className: 'w-32 md:w-48 top-[10%] right-[30%] rotate-[4deg]' },
+    { src: '/graphic-designs/rose bday poster 2.png', className: 'w-40 md:w-52 bottom-[20%] left-[40%] rotate-[-3deg]' },
+    { src: '/graphic-designs/najms-21st.png', className: 'w-44 md:w-56 top-[20%] left-[30%] rotate-[2deg]' },
+    { src: '/graphic-designs/najms-21st-star.png', className: 'w-36 md:w-48 bottom-[35%] right-[35%] -rotate-[5deg]' },
+    { src: '/graphic-designs/summer-send-off.png', className: 'w-40 md:w-56 top-[60%] left-[15%] -rotate-[4deg]' },
+    { src: '/graphic-designs/tang-cypher.png', className: 'w-48 md:w-64 top-[5%] right-[45%] rotate-[-2deg]' },
+    { src: '/graphic-designs/IMG_8730.jpg', className: 'w-32 md:w-44 top-[35%] left-[20%] rotate-[6deg]' },
+    { src: '/graphic-designs/IMG_8735.jpg', className: 'w-36 md:w-48 bottom-[10%] left-[25%] rotate-[-5deg]' },
+    { src: '/graphic-designs/IMG_8736.jpg', className: 'w-40 md:w-52 top-[55%] right-[25%] rotate-[3deg]' },
+    { src: '/graphic-designs/IMG_8871.jpg', className: 'w-32 md:w-40 top-0 right-[10%] -rotate-[4deg]' },
+    { src: '/graphic-designs/IMG_8872.jpg', className: 'w-44 md:w-60 bottom-[45%] left-[10%] rotate-[2deg]' }
   ];
 
   // Extract just the src urls for the lightbox
