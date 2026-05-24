@@ -57,11 +57,13 @@ export default function AboutSection() {
             className="space-y-6 text-lg text-gray-600 leading-relaxed font-sans font-light pointer-events-auto"
           >
             <p className="text-xl md:text-2xl text-black font-serif mb-8">
-              Working with clients throughout the GTA and New York, I’ve developed a practice centred on how people navigate and interact with complex digital systems. For me, design isn't just about making things look good. It's about figuring out how to build digital spaces that feel intuitive, inclusive, and trustworthy.
+              Working with clients throughout the GTA and New York, I’ve developed a practice centred on how people navigate and interact with complex digital systems.
             </p>
             
             <div className="mb-8">
-              <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-3">The Bigger Picture</h3>
+              <h3 className="text-xl md:text-2xl font-serif text-[#FF8CD1] italic mb-4 leading-tight">
+                "For me, design isn't just about making things look good. It's about figuring out how to build digital spaces that feel intuitive, inclusive, and trustworthy."
+              </h3>
               <p>
                 When I take on a project, I always try to look at the bigger picture. I want to know why a feature matters to the business, and more importantly, how it impacts the real people using it. Whether I am testing the viability of a new idea or working closely with product and engineering teams in tight sprints, my goal is always to create systems that are scalable and actually make sense for the user.
               </p>
