@@ -4,12 +4,12 @@ import Lightbox from './Lightbox';
 export default function PhotographyCarouselSection() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const photos = [
-    '/photography/IMG_8730.jpg',
-    '/photography/IMG_8736.jpg',
-    '/photography/IMG_8871.jpg',
     '/photography/001134100012.jpg',
     '/photography/001134100018.jpg',
     '/photography/001134100019.jpg',
+    '/photography/IMG_8730.jpg',
+    '/photography/IMG_8736.jpg',
+    '/photography/IMG_8871.jpg',
     '/photography/IMG_8943.jpg',
     '/photography/IMG_8954.JPG'
   ];
