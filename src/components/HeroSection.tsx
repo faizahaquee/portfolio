@@ -1,35 +1,7 @@
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function HeroSection() {
-  const containerRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Mouse position for cursor glow
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { stiffness: 150, damping: 15, mass: 0.5 });
-  const springY = useSpring(cursorY, { stiffness: 150, damping: 15, mass: 0.5 });
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 150); // offset by half the width of the glow
-      cursorY.set(e.clientY - 150);
-    };
-    window.addEventListener('mousemove', moveCursor);
-    return () => {
-      window.removeEventListener('mousemove', moveCursor);
-    };
-  }, [cursorX, cursorY]);
-
-  const floatingImages = [
-    { src: '/sticker_0.png', className: 'w-24 md:w-32 rotate-[-8deg] top-[5%] left-[8%]' },
-    { src: '/sticker_2.png', className: 'w-32 md:w-48 rotate-[12deg] top-[35%] right-[5%]' },
-    { src: '/sticker_5.png', className: 'w-24 md:w-36 rotate-[-15deg] bottom-[25%] left-[30%]' },
-    { src: '/sticker_8.png', className: 'w-28 md:w-40 rotate-[5deg] bottom-[10%] right-[15%]' }
-  ];
-
-  const skills = [
+const skills = [
     { name: 'Deep Thinking', desc: 'Analyzing complex problems to uncover underlying patterns.' },
     { name: 'Opencode', desc: 'Accelerating development workflows with AI-driven coding.' },
     { name: 'Figma Make', desc: 'Rapidly prototyping layouts using generative UI tools.' },
@@ -42,117 +14,30 @@ export default function HeroSection() {
     { name: 'Cross-Functional Collaboration', desc: 'Bridging the gap between engineering, product, and design.' }
   ];
 
-  const menuLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Selected Works', href: '#projects' },
-    { name: 'Graphic Design', href: '#graphic-design' },
-    { name: 'Photography', href: '#photography' },
-    { name: 'Contact', href: '#contact' },
-  ];
+export default function HeroSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start']
+  });
+  
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, 550]);
 
   return (
     <section ref={containerRef} className="relative w-full min-h-[90vh] bg-[var(--color-bg-base)] overflow-hidden flex flex-col pt-6 px-6 md:px-12">
-      
-      {/* Background Gray Wave Orbs */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30">
-        <motion.div 
-          animate={{ 
-            x: ['-5%', '5%', '-5%'], 
-            y: ['-5%', '10%', '-5%'],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gray-300 blur-[100px] mix-blend-multiply"
-        />
-        <motion.div 
-          animate={{ 
-            x: ['5%', '-5%', '5%'], 
-            y: ['10%', '-5%', '10%'],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-gray-400 blur-[120px] mix-blend-multiply"
-        />
-        <motion.div 
-          animate={{ 
-            x: ['-10%', '10%', '-10%'], 
-            y: ['-10%', '5%', '-10%'],
-            scale: [1.1, 0.9, 1.1]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-20%] left-[20%] w-[70vw] h-[70vw] rounded-full bg-gray-200 blur-[150px] mix-blend-multiply"
-        />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <motion.img src="/stickers/sticker_1.png" alt="Sticker 1" style={{ y: y1 }} className="absolute top-[10%] left-[5%] w-[80px] opacity-80" />
+        <motion.img src="/stickers/sticker_2.png" alt="Sticker 2" style={{ y: y2 }} className="absolute top-[50%] left-[2%] w-[120px] opacity-80" />
+        <motion.img src="/stickers/sticker_3.png" alt="Sticker 3" style={{ y: y3 }} className="absolute top-[20%] right-[5%] w-[100px] opacity-80" />
+        <motion.img src="/stickers/sticker_4.png" alt="Sticker 4" style={{ y: y4 }} className="absolute bottom-[10%] right-[10%] w-[150px] opacity-80" />
       </div>
-
-      {/* Mouse Follow Glow */}
-      <motion.div
-        className="fixed top-0 left-0 w-[300px] h-[300px] bg-pink-300/30 rounded-full blur-[80px] pointer-events-none z-50 mix-blend-screen"
-        style={{
-          x: springX,
-          y: springY,
-        }}
-      />
-
-      {/* Top Nav - Now Sticky! */}
-      <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-widest font-sans font-bold z-[100] bg-white/50 backdrop-blur-md rounded-full shadow-lg p-2">
-        <span className="text-[#111] z-10 drop-shadow-sm">©2026</span>
-        <span className="hidden md:inline text-[#111] z-10 drop-shadow-sm">Faiza Haque</span>
-        <span className="text-[#111] z-10 drop-shadow-sm">Product Designer</span>
-        <div className="relative z-20">
-          <button 
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="border border-[#111] backdrop-blur-sm rounded-full px-5 py-2 hover:bg-[#111] hover:text-white transition-colors text-[#111] font-semibold uppercase tracking-widest bg-white/80"
-          >
-            {menuOpen ? 'Close' : 'Menu'}
-          </button>
-          
-          <AnimatePresence>
-            {menuOpen && (
-              <motion.div 
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="absolute right-0 top-12 bg-white border border-gray-200 shadow-2xl rounded-2xl w-48 py-4 flex flex-col overflow-hidden"
-              >
-                {menuLinks.map((link) => (
-                  <button 
-                    key={link.name} 
-                    onClick={() => {
-                      setMenuOpen(false);
-                      const el = document.querySelector(link.href);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-left px-6 py-3 hover:bg-[#FF8CD1] hover:text-white transition-colors text-black text-xs font-sans uppercase tracking-widest"
-                  >
-                    {link.name}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </nav>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col justify-start pt-24 max-w-7xl mx-auto w-full relative z-10 pb-10">
         
-        {/* Floating Images (Draggable) */}
-        {floatingImages.map((img, i) => (
-          <motion.div
-            key={i}
-            drag
-            dragConstraints={containerRef}
-            whileDrag={{ scale: 1.1, zIndex: 50, cursor: 'grabbing' }}
-            whileHover={{ scale: 1.05, zIndex: 40, cursor: 'grab' }}
-            initial={{ opacity: 0, scale: 0.8, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 + (i * 0.1) }}
-            className={`absolute z-10 hidden lg:block ${img.className}`}
-          >
-            <img src={img.src} className="w-full h-full object-contain pointer-events-none drop-shadow-xl" alt="Decorative Sticker" />
-          </motion.div>
-        ))}
-
         {/* Huge Serif Typography */}
         <div className="relative z-10 mb-24 mt-16 flex flex-col items-center">
           <div className="flex flex-col text-center text-[16vw] md:text-[9rem] lg:text-[11.5rem] leading-[0.8] tracking-tight font-serif text-[#111] relative pointer-events-none selection:bg-[#FF8CD1] selection:text-white z-10">
@@ -226,7 +111,6 @@ export default function HeroSection() {
             ))}
           </motion.div>
         </div>
-
       </div>
     </section>
   );
