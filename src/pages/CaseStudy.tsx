@@ -520,6 +520,7 @@ export default function CaseStudy() {
       figmaLink: 'https://www.figma.com/proto/FdOTACSQ64baOtSdZ56Pfv/Indigo-Book-Club-UI-Prototype?node-id=1-4&p=f&t=RBDFBbfwdv5TGI0G-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4',
       images: [
         '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/indigo cover.png',
+        '/case-studies/indigo-flow.png',
         '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/Indigo Bookstore App \u2013 UI & Marketing Case Study.png',
         '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/iPhone 14 & 15 Pro - 2.png',
         '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/iPhone 14 & 15 Pro - 3.png',
@@ -545,7 +546,8 @@ export default function CaseStudy() {
             "Customize name, vibe, genre, and invite friends",
             "Discuss, share reactions, and set reading timelines",
             "Earn rewards by finishing books as a group"
-          ]
+          ],
+          image: '/case-studies/indigo-flow.png'
         },
         {
           heading: "Product & Marketing Goals",
