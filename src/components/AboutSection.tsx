@@ -57,7 +57,7 @@ export default function AboutSection() {
             className="space-y-6 text-lg text-gray-600 leading-relaxed font-sans font-light pointer-events-auto"
           >
             <p className="text-xl md:text-2xl text-black font-serif mb-8">
-              I’m a Product Designer who loves digging into complex challenges. For me, design isn't just about making things look good. It's about understanding how people actually navigate their world, and figuring out how to build digital spaces that feel intuitive, inclusive, and trustworthy.
+              Working with clients throughout the GTA and New York, I’ve developed a practice centred on how people navigate and interact with complex digital systems. For me, design isn't just about making things look good. It's about figuring out how to build digital spaces that feel intuitive, inclusive, and trustworthy.
             </p>
             
             <div className="mb-8">
