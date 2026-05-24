@@ -16,7 +16,12 @@ export default function GraphicDesignSection() {
     { src: '/graphic-designs/Screenshot 2025-07-12 at 4.28.50 PM.png', className: 'w-36 md:w-48 bottom-1/4 left-[5%]' },
     { src: '/graphic-designs/Screenshot 2025-07-12 at 4.29.05 PM.png', className: 'w-56 md:w-80 -bottom-16 right-[20%]' },
     { src: '/graphic-designs/rose bday poster one.png', className: 'w-32 md:w-48 top-[10%] right-[30%]' },
-    { src: '/graphic-designs/rose bday poster 2.png', className: 'w-40 md:w-52 bottom-[5%] left-[40%]' }
+    { src: '/graphic-designs/rose bday poster 2.png', className: 'w-40 md:w-52 bottom-[5%] left-[40%]' },
+    { src: '/graphic-designs/IMG_8730.jpg', className: 'w-32 md:w-44 top-[15%] left-[30%] rotate-[4deg]' },
+    { src: '/graphic-designs/IMG_8735.jpg', className: 'w-36 md:w-48 bottom-[15%] right-[10%] -rotate-[3deg]' },
+    { src: '/graphic-designs/IMG_8736.jpg', className: 'w-40 md:w-56 top-[40%] left-[2%] rotate-[6deg]' },
+    { src: '/graphic-designs/IMG_8871.jpg', className: 'w-32 md:w-40 -top-8 right-[45%] -rotate-[5deg]' },
+    { src: '/graphic-designs/IMG_8872.jpg', className: 'w-44 md:w-60 bottom-[10%] right-[40%] rotate-[2deg]' }
   ];
 
   // Extract just the src urls for the lightbox
