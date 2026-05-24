@@ -11,7 +11,7 @@ const caseStudies = [
     color: 'bg-yellow-100',
     coverImg: '/case-studies/mozilla/Meet Workspace Mode Cover photo.png',
     figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
-    tags: ['UX Design', 'Graduate Capstone', 'Prototyping', 'AI Integration'],
+    tags: ['UX Design', 'Graduate Capstone', 'Prototyping', 'AI Integration', 'Figma Make', 'Opencode'],
     description: 'A 2-week intensive design sprint proposing a context-aware, proactive AI browsing experience centered on transparency and privacy for Mozilla.',
   },
   {
@@ -160,17 +160,12 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 justify-start md:justify-end max-w-[250px]">
-            {study.tags.slice(0, 2).map((tag, idx) => (
+          <div className="flex flex-wrap gap-2 justify-start md:justify-end md:max-w-[60%] lg:max-w-[70%]">
+            {study.tags.map((tag, idx) => (
               <span key={idx} className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
                 {tag}
               </span>
             ))}
-            {study.tags.length > 2 && (
-              <span className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
-                +{study.tags.length - 2}
-              </span>
-            )}
           </div>
         </div>
       </div>
