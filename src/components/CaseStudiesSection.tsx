@@ -6,12 +6,12 @@ const caseStudies = [
   {
     id: 'mozilla',
     title: 'Mozilla Workspace Mode',
-    type: 'Design Sprint',
+    type: 'Graduate Capstone',
     format: 'presentation',
     color: 'bg-yellow-100',
     coverImg: '/case-studies/mozilla/Meet Workspace Mode Cover photo.png',
     figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
-    tags: ['UX Design', 'Design Sprint', 'Prototyping', 'AI Integration'],
+    tags: ['UX Design', 'Graduate Capstone', 'Prototyping', 'AI Integration'],
     description: 'A 2-week intensive design sprint proposing a context-aware, proactive AI browsing experience centered on transparency and privacy for Mozilla.',
   },
   {
