@@ -119,6 +119,30 @@ export default function CaseStudy() {
           image: "/case-studies/mozilla/Early prototyping.png"
         },
         {
+          heading: "Key Decisions & Navigating Ambiguity",
+          subheading: "From Vague Feedback to a Focused Solution",
+          body: [
+            "The initial feedback from our mentors was intentionally broad, encouraging us to define the problem space ourselves. Our team identified a core tension: users want proactive AI assistance but deeply fear losing control. This became our guiding principle.",
+            "A key trade-off we debated was the visibility of the AI. An always-on sidebar was dismissed early as user testing feedback indicated it felt like 'surveillance'. We opted for contextual, on-demand overlays. This choice prioritized user autonomy over persistent visibility, a crucial decision for building trust.",
+            "We also made a critical pivot from designing a 'smarter history' to a 'proactive workspace.' This was a strategic shift our team made after realizing Mozilla's true goal wasn't just to remember information, but to synthesize it into actionable insights for the user."
+          ]
+        },
+        {
+          heading: "What I Learned: A Lesson in Trust",
+          body: [
+            "My biggest lesson was that with AI, the user experience is the trust experience. My initial wireframes for the 'Memory Dashboard' were functional but data-dense. They failed to provide the immediate sense of safety our user personas needed. I learned that you must design for the core emotional need first—a feeling of control and clarity—before layering in more complex features. This project solidified my belief that the more powerful the technology, the more simple and transparent its interface must be."
+          ]
+        },
+        {
+          heading: "My AI-Assisted Workflow",
+          subheading: "Using AI as a Lever for Speed and Insight",
+          list: [
+            "Utilized Google Gemini to rapidly synthesize user interview transcripts, identifying thematic patterns for our personas 70% faster than traditional manual affinity mapping.",
+            "Leveraged Figma Make to generate a diverse range of visual concepts for the UI, which allowed our team to align on a visual direction in hours, not days.",
+            "Employed Opencode's code generation capabilities to create a structural prototype of the contextual overlay animations, enabling us to test and validate the interaction logic with users much earlier in the sprint."
+          ]
+        },
+        {
           heading: "User Testing & Next Steps",
           body: [
             "Through rigorous user testing, we identified key areas where trust and transparency could be further solidified. Moving forward, the focus will be on refining the Memory Dashboard’s granularity and pushing our high-fidelity prototypes into code to validate the contextual overlay interactions within a live browser environment."
