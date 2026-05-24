@@ -25,16 +25,6 @@ const caseStudies = [
     description: 'A comprehensive project detailing design systems thinking and cross functional agile strategy, utilizing Google Gemini for deep strategic thinking.',
   },
   {
-    id: 'airbnb',
-    title: 'Airbnb',
-    type: 'Feasibility Analysis',
-    format: 'presentation',
-    color: 'bg-gray-100',
-    coverImg: '/case-studies/airbnb case study cover.png',
-    tags: ['UX Research', 'Feasibility Analysis', 'Business Strategy'],
-    description: 'A thorough feasibility analysis evaluating the viability and strategic implementation of new Airbnb features.',
-  },
-  {
     id: 'indigo',
     title: 'Indigo: New Book Club Community Feature',
     type: 'UI & Marketing',
@@ -44,6 +34,16 @@ const caseStudies = [
     figmaLink: 'https://www.figma.com/proto/FdOTACSQ64baOtSdZ56Pfv/Indigo-Book-Club-UI-Prototype?node-id=1-4&p=f&t=RBDFBbfwdv5TGI0G-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4',
     tags: ['UI Design', 'Interaction Design', 'Manual Ideation'],
     description: 'A comprehensive visual redesign leveraging original ideation and Design Systems Thinking for the Indigo Bookstore app experience.',
+  },
+  {
+    id: 'airbnb',
+    title: 'Airbnb',
+    type: 'Feasibility Analysis',
+    format: 'presentation',
+    color: 'bg-gray-100',
+    coverImg: '/case-studies/airbnb case study cover.png',
+    tags: ['UX Research', 'Feasibility Analysis', 'Business Strategy'],
+    description: 'A thorough feasibility analysis evaluating the viability and strategic implementation of new Airbnb features.',
   }
 ];
 
@@ -189,7 +189,7 @@ export default function CaseStudiesSection() {
           {caseStudies.map((study, index) => {
             // Asymmetrical span logic:
             // Index 0 (Mozilla) spans 2, Index 1 (Loblaws) spans 1
-            // Index 2 (Airbnb) spans 1, Index 3 (Indigo) spans 2
+            // Index 2 (Indigo) spans 1, Index 3 (Airbnb) spans 2
             const isSpan2 = index === 0 || index === 3;
             
             return (

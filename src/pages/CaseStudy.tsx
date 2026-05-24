@@ -755,8 +755,11 @@ export default function CaseStudy() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start relative">
             
             {/* Left side: Sticky Visual Assets (approx 55vw) */}
-            <div className="w-full lg:w-[55%] sticky top-8 z-10 flex flex-col">
-               <div className="w-full h-[60vh] lg:h-[75vh] max-h-[800px] bg-white rounded-[32px] border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] overflow-hidden flex items-center justify-center relative p-2 md:p-6">
+            <div className="w-full lg:w-[55%] sticky top-8 z-10 flex flex-col justify-start items-center lg:items-start pt-4">
+               <div className={id === 'indigo' 
+                  ? "w-full max-w-[375px] h-[80vh] min-h-[600px] max-h-[812px] mx-auto lg:mx-0 bg-white rounded-[45px] md:rounded-[55px] border-[12px] md:border-[16px] border-black shadow-[0_24px_60px_rgba(0,0,0,0.2)] overflow-hidden flex items-center justify-center relative p-0"
+                  : "w-full h-[60vh] lg:h-[75vh] max-h-[800px] bg-white rounded-[32px] border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] overflow-hidden flex items-center justify-center relative p-2 md:p-6"
+               }>
                   <AnimatePresence mode="wait">
                      {activeMedia?.type === 'figma' && (
                         <motion.iframe
