@@ -306,7 +306,19 @@ export default function CaseStudy() {
     },
     'loblaws': {
       title: 'Loblaws Project Management & Design Strategy',
-      pdf: '/case-studies/Final Loblaws Slides.pdf',
+      pdf: '/case-studies/updated loblaws slides.pdf',
+      images: [
+        '/case-studies/loblaws/2.png',
+        '/case-studies/loblaws/4.png',
+        '/case-studies/loblaws/5.png',
+        '/case-studies/loblaws/7.png',
+        '/case-studies/loblaws/9.png',
+        '/case-studies/loblaws/11.png',
+        '/case-studies/loblaws/12.png',
+        '/case-studies/loblaws/24.png',
+        '/case-studies/loblaws/25.png',
+        '/case-studies/loblaws/26.png',
+      ],
       description: 'A comprehensive project detailing design systems thinking interaction design and cross functional agile strategy for a physical to digital Loblaws initiative.',
       contentSections: [
         {
