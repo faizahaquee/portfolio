@@ -306,7 +306,7 @@ export default function CaseStudy() {
     },
     'loblaws': {
       title: 'Loblaws Project Management & Design Strategy',
-      pdf: '/case-studies/updated loblaws slides.pdf',
+      pdf: '/case-studies/updated loblaws slide.pdf',
       images: [
         '/case-studies/loblaws/2.png',
         '/case-studies/loblaws/4.png',
@@ -325,31 +325,36 @@ export default function CaseStudy() {
           heading: "Problem Discovery Definition & Goal Setting",
           body: [
             "We collaborated as a cross functional team to ensure that the core problem declining consumer trust due to ambiguous product origin labeling was well defined and rooted in objective user needs. We facilitated discovery sessions to align our team around clearly defined problem statements ultimately establishing the goal of building transparent trustworthy in store communication."
-          ]
+          ],
+          image: '/case-studies/loblaws/2.png'
         },
         {
           heading: "Interaction Design & User Flows",
           body: [
             "Applying interaction design processes we focused on the interplay between words visuals space and behavior. We mapped out the shoppers journey creating user stories and service blueprints for distinct personas. This helped us pinpoint exactly where and how a physical shelf level display could intervene to build trust and recognize Canadian made products effortlessly."
-          ]
+          ],
+          image: '/case-studies/loblaws/5.png'
         },
         {
           heading: "Design Systems Thinking & Prototyping",
           body: [
             "Our solution heavily relied on Design Systems Thinking. We ensured that our design solutions utilized a consistent visual system leveraging recognizable patterns while proposing scalable bilingual solutions. We used prototyping tools utilizing components and auto layout to quickly iterate on high fidelity visual designs that matched Loblaws established brand tone and personality."
-          ]
+          ],
+          image: '/case-studies/loblaws/9.png'
         },
         {
           heading: "Inclusive Design & Accessibility",
           body: [
             "We prioritized Inclusive Design to ensure that our solutions could be experienced by everyone. We applied a deep understanding of accessibility requirements intentionally designing tactile cues high contrast colors and Braille integration to support shoppers with low vision proving that accessibility goes beyond legal requirements to fundamentally improve the product for everyone."
-          ]
+          ],
+          image: '/case-studies/loblaws/12.png'
         },
         {
           heading: "Cross Functional Collaboration & Agile Sprints",
           body: [
             "Throughout the project we maintained strong cross functional collaboration. Operating in one week Agile Sprints the Product Management and Design teams maintained tight feedback loops. We acted as Candid Collaborators providing clear and direct feedback challenging norms and testing assumptions through early user research to validate our concepts before finalizing the low fidelity and high fidelity prototypes."
-          ]
+          ],
+          image: '/case-studies/loblaws/24.png'
         }
       ]
     },
@@ -648,6 +653,12 @@ export default function CaseStudy() {
         }
       }
       
+      // Prioritize PDF if it's the loblaws case study
+      if (id === 'loblaws' && caseStudy.pdf) {
+        setActiveMedia({ type: 'pdf', src: caseStudy.pdf });
+        return;
+      }
+      
       if (caseStudy.figmaLink) {
         setActiveMedia({ type: 'figma', src: caseStudy.figmaLink });
       } else if (caseStudy.images && caseStudy.images.length > 0) {
@@ -731,7 +742,7 @@ export default function CaseStudy() {
                   onClick={() => setActiveMedia({ type: 'pdf', src: caseStudy.pdf! })}
                   className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'pdf' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
                 >
-                  View PDF Doc
+                  {id === 'loblaws' ? 'View PDF Slideshow' : 'View PDF Doc'}
                 </button>
               )}
             </div>
