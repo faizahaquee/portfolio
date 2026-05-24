@@ -355,6 +355,9 @@ export default function CaseStudy() {
             "Throughout the project we maintained strong cross functional collaboration. Operating in one week Agile Sprints the Product Management and Design teams maintained tight feedback loops. We acted as Candid Collaborators providing clear and direct feedback challenging norms and testing assumptions through early user research to validate our concepts before finalizing the low fidelity and high fidelity prototypes."
           ],
           image: '/case-studies/loblaws/24.png'
+        },
+        {
+          image: '/case-studies/loblaws/26.png'
         }
       ]
     },
@@ -810,9 +813,11 @@ export default function CaseStudy() {
                       }}
                       viewport={{ margin: "-40% 0px -40% 0px" }}
                     >
-                      <h2 className="text-2xl md:text-3xl font-serif text-black leading-tight border-b border-gray-200 pb-3 mb-2">
-                        {section.heading}
-                      </h2>
+                      {section.heading && (
+                        <h2 className="text-2xl md:text-3xl font-serif text-black leading-tight border-b border-gray-200 pb-3 mb-2">
+                          {section.heading}
+                        </h2>
+                      )}
                       
                       {section.subheading && (
                         <h3 className="text-lg md:text-xl font-serif italic text-[#FF8CD1]">
