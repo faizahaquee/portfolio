@@ -187,22 +187,14 @@ export default function HeroSection() {
           </div>
           
           {/* Value Prop (Moved under title) */}
-          <div className="max-w-2xl font-serif text-2xl md:text-3xl leading-[1.3] relative z-20 p-6 md:p-8 rounded-3xl bg-white/40 backdrop-blur-md shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] pointer-events-auto mt-12 text-center md:text-left">
+            <div className="max-w-2xl font-serif text-2xl md:text-3xl leading-[1.3] relative z-20 p-6 md:p-8 rounded-3xl bg-white/40 backdrop-blur-md shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] pointer-events-auto mt-12 text-center">
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-black mb-6"
+              className="text-black"
             >
-              I help product teams solve complex user challenges by creating scalable design systems and intuitive interfaces.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="text-gray-600 text-xl"
-            >
-              Balancing functional needs with beautiful, crafted aesthetics to build inclusive, end-to-end digital experiences.
+              "For me, design isn't just about making things look good. It's about figuring out how to build digital spaces that feel intuitive, inclusive, and trustworthy."
             </motion.p>
           </div>
 
