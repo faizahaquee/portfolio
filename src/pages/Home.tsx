@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen bg-[var(--color-bg-base)]">
       <HeroSection />
-      <AboutSection />
       <CaseStudiesSection />
       <GraphicDesignSection />
       <PhotographyCarouselSection />
+      <AboutSection />
       <ResumeSection />
     </div>
   );

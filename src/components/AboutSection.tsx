@@ -57,20 +57,20 @@ export default function AboutSection() {
             className="space-y-6 text-lg text-gray-600 leading-relaxed font-sans font-light pointer-events-auto"
           >
             <p className="text-xl md:text-2xl text-black font-serif mb-8">
-              Working with clients throughout the GTA and New York, I’ve developed a practice centred on how people navigate and interact with complex digital systems.
+              I’m a Product Designer who loves digging into complex challenges. For me, design isn't just about making things look good. It's about understanding how people actually navigate their world, and figuring out how to build digital spaces that feel intuitive, inclusive, and trustworthy.
             </p>
             
             <div className="mb-8">
-              <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-3">A Curated Perspective</h3>
+              <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-3">The Bigger Picture</h3>
               <p>
-                What sets my work apart is a visual vocabulary that extends beyond standard technical logic. I view projects as a form of worldbuilding, where my goal is to make digital tools more inclusive and easier to navigate. This allows me to create cohesive, functional environments where every design decision is backed by intentional research and cross-industry inspiration.
+                When I take on a project, I always try to look at the bigger picture. I want to know why a feature matters to the business, and more importantly, how it impacts the real people using it. Whether I am testing the viability of a new idea or working closely with product and engineering teams in tight sprints, my goal is always to create systems that are scalable and actually make sense for the user.
               </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-3">Workflow & Efficiency</h3>
+              <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-3">How I Work</h3>
               <p>
-                I’ve refined a high-level workflow that integrates AI tools for rapid UI ideation and technical prototyping. By using tools like Gemini, Figma Make, Opencode, and Nanobanana, I can focus more on critical problem-solving and less on manual execution. I’m always looking to learn and optimize my workflow, while staying focused on the entire end-to-end process and the research that informs my design choices.
+                To keep my focus on the human side of design, I’ve built a workflow that handles the heavy lifting. I use tools like Google Gemini, Figma Make, and Opencode to speed up research synthesis, early visual ideas, and rapid prototyping. By letting these tools handle the repetitive tasks, I can spend my time where it really matters: asking the right questions, refining the details, and testing my designs with real users to ensure I'm building the right thing.
               </p>
             </div>
             
