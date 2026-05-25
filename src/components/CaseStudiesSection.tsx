@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
 
 const caseStudies = [
   {
@@ -91,8 +90,6 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
 }
 
 export default function CaseStudiesSection() {
-  const scrollRef = useRef(null);
-
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
@@ -107,7 +104,7 @@ export default function CaseStudiesSection() {
         </motion.h2>
       </div>
       
-      <div className="w-full overflow-x-auto cursor-grab active:cursor-grabbing group" ref={scrollRef}>
+      <div className="w-full flex overflow-x-auto group cursor-grab active:cursor-grabbing">
         <div className="flex w-max gap-12 px-8 animate-carousel group-hover:[animation-play-state:paused]">
           {duplicatedCaseStudies.map((study, index) => (
             <StickerCard key={`${study.id}-${index}`} study={study} />
