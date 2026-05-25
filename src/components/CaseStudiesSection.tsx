@@ -83,28 +83,32 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className="group sticker-card relative cursor-pointer"
     >
-      <Link to={`/case-study/${study.id}`} className="block">
+      <Link to={`/case-study/${study.id}`} className="block group">
         {/* Hardware Frame */}
         <div className={`relative bg-white shadow-lg transition-shadow duration-300 group-hover:shadow-2xl ${deviceFrameClass}`}>
           {/* Screenshot */}
           <div className="w-full h-full bg-gray-900 overflow-hidden rounded-b-[18px]">
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
-        </div>
-        
-        {/* Glassmorphism Text Overlay */}
-        <div className="sticker-text-overlay absolute inset-0 glass-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[18px] flex flex-col items-center justify-center text-center p-4">
-          <h3 className="text-xl lg:text-2xl font-serif text-white leading-tight tracking-wide">{study.title}</h3>
-          <p className="font-sans text-sm text-gray-300 mt-1 mb-3">{study.type}</p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {study.tags.map((tag, idx) => (
-              <span key={idx} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] uppercase tracking-widest font-bold rounded-full">
-                {tag}
-              </span>
-            ))}
+          
+          {/* Glassmorphism Text Overlay - NOW ONLY FOR TAGS */}
+          <div className="sticker-text-overlay absolute inset-0 glass-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[18px] flex items-center justify-center text-center p-4">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {study.tags.map((tag, idx) => (
+                <span key={idx} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] uppercase tracking-widest font-bold rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </Link>
+      
+      {/* Always-Visible Text */}
+      <div className="text-center mt-4">
+        <h3 className="text-lg font-serif text-black leading-tight">{study.title}</h3>
+        <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
+      </div>
       
       {/* Floating Icon Sticker */}
       <div 
@@ -140,6 +144,11 @@ export default function CaseStudiesSection() {
             <StickerCard key={study.id} study={study} />
           ))}
         </div>
+      </div>
+      <div className="text-center mt-24">
+        <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="inline-flex items-center justify-center gap-3 bg-[#FF8CD1] text-black rounded-full px-10 py-5 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-lg">
+          Let's Build Something
+        </a>
       </div>
     </section>
   );
