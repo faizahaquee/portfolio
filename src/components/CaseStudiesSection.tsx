@@ -4,119 +4,126 @@ import { Link } from 'react-router-dom';
 const caseStudies = [
   {
     id: 'mozilla',
-    title: 'Mozilla Workspace Mode',
+    title: 'Mozilla Workspace',
     type: 'Graduate Capstone',
     coverImg: '/case-studies/mozilla/Meet Workspace Mode Cover photo.png',
-    tags: ['UX Design', 'Graduate Capstone', 'Prototyping', 'AI Integration'],
+    tags: ['UX Design', 'Prototyping', 'AI Integration'],
     rotation: -1.5,
-    device: 'desktop',
-    logo: {
-      src: '/logos/mozilla_raw.png',
-      className: 'w-[120px] h-[100px] -top-8 -right-8',
-      crop: true,
-    },
-    glowColor: 'rgba(255, 195, 0, 0.3)'
+    device: 'macbook',
+    flexBasis: '38%',
+    icon: {
+      src: '/stickers/selected_works_icons.png',
+      position: { top: '-40px', right: '-40px' },
+      size: '120px',
+      bgPos: '0% 0%' // Top-left corner for Mozilla
+    }
   },
   {
     id: 'loblaws',
     title: 'Loblaws',
     type: 'Design Strategy',
     coverImg: '/case-studies/loblaws/7.png',
-    tags: ['Design Systems', 'Interaction Design', 'Agile Strategy'],
+    tags: ['Design Systems', 'Agile Strategy'],
     rotation: 2,
     device: 'tablet',
-    logo: {
-      src: '/logos/loblaws_raw.png',
-      className: 'w-[150px] h-[35px] -bottom-5 -right-10',
-      crop: true,
-    },
-    glowColor: 'rgba(228, 0, 43, 0.25)'
-  },
-  {
-    id: 'indigo',
-    title: 'Indigo Book Club',
-    type: 'UI & Marketing',
-    coverImg: '/case-studies/Indigo Bookstore App – UI & Marketing Case Study (1)/indigo cover.png',
-    tags: ['UI Design', 'Interaction Design', 'Manual Ideation'],
-    rotation: 1.5,
-    device: 'mobile',
-    logo: {
-      src: '/logos/indigo_logo.png',
-      className: 'w-[140px] h-[110px] -bottom-10 -left-8',
-      crop: false,
-    },
-    glowColor: 'rgba(0, 70, 128, 0.25)'
+    flexBasis: '24%',
+    icon: {
+      src: '/stickers/selected_works_icons.png',
+      position: { top: '-30px', left: '-30px' },
+      size: '120px',
+      bgPos: '100% 0%' // Top-right corner for Loblaws
+    }
   },
   {
     id: 'airbnb',
     title: 'Airbnb',
     type: 'Feasibility Analysis',
     coverImg: '/case-studies/airbnb case study cover.png',
-    tags: ['UX Research', 'Feasibility Analysis', 'Business Strategy'],
+    tags: ['UX Research', 'Business Strategy'],
     rotation: -2,
     device: 'tablet',
-    logo: {
-      src: '/logos/airbnb_logo.png',
-      className: 'w-[90px] h-[90px] -top-10 -left-10',
-      crop: false,
-    },
-    glowColor: 'rgba(255, 90, 95, 0.25)'
+    flexBasis: '24%',
+    icon: {
+      src: '/stickers/selected_works_icons.png',
+      position: { bottom: '-40px', right: '-35px' },
+      size: '120px',
+      bgPos: '100% 100%' // Bottom-right for Airbnb
+    }
+  },
+  {
+    id: 'indigo',
+    title: 'Indigo Book Club',
+    type: 'UI & Marketing',
+    coverImg: '/case-studies/Indigo Bookstore App – UI & Marketing Case Study (1)/indigo cover.png',
+    tags: ['UI Design', 'Interaction Design'],
+    rotation: 1.5,
+    device: 'mobile',
+    flexBasis: '14%',
+    icon: {
+      src: '/stickers/selected_works_icons.png',
+      position: { bottom: '-35px', left: '-30px' },
+      size: '120px',
+      bgPos: '0% 100%' // Bottom-left for Indigo
+    }
   }
 ];
 
 function StickerCard({ study }: { study: typeof caseStudies[0] }) {
   const deviceFrameClass = {
-    desktop: 'desktop-browser-frame',
-    tablet: 'tablet-frame',
-    mobile: 'mobile-frame'
+    macbook: 'macbook-frame desktop-browser-frame rounded-[18px]',
+    tablet: 'tablet-frame rounded-[18px]',
+    mobile: 'mobile-frame rounded-[28px]'
   }[study.device];
 
   return (
-    <Link 
-      to={`/case-study/${study.id}`}
-      className="group sticker-card relative w-[400px] max-w-[90vw] bg-white rounded-[20px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] p-6"
-      style={{ transform: `rotate(${study.rotation}deg)` }}
+    <motion.div
+      style={{ flex: `0 0 ${study.flexBasis}` }}
+      initial={{ transform: `rotate(${study.rotation}deg)` }}
+      whileHover={{ transform: 'rotate(0deg) scale(1.02)', zIndex: 20 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className="group sticker-card relative cursor-pointer"
     >
-      <div 
-        className="absolute -inset-16 blur-3xl -z-10 rounded-full"
-        style={{ background: study.glowColor }}
-      ></div>
-
-      <div className={`relative ${deviceFrameClass} w-full bg-gray-100 rounded-lg overflow-hidden shadow-inner`}>
-        <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover" />
-      </div>
-
-      <div className={`absolute ${study.logo.className} z-20`}>
-        {study.logo.crop ? (
-          <div className="w-full h-full overflow-hidden">
-            <img src={study.logo.src} alt={`${study.title} logo`} className="w-auto h-auto max-w-none" />
+      <Link to={`/case-study/${study.id}`} className="block">
+        {/* Hardware Frame */}
+        <div className={`relative bg-white shadow-lg transition-shadow duration-300 group-hover:shadow-2xl ${deviceFrameClass}`}>
+          {/* Screenshot */}
+          <div className="w-full h-full bg-gray-900 overflow-hidden rounded-b-[18px]">
+            <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
-        ) : (
-          <img src={study.logo.src} alt={`${study.title} logo`} className="w-full h-full" />
-        )}
-      </div>
-
-      <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="flex flex-col items-start">
-          <h3 className="text-2xl font-serif text-black">{study.title}</h3>
-          <p className="font-sans text-sm text-gray-500">{study.type}</p>
         </div>
-        <div className="flex flex-wrap gap-2 justify-start">
-          {study.tags.map((tag, idx) => (
-            <span key={idx} className="px-3 py-1.5 bg-white/70 backdrop-blur-md border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
-              {tag}
-            </span>
-          ))}
+        
+        {/* Glassmorphism Text Overlay */}
+        <div className="sticker-text-overlay absolute inset-0 glass-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[18px] flex flex-col items-center justify-center text-center p-4">
+          <h3 className="text-xl lg:text-2xl font-serif text-white leading-tight tracking-wide">{study.title}</h3>
+          <p className="font-sans text-sm text-gray-300 mt-1 mb-3">{study.type}</p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {study.tags.map((tag, idx) => (
+              <span key={idx} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] uppercase tracking-widest font-bold rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+      
+      {/* Floating Icon Sticker */}
+      <div 
+        className="absolute w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] -z-10"
+        style={{ 
+          ...study.icon.position,
+          backgroundImage: `url(${study.icon.src})`,
+          backgroundSize: '200% 200%', // Since image is a 2x2 grid
+          backgroundPosition: study.icon.bgPos,
+        }}
+      />
+    </motion.div>
   );
 }
 
 export default function CaseStudiesSection() {
   return (
-    <section id="projects" className="relative py-24 overflow-visible">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
+    <section id="projects" className="relative py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -127,10 +134,12 @@ export default function CaseStudiesSection() {
           Selected Works
         </motion.h2>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-8 px-4">
-        {caseStudies.map((study) => (
-          <StickerCard key={study.id} study={study} />
-        ))}
+      <div className="max-w-screen-2xl mx-auto px-4 md:px-8">
+        <div className="flex flex-row justify-center items-stretch gap-6 w-full overflow-visible">
+          {caseStudies.map((study) => (
+            <StickerCard key={study.id} study={study} />
+          ))}
+        </div>
       </div>
     </section>
   );

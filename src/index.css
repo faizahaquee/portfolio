@@ -47,3 +47,36 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-frame {
   aspect-ratio: 9 / 16;
 }
+
+.macbook-frame {
+  position: relative;
+  padding-top: 28px; /* Space for the top bar */
+}
+.macbook-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: #e5e7eb; /* slate gray */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-bottom: 1px solid #d1d5db;
+}
+.macbook-frame::after {
+  content: ' ';
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444; /* red */
+  box-shadow: 18px 0 0 #f59e0b, 36px 0 0 #22c55e; /* yellow, green */
+}
+
+.glass-overlay {
+  backdrop-filter: blur(8px);
+  background: rgba(15, 15, 15, 0.7);
+}
