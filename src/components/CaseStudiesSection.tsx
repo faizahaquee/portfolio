@@ -21,8 +21,8 @@ const caseStudies = [
   },
   {
     id: 'loblaws',
-    title: 'Loblaws Digital and Physical shelving experience',
-    type: 'Design Strategy',
+    title: 'Loblaws',
+    type: 'Transformative Digital and Physical Shelving Experience',
     coverImg: '/case-studies/loblaws/7.png',
     tags: ['Design Systems', 'Agile Strategy'],
     rotation: 2,
@@ -53,8 +53,8 @@ const caseStudies = [
   },
   {
     id: 'indigo',
-    title: 'Indigo Book Club',
-    type: 'UI & Marketing',
+    title: 'Indigo',
+    type: 'Conceptual Community Book Club Feature',
     coverImg: '/case-studies/Indigo Bookstore App – UI & Marketing Case Study (1)/indigo cover.png',
     tags: ['UI Design', 'Interaction Design'],
     rotation: 1.5,
