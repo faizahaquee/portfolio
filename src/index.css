@@ -106,13 +106,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .iphone-16-frame {
   aspect-ratio: 9 / 19.5;
-  padding: 10px;
+  padding: 8px; /* Reduced padding for a thinner border */
   background: #111;
   border-radius: 40px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 .iphone-16-frame > div {
-  border-radius: 30px;
+  border-radius: 32px; /* Adjusted inner radius */
   overflow: hidden;
 }
 

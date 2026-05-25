@@ -10,19 +10,19 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Mozilla logo.png',
-      position: { top: '40px', right: '20px' },
-      size: '70px',
+      position: { top: '-25px', right: '-25px' },
+      size: '80px',
     }
   },
   {
     id: 'loblaws',
     title: 'Digital and Physical Shelf-Tagging Guide',
     type: 'Design Strategy',
-    coverImg: '/case-studies/loblaws_cover.png',
-    device: 'macbook', // Changed to macbook
+    coverImg: '/case-studies/Loblaws cover.png',
+    device: 'macbook',
     logo: {
       src: '/logos/Loblaws logo.png',
-      position: { top: '30px', left: '30px' },
+      position: { top: '-20px', right: '-40px' },
       size: '120px',
     }
   },
@@ -30,12 +30,12 @@ const caseStudies = [
     id: 'airbnb',
     title: 'Airbnb',
     type: 'Proposed Video Walkthrough Feature',
-    coverImg: '/case-studies/airbnb_cover.png',
-    device: 'macbook', // Changed to macbook
+    coverImg: '/case-studies/airbnb cover.png',
+    device: 'macbook',
     logo: {
       src: '/logos/Airbnb logo.png',
-      position: { top: '30px', left: '30px' },
-      size: '50px',
+      position: { top: '-25px', right: '-25px' },
+      size: '70px',
     }
   },
   {
@@ -46,8 +46,8 @@ const caseStudies = [
     device: 'mobile-new',
     logo: {
       src: '/logos/Vector.png',
-      position: { bottom: '40px', right: '-60px' },
-      size: '160px',
+      position: { top: '-20px', right: '-30px' },
+      size: '100px',
     }
   }
 ];
@@ -59,12 +59,12 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
   const deviceFrameClass = {
     macbook: 'macbook-frame desktop-browser-frame',
     'mobile-new': 'iphone-16-frame'
-  }[study.device] || 'tablet-skeu-frame tablet-frame'; // Fallback
+  }[study.device];
 
   const cardWidth = {
-    macbook: '480px', // Increased width for desktop mockups
+    macbook: '480px',
     'mobile-new': '220px'
-  }[study.device] || '380px'; // Fallback
+  }[study.device];
 
   return (
     <div
@@ -77,24 +77,32 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           whileHover={{ scale: 1.03, zIndex: 10 }}
           transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         >
-          <div className="w-full h-full bg-gray-900">
+          <div className="w-full h-full bg-gray-900 rounded-b-[18px]">
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
-           <motion.img 
-            src={study.logo.src}
-            className="absolute z-[5] drop-shadow-md pointer-events-none"
-            style={{ 
-              ...study.logo.position,
-              width: study.logo.size,
-              height: 'auto'
-            }}
-          />
         </motion.div>
         <div className="text-center mt-4">
           <h3 className="text-lg font-serif text-black leading-tight">{study.title}</h3>
           <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
         </div>
       </Link>
+      
+      <motion.img 
+        src={study.logo.src}
+        className="absolute z-[-1] drop-shadow-md pointer-events-none"
+        style={{ 
+          ...study.logo.position,
+          width: study.logo.size,
+          height: 'auto'
+        }}
+        variants={{
+          initial: { y: 0 },
+          hover: { y: -25, scale: 1.05 }
+        }}
+        initial="initial"
+        whileHover="hover"
+        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+      />
     </div>
   );
 }
