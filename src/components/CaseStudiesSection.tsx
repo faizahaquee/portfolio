@@ -13,7 +13,7 @@ const caseStudies = [
     device: 'macbook',
     flexBasis: '38%',
     logo: {
-      src: '/logos/mozilla_logo.png',
+      src: '/logos/Mozilla logo.png',
       position: { top: '-40px', right: '-40px' },
       size: '120px'
     },
@@ -29,7 +29,7 @@ const caseStudies = [
     device: 'tablet',
     flexBasis: '24%',
     logo: {
-      src: '/logos/loblaws_logo.png',
+      src: '/logos/Loblaws logo.png',
       position: { top: '-30px', left: '-30px' },
       size: '120px'
     },
@@ -45,7 +45,7 @@ const caseStudies = [
     device: 'tablet',
     flexBasis: '24%',
     logo: {
-      src: '/logos/airbnb_logo.png',
+      src: '/logos/Airbnb logo.png',
       position: { bottom: '-40px', right: '-35px' },
       size: '110px'
     },
@@ -61,7 +61,7 @@ const caseStudies = [
     device: 'mobile',
     flexBasis: '14%',
     logo: {
-      src: '/logos/indigo_logo.png',
+      src: '/logos/Vector.png',
       position: { bottom: '-35px', left: '-30px' },
       size: '120px'
     },
