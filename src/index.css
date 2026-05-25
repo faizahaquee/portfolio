@@ -112,8 +112,21 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 .iphone-16-frame > div {
-  border-radius: 32px; /* Adjusted inner radius */
+  border-radius: 32px;
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix for rounding corners on Safari */
+}
+
+.macbook-frame .w-full.h-full {
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.tablet-skeu-frame .w-full.h-full {
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .glass-overlay {

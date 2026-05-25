@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 
 const caseStudies = [
   {
@@ -10,8 +11,8 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Mozilla logo.png',
-      position: { top: '-25px', right: '-25px' },
-      size: '80px',
+      position: { top: '-25px', right: '10px' },
+      size: '70px',
     }
   },
   {
@@ -22,7 +23,7 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Loblaws logo.png',
-      position: { top: '-20px', right: '-40px' },
+      position: { top: '-20px', right: '5px' },
       size: '120px',
     }
   },
@@ -34,8 +35,8 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Airbnb logo.png',
-      position: { top: '-25px', right: '-25px' },
-      size: '70px',
+      position: { top: '-25px', right: '15px' },
+      size: '60px',
     }
   },
   {
@@ -46,25 +47,22 @@ const caseStudies = [
     device: 'mobile-new',
     logo: {
       src: '/logos/Vector.png',
-      position: { top: '-20px', right: '-30px' },
-      size: '100px',
+      position: { top: '-20px', right: '0px' },
+      size: '80px',
     }
   }
 ];
-
-// Duplicate for seamless scroll
-const duplicatedCaseStudies = [...caseStudies, ...caseStudies];
 
 function StickerCard({ study }: { study: typeof caseStudies[0] }) {
   const deviceFrameClass = {
     macbook: 'macbook-frame desktop-browser-frame',
     'mobile-new': 'iphone-16-frame'
-  }[study.device];
+  }[study.device] || 'tablet-skeu-frame tablet-frame';
 
   const cardWidth = {
     macbook: '480px',
     'mobile-new': '220px'
-  }[study.device];
+  }[study.device] || '380px';
 
   return (
     <div
@@ -77,7 +75,7 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           whileHover={{ scale: 1.03, zIndex: 10 }}
           transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         >
-          <div className="w-full h-full bg-gray-900 rounded-b-[18px]">
+          <div className="w-full h-full bg-gray-900">
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
         </motion.div>
@@ -95,19 +93,17 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           width: study.logo.size,
           height: 'auto'
         }}
-        variants={{
-          initial: { y: 0 },
-          hover: { y: -25, scale: 1.05 }
-        }}
-        initial="initial"
-        whileHover="hover"
-        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+        whileHover={{ scale: 1.1, y: -10 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
       />
     </div>
   );
 }
 
 export default function CaseStudiesSection() {
+  const scrollRef = useRef(null);
+  const x = useMotionValue(0);
+
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
@@ -122,12 +118,21 @@ export default function CaseStudiesSection() {
         </motion.h2>
       </div>
       
-      <div className="w-full flex overflow-hidden">
-        <div className="group flex w-max gap-16 px-8 animate-carousel hover:[animation-play-state:paused]">
-          {duplicatedCaseStudies.map((study, index) => (
-            <StickerCard key={`${study.id}-${index}`} study={study} />
+      <div className="w-full overflow-x-auto cursor-grab active:cursor-grabbing" ref={scrollRef}>
+        <motion.div
+          className="flex w-max gap-12 px-8"
+          style={{ x }}
+          drag="x"
+          dragConstraints={{
+            left: -((caseStudies.length * 520) - window.innerWidth + 200),
+            right: 0
+          }}
+          dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
+        >
+          {caseStudies.map((study) => (
+            <StickerCard key={study.id} study={study} />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="text-center mt-24">
