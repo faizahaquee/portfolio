@@ -1,172 +1,112 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
 
 const caseStudies = [
   {
     id: 'mozilla',
     title: 'Mozilla Workspace Mode',
     type: 'Graduate Capstone',
-    format: 'presentation',
-    color: 'bg-yellow-100',
     coverImg: '/case-studies/mozilla/Meet Workspace Mode Cover photo.png',
-    figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
-    tags: ['UX Design', 'Graduate Capstone', 'Prototyping', 'AI Integration', 'Figma Make', 'Opencode'],
-    description: 'A 2-week intensive design sprint proposing a context-aware, proactive AI browsing experience centered on transparency and privacy for Mozilla.',
+    tags: ['UX Design', 'Graduate Capstone', 'Prototyping', 'AI Integration'],
+    rotation: -1.5,
+    device: 'desktop',
+    logo: {
+      src: '/logos/mozilla_raw.png',
+      className: 'w-[120px] h-[100px] -top-8 -right-8',
+      crop: true,
+    },
+    glowColor: 'rgba(255, 195, 0, 0.3)'
   },
   {
     id: 'loblaws',
     title: 'Loblaws',
-    type: 'Project Management',
-    format: 'presentation',
-    color: 'bg-orange-100',
-    coverImg: '/case-studies/loblaws case study cover.png',
-    tags: ['Project Management', 'Sprint Methodologies', 'Google Gemini'],
-    description: 'A comprehensive project detailing design systems thinking and cross functional agile strategy, utilizing Google Gemini for deep strategic thinking.',
+    type: 'Design Strategy',
+    coverImg: '/case-studies/loblaws/7.png',
+    tags: ['Design Systems', 'Interaction Design', 'Agile Strategy'],
+    rotation: 2,
+    device: 'tablet',
+    logo: {
+      src: '/logos/loblaws_raw.png',
+      className: 'w-[150px] h-[35px] -bottom-5 -right-10',
+      crop: true,
+    },
+    glowColor: 'rgba(228, 0, 43, 0.25)'
   },
   {
     id: 'indigo',
-    title: 'Indigo: New Book Club Community Feature',
+    title: 'Indigo Book Club',
     type: 'UI & Marketing',
-    format: 'mobile',
-    color: 'bg-blue-600',
-    coverImg: '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/indigo cover.png',
-    figmaLink: 'https://www.figma.com/proto/FdOTACSQ64baOtSdZ56Pfv/Indigo-Book-Club-UI-Prototype?node-id=1-4&p=f&t=RBDFBbfwdv5TGI0G-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4',
+    coverImg: '/case-studies/Indigo Bookstore App – UI & Marketing Case Study (1)/indigo cover.png',
     tags: ['UI Design', 'Interaction Design', 'Manual Ideation'],
-    description: 'A comprehensive visual redesign leveraging original ideation and Design Systems Thinking for the Indigo Bookstore app experience.',
+    rotation: 1.5,
+    device: 'mobile',
+    logo: {
+      src: '/logos/indigo_logo.png',
+      className: 'w-[140px] h-[110px] -bottom-10 -left-8',
+      crop: false,
+    },
+    glowColor: 'rgba(0, 70, 128, 0.25)'
   },
   {
     id: 'airbnb',
     title: 'Airbnb',
     type: 'Feasibility Analysis',
-    format: 'presentation',
-    color: 'bg-gray-100',
     coverImg: '/case-studies/airbnb case study cover.png',
     tags: ['UX Research', 'Feasibility Analysis', 'Business Strategy'],
-    description: 'A thorough feasibility analysis evaluating the viability and strategic implementation of new Airbnb features.',
+    rotation: -2,
+    device: 'tablet',
+    logo: {
+      src: '/logos/airbnb_logo.png',
+      className: 'w-[90px] h-[90px] -top-10 -left-10',
+      crop: false,
+    },
+    glowColor: 'rgba(255, 90, 95, 0.25)'
   }
 ];
 
-function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], span2?: boolean }) {
-  const cardRef = useRef<HTMLAnchorElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isImageHovered, setIsImageHovered] = useState(false);
-  
-  // Custom cursor logic
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { stiffness: 300, damping: 25, mass: 0.5 });
-  const springY = useSpring(cursorY, { stiffness: 300, damping: 25, mass: 0.5 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (cardRef.current && isHovered) {
-        const rect = cardRef.current.getBoundingClientRect();
-        // Calculate position relative to the card container
-        cursorX.set(e.clientX - rect.left);
-        cursorY.set(e.clientY - rect.top);
-        
-        // Check if mouse is within the image container
-        if (imageRef.current) {
-          const imgRect = imageRef.current.getBoundingClientRect();
-          if (
-            e.clientX >= imgRect.left && 
-            e.clientX <= imgRect.right && 
-            e.clientY >= imgRect.top && 
-            e.clientY <= imgRect.bottom
-          ) {
-            setIsImageHovered(true);
-          } else {
-            setIsImageHovered(false);
-          }
-        }
-      }
-    };
-    
-    if (isHovered) {
-      window.addEventListener('mousemove', handleMouseMove);
-    }
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      setIsImageHovered(false);
-    };
-  }, [isHovered, cursorX, cursorY]);
-
-  // Determine frame style based on format
-  const isMobile = study.format === 'mobile';
-  
-  // Apply the browser frame to all non-mobile case studies
-  const isBrowser = !isMobile;
+function StickerCard({ study }: { study: typeof caseStudies[0] }) {
+  const deviceFrameClass = {
+    desktop: 'desktop-browser-frame',
+    tablet: 'tablet-frame',
+    mobile: 'mobile-frame'
+  }[study.device];
 
   return (
     <Link 
       to={`/case-study/${study.id}`}
-      ref={cardRef}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setIsImageHovered(false);
-      }}
-      className={`group relative block w-full bg-[#FAFAFA] border border-gray-200/60 rounded-[32px] overflow-hidden ${isImageHovered ? 'cursor-none' : 'cursor-pointer'} ${span2 ? 'lg:col-span-2' : 'lg:col-span-1'}`}
-      style={{ transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}
+      className="group sticker-card relative w-[400px] max-w-[90vw] bg-white rounded-[20px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] p-6"
+      style={{ transform: `rotate(${study.rotation}deg)` }}
     >
-      {/* Custom Hover Cursor Badge */}
-      <AnimatePresence>
-        {isHovered && isImageHovered && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.2 }}
-            className="absolute z-50 pointer-events-none flex items-center justify-center bg-[#FF8CD1] text-black font-sans uppercase font-bold tracking-widest text-[9px] w-24 h-24 rounded-full shadow-2xl text-center leading-tight"
-            style={{
-              x: springX,
-              y: springY,
-              translateX: '-50%',
-              translateY: '-50%'
-            }}
-          >
-            View<br/>Case Study
-          </motion.div>
+      <div 
+        className="absolute -inset-16 blur-3xl -z-10 rounded-full"
+        style={{ background: study.glowColor }}
+      ></div>
+
+      <div className={`relative ${deviceFrameClass} w-full bg-gray-100 rounded-lg overflow-hidden shadow-inner`}>
+        <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover" />
+      </div>
+
+      <div className={`absolute ${study.logo.className} z-20`}>
+        {study.logo.crop ? (
+          <div className="w-full h-full overflow-hidden">
+            <img src={study.logo.src} alt={`${study.title} logo`} className="w-auto h-auto max-w-none" />
+          </div>
+        ) : (
+          <img src={study.logo.src} alt={`${study.title} logo`} className="w-full h-full" />
         )}
-      </AnimatePresence>
+      </div>
 
-      <div className="flex flex-col h-full w-full">
-        {/* Media Container (Fixed Height) */}
-        <div 
-          ref={imageRef}
-          className="relative w-full h-full overflow-hidden bg-gray-50 flex items-center justify-center group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-        >
-          {isBrowser && (
-            <div className="presentation-frame w-full h-auto rounded-xl shadow-lg border border-gray-200/60 overflow-hidden">
-              <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-center" />
-            </div>
-          )}
-
-          {isMobile && (
-            <div className="phone-mockup-frame w-auto max-h-[550px] mx-auto">
-               <img src={study.coverImg} alt={study.title} className="w-full h-full object-contain" />
-            </div>
-          )}
+      <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="flex flex-col items-start">
+          <h3 className="text-2xl font-serif text-black">{study.title}</h3>
+          <p className="font-sans text-sm text-gray-500">{study.type}</p>
         </div>
-
-        {/* High-Density Metadata Row */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-6 md:p-8 bg-white/50 backdrop-blur-sm border-t border-gray-100">
-          <div className="flex flex-col gap-1">
-            <h3 className="text-xl md:text-2xl font-serif text-[#111]">{study.title}</h3>
-            <p className="text-[10px] md:text-xs font-sans uppercase tracking-[0.2em] font-bold text-gray-400">
-              {study.type}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-2 justify-start md:justify-end md:max-w-[60%] lg:max-w-[70%]">
-            {study.tags.map((tag, idx) => (
-              <span key={idx} className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
-                {tag}
-              </span>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-2 justify-start">
+          {study.tags.map((tag, idx) => (
+            <span key={idx} className="px-3 py-1.5 bg-white/70 backdrop-blur-md border border-gray-200 text-gray-600 text-[9px] uppercase tracking-widest font-bold rounded-md">
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
     </Link>
@@ -175,34 +115,22 @@ function BentoCard({ study, span2 = false }: { study: typeof caseStudies[0], spa
 
 export default function CaseStudiesSection() {
   return (
-    <section id="projects" className="py-24 bg-white relative border-t border-gray-100">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-tight text-[#111] mb-4">Selected <span className="italic text-[#FF8CD1]">Works</span></h2>
-        </div>
-        
-        {/* Bento Grid Architecture */}
-        <motion.div 
-          layout 
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto items-stretch"
+    <section id="projects" className="relative py-24 overflow-visible">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-100px' }}
+          className="text-4xl md:text-6xl font-serif tracking-tight text-[#111] text-center"
         >
-          {caseStudies.map((study, index) => {
-            // Asymmetrical span logic:
-            // Index 0 (Mozilla) spans 2, Index 1 (Loblaws) spans 1
-            // Index 2 (Indigo) spans 1, Index 3 (Airbnb) spans 2
-            const isSpan2 = index === 0 || index === 3;
-            
-            return (
-              <BentoCard key={study.id} study={study} span2={isSpan2} />
-            );
-          })}
-        </motion.div>
-        
-        <div className="pt-24 mt-16 border-t border-gray-100 flex justify-center">
-          <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="inline-flex items-center justify-center gap-3 bg-[#111] text-white rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-[#FF8CD1] transition-all shadow-lg">
-            Let's build something
-          </a>
-        </div>
+          Selected Works
+        </motion.h2>
+      </div>
+      <div className="flex flex-wrap justify-center items-center gap-8 px-4">
+        {caseStudies.map((study) => (
+          <StickerCard key={study.id} study={study} />
+        ))}
       </div>
     </section>
   );
