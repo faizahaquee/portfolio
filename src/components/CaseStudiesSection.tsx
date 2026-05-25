@@ -10,8 +10,8 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Mozilla logo.png',
-      position: { top: '-50px', right: '-60px' },
-      size: '140px',
+      position: { top: '35px', right: '15px' },
+      size: '60px',
     }
   },
   {
@@ -22,8 +22,8 @@ const caseStudies = [
     device: 'tablet',
     logo: {
       src: '/logos/Loblaws logo.png',
-      position: { top: '20px', left: '-80px' },
-      size: '200px',
+      position: { top: '25px', left: '25px' },
+      size: '100px',
     }
   },
   {
@@ -34,8 +34,8 @@ const caseStudies = [
     device: 'tablet',
     logo: {
       src: '/logos/Airbnb logo.png',
-      position: { top: '0px', right: '-50px' },
-      size: '120px',
+      position: { top: '25px', left: '25px' },
+      size: '50px',
     }
   },
   {
@@ -46,8 +46,8 @@ const caseStudies = [
     device: 'mobile',
     logo: {
       src: '/logos/Vector.png',
-      position: { bottom: '60px', right: '-120px' },
-      size: '280px',
+      position: { bottom: '25px', right: '25px' },
+      size: '100px',
     }
   }
 ];
@@ -57,9 +57,9 @@ const duplicatedCaseStudies = [...caseStudies, ...caseStudies];
 
 function StickerCard({ study }: { study: typeof caseStudies[0] }) {
   const deviceFrameClass = {
-    macbook: 'macbook-frame desktop-browser-frame rounded-[18px]',
-    tablet: 'tablet-frame rounded-[18px]',
-    mobile: 'mobile-frame rounded-[28px]'
+    macbook: 'macbook-frame desktop-browser-frame',
+    tablet: 'tablet-skeu-frame tablet-frame',
+    mobile: 'iphone-frame mobile-frame'
   }[study.device];
 
   const cardWidth = {
@@ -82,24 +82,21 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           <div className="w-full h-full bg-gray-900 overflow-hidden rounded-b-[18px]">
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
+           <motion.img 
+            src={study.logo.src}
+            className="absolute z-[10] drop-shadow-md pointer-events-none"
+            style={{ 
+              ...study.logo.position,
+              width: study.logo.size,
+              height: 'auto'
+            }}
+          />
         </motion.div>
         <div className="text-center mt-4">
           <h3 className="text-lg font-serif text-black leading-tight">{study.title}</h3>
           <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
         </div>
       </Link>
-      
-      <motion.img 
-        src={study.logo.src}
-        className="absolute z-[-1] drop-shadow-md pointer-events-none"
-        style={{ 
-          ...study.logo.position,
-          width: study.logo.size,
-          height: 'auto'
-        }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      />
     </div>
   );
 }
