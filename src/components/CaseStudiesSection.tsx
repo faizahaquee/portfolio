@@ -10,8 +10,8 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Mozilla logo.png',
-      position: { top: '-20px', right: '-25px' },
-      size: '80px',
+      position: { top: '40px', right: '20px' },
+      size: '70px',
     }
   },
   {
@@ -19,10 +19,10 @@ const caseStudies = [
     title: 'Digital and Physical Shelf-Tagging Guide',
     type: 'Design Strategy',
     coverImg: '/case-studies/loblaws_cover.png',
-    device: 'tablet',
+    device: 'macbook', // Changed to macbook
     logo: {
       src: '/logos/Loblaws logo.png',
-      position: { top: '10px', left: '-40px' },
+      position: { top: '30px', left: '30px' },
       size: '120px',
     }
   },
@@ -31,11 +31,11 @@ const caseStudies = [
     title: 'Airbnb',
     type: 'Proposed Video Walkthrough Feature',
     coverImg: '/case-studies/airbnb_cover.png',
-    device: 'tablet',
+    device: 'macbook', // Changed to macbook
     logo: {
       src: '/logos/Airbnb logo.png',
-      position: { top: '15px', right: '-25px' },
-      size: '60px',
+      position: { top: '30px', left: '30px' },
+      size: '50px',
     }
   },
   {
@@ -58,15 +58,13 @@ const duplicatedCaseStudies = [...caseStudies, ...caseStudies];
 function StickerCard({ study }: { study: typeof caseStudies[0] }) {
   const deviceFrameClass = {
     macbook: 'macbook-frame desktop-browser-frame',
-    tablet: 'tablet-skeu-frame tablet-frame',
     'mobile-new': 'iphone-16-frame'
-  }[study.device];
+  }[study.device] || 'tablet-skeu-frame tablet-frame'; // Fallback
 
   const cardWidth = {
-    macbook: '450px',
-    tablet: '380px',
-    'mobile-new': '200px'
-  }[study.device];
+    macbook: '480px', // Increased width for desktop mockups
+    'mobile-new': '220px'
+  }[study.device] || '380px'; // Fallback
 
   return (
     <div
@@ -82,24 +80,21 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           <div className="w-full h-full bg-gray-900">
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
+           <motion.img 
+            src={study.logo.src}
+            className="absolute z-[5] drop-shadow-md pointer-events-none"
+            style={{ 
+              ...study.logo.position,
+              width: study.logo.size,
+              height: 'auto'
+            }}
+          />
         </motion.div>
         <div className="text-center mt-4">
           <h3 className="text-lg font-serif text-black leading-tight">{study.title}</h3>
           <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
         </div>
       </Link>
-      
-      <motion.img 
-        src={study.logo.src}
-        className="absolute z-[5] drop-shadow-md pointer-events-none"
-        style={{ 
-          ...study.logo.position,
-          width: study.logo.size,
-          height: 'auto'
-        }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      />
     </div>
   );
 }
@@ -120,7 +115,7 @@ export default function CaseStudiesSection() {
       </div>
       
       <div className="w-full flex overflow-hidden">
-        <div className="group flex w-max gap-16 px-8 animate-carousel group-hover:[animation-play-state:paused]">
+        <div className="group flex w-max gap-16 px-8 animate-carousel hover:[animation-play-state:paused]">
           {duplicatedCaseStudies.map((study, index) => (
             <StickerCard key={`${study.id}-${index}`} study={study} />
           ))}
