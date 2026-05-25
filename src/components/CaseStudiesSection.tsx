@@ -22,9 +22,9 @@ const caseStudies = [
   },
   {
     id: 'loblaws',
-    title: 'Loblaws',
-    type: 'Transformative Digital and Physical Shelving Experience',
-    coverImg: '/case-studies/loblaws/7.png',
+    title: 'Digital and Physical Shelf-Tagging Guide',
+    type: 'Design Strategy',
+    coverImg: '/case-studies/loblaws_cover.png',
     device: 'tablet',
      layout: {
       width: '32%',
@@ -42,7 +42,7 @@ const caseStudies = [
     id: 'airbnb',
     title: 'Airbnb',
     type: 'Proposed Video Walkthrough Feature',
-    coverImg: '/case-studies/airbnb case study cover.png',
+    coverImg: '/case-studies/airbnb_cover.png',
     device: 'tablet',
     layout: {
       width: '32%',
@@ -90,9 +90,9 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
         width: study.layout.width,
         zIndex: study.layout.zIndex,
       }}
-      initial={{ transform: study.layout.transform }}
-      whileHover={{ transform: 'rotate(0deg) scale(1.05) translateY(-10px)', zIndex: 20 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      initial={{ transform: study.layout.transform, scale: 1 }}
+      whileHover={{ scale: 1.03, zIndex: 20 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
     >
       <Link to={`/case-study/${study.id}`} className="block cursor-pointer">
         <motion.div
@@ -117,7 +117,7 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           height: 'auto'
         }}
         initial={{ rotate: study.logo.rotate, scale: 1 }}
-        whileHover={{ rotate: 0, scale: 1.1 }}
+        whileHover={{ scale: 1.1 }}
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       />
     </motion.div>
