@@ -11,7 +11,6 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Mozilla logo.png',
-      position: { top: '-25px', right: '10px' },
       size: '70px',
     }
   },
@@ -23,7 +22,6 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Loblaws logo.png',
-      position: { top: '-20px', right: '5px' },
       size: '120px',
     }
   },
@@ -35,7 +33,6 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Airbnb logo.png',
-      position: { top: '-25px', right: '15px' },
       size: '60px',
     }
   },
@@ -47,7 +44,6 @@ const caseStudies = [
     device: 'mobile-new',
     logo: {
       src: '/logos/Vector.png',
-      position: { top: '-20px', right: '0px' },
       size: '80px',
     }
   }
@@ -84,18 +80,6 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
         </div>
       </Link>
-      
-      <motion.img 
-        src={study.logo.src}
-        className="absolute z-[-1] drop-shadow-md pointer-events-none"
-        style={{ 
-          ...study.logo.position,
-          width: study.logo.size,
-          height: 'auto'
-        }}
-        whileHover={{ scale: 1.1, y: -10 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-      />
     </div>
   );
 }
@@ -134,8 +118,21 @@ export default function CaseStudiesSection() {
           ))}
         </motion.div>
       </div>
-
+      
       <div className="text-center mt-24">
+        <div className="flex justify-center items-center gap-8 mb-8">
+          {caseStudies.map((study) => (
+            <motion.img
+              key={study.id}
+              src={study.logo.src}
+              alt={`${study.title} logo`}
+              className="h-8 object-contain"
+              style={{ height: parseFloat(study.logo.size) / 2 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            />
+          ))}
+        </div>
         <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="inline-flex items-center justify-center gap-3 bg-[#FF8CD1] text-black rounded-full px-10 py-5 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-lg">
           Let's Build Something
         </a>
