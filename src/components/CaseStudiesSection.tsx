@@ -112,7 +112,7 @@ function StickerCard({ study, onHoverStart, onHoverEnd }: { study: typeof caseSt
       </div>
       <motion.img 
         src={study.logo.src}
-        className="absolute -z-10"
+        className="absolute -z-10 drop-shadow-md"
         style={{ 
           ...study.logo.position,
           width: study.logo.size,
@@ -120,6 +120,7 @@ function StickerCard({ study, onHoverStart, onHoverEnd }: { study: typeof caseSt
         }}
         initial={{ y: 0, rotate: study.rotation }}
         whileHover={{ y: -10, rotate: 0 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       />
     </motion.div>
   );
