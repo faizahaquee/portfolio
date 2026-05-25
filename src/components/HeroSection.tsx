@@ -30,16 +30,12 @@ export default function HeroSection() {
   ];
 
   const skills = [
-    { name: 'Deep Thinking' },
-    { name: 'Opencode' },
-    { name: 'Figma Make' },
-    { name: 'Google Gemini' },
-    { name: 'Nanobanana' },
-    { name: 'Google Stitch' },
-    { name: 'Manual Ideation' },
-    { name: 'Problem Discovery' },
-    { name: 'Inclusive Design (AODA)' },
-    { name: 'Cross-Functional Collaboration' }
+    { name: 'AI INTEGRATION' },
+    { name: 'SYSTEMS THINKING' },
+    { name: 'PRODUCT DEVELOPMENT' },
+    { name: 'DESIGN THINKING' },
+    { name: 'UX RESEARCH' },
+    { name: 'RAPID PROTOTYPING' }
   ];
 
   const menuLinks = [
