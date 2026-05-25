@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const caseStudies = [
   {
@@ -11,12 +12,12 @@ const caseStudies = [
     rotation: -1.5,
     device: 'macbook',
     flexBasis: '38%',
-    icon: {
-      src: '/stickers/selected_works_icons.png',
+    logo: {
+      src: '/logos/mozilla_logo.png',
       position: { top: '-40px', right: '-40px' },
-      size: '120px',
-      bgPos: '0% 0%' // Top-left corner for Mozilla
-    }
+      size: '120px'
+    },
+    gradient: 'radial-gradient(ellipse 40% 50% at 20% -10%, rgba(255, 128, 0, 0.2), transparent, transparent)'
   },
   {
     id: 'loblaws',
@@ -27,12 +28,12 @@ const caseStudies = [
     rotation: 2,
     device: 'tablet',
     flexBasis: '24%',
-    icon: {
-      src: '/stickers/selected_works_icons.png',
+    logo: {
+      src: '/logos/loblaws_logo.png',
       position: { top: '-30px', left: '-30px' },
-      size: '120px',
-      bgPos: '100% 0%' // Top-right corner for Loblaws
-    }
+      size: '120px'
+    },
+    gradient: 'radial-gradient(ellipse 40% 50% at 20% -10%, rgba(228, 0, 43, 0.15), transparent, transparent)'
   },
   {
     id: 'airbnb',
@@ -43,12 +44,12 @@ const caseStudies = [
     rotation: -2,
     device: 'tablet',
     flexBasis: '24%',
-    icon: {
-      src: '/stickers/selected_works_icons.png',
+    logo: {
+      src: '/logos/airbnb_logo.png',
       position: { bottom: '-40px', right: '-35px' },
-      size: '120px',
-      bgPos: '100% 100%' // Bottom-right for Airbnb
-    }
+      size: '110px'
+    },
+    gradient: 'radial-gradient(ellipse 40% 50% at 80% 90%, rgba(255, 90, 95, 0.15), transparent, transparent)'
   },
   {
     id: 'indigo',
@@ -59,16 +60,16 @@ const caseStudies = [
     rotation: 1.5,
     device: 'mobile',
     flexBasis: '14%',
-    icon: {
-      src: '/stickers/selected_works_icons.png',
+    logo: {
+      src: '/logos/indigo_logo.png',
       position: { bottom: '-35px', left: '-30px' },
-      size: '120px',
-      bgPos: '0% 100%' // Bottom-left for Indigo
-    }
+      size: '120px'
+    },
+    gradient: 'radial-gradient(ellipse 40% 50% at 80% 90%, rgba(0, 70, 128, 0.15), transparent, transparent)'
   }
 ];
 
-function StickerCard({ study }: { study: typeof caseStudies[0] }) {
+function StickerCard({ study, onHoverStart, onHoverEnd }: { study: typeof caseStudies[0], onHoverStart: () => void, onHoverEnd: () => void }) {
   const deviceFrameClass = {
     macbook: 'macbook-frame desktop-browser-frame rounded-[18px]',
     tablet: 'tablet-frame rounded-[18px]',
@@ -82,16 +83,18 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
       whileHover={{ transform: 'rotate(0deg) scale(1.02)', zIndex: 20 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className="group sticker-card relative cursor-pointer"
+      onHoverStart={onHoverStart}
+      onHoverEnd={onHoverEnd}
     >
+      <div 
+        className="absolute -inset-10 -z-20 w-full h-full opacity-70"
+        style={{ background: study.gradient }}
+      />
       <Link to={`/case-study/${study.id}`} className="block group">
-        {/* Hardware Frame */}
         <div className={`relative bg-white shadow-lg transition-shadow duration-300 group-hover:shadow-2xl ${deviceFrameClass}`}>
-          {/* Screenshot */}
           <div className="w-full h-full bg-gray-900 overflow-hidden rounded-b-[18px]">
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
-          
-          {/* Glassmorphism Text Overlay - NOW ONLY FOR TAGS */}
           <div className="sticker-text-overlay absolute inset-0 glass-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[18px] flex items-center justify-center text-center p-4">
             <div className="flex flex-wrap gap-2 justify-center">
               {study.tags.map((tag, idx) => (
@@ -103,30 +106,64 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
           </div>
         </div>
       </Link>
-      
-      {/* Always-Visible Text */}
       <div className="text-center mt-4">
         <h3 className="text-lg font-serif text-black leading-tight">{study.title}</h3>
         <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
       </div>
-      
-      {/* Floating Icon Sticker */}
-      <div 
-        className="absolute w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] -z-10"
+      <motion.img 
+        src={study.logo.src}
+        className="absolute -z-10"
         style={{ 
-          ...study.icon.position,
-          backgroundImage: `url(${study.icon.src})`,
-          backgroundSize: '200% 200%', // Since image is a 2x2 grid
-          backgroundPosition: study.icon.bgPos,
+          ...study.logo.position,
+          width: study.logo.size,
+          height: 'auto'
         }}
+        initial={{ y: 0, rotate: study.rotation }}
+        whileHover={{ y: -10, rotate: 0 }}
       />
     </motion.div>
   );
 }
 
+function CustomCursor({ isVisible }: { isVisible: boolean }) {
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 700, mass: 0.5 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
+    };
+    window.addEventListener('mousemove', moveCursor);
+    return () => window.removeEventListener('mousemove', moveCursor);
+  }, [cursorX, cursorY]);
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 w-8 h-8 bg-[#FF8CD1] rounded-full z-50 pointer-events-none flex items-center justify-center text-black text-[8px] font-bold uppercase tracking-widest"
+      style={{
+        translateX: cursorXSpring,
+        translateY: cursorYSpring,
+      }}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: isVisible ? 1 : 0, opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      View
+    </motion.div>
+  );
+}
+
 export default function CaseStudiesSection() {
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
+      <CustomCursor isVisible={isHovering} />
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -141,7 +178,12 @@ export default function CaseStudiesSection() {
       <div className="max-w-screen-2xl mx-auto px-4 md:px-8">
         <div className="flex flex-row justify-center items-stretch gap-6 w-full overflow-visible">
           {caseStudies.map((study) => (
-            <StickerCard key={study.id} study={study} />
+            <StickerCard 
+              key={study.id} 
+              study={study}
+              onHoverStart={() => setIsHovering(true)}
+              onHoverEnd={() => setIsHovering(false)}
+            />
           ))}
         </div>
       </div>
