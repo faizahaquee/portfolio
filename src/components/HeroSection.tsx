@@ -30,16 +30,16 @@ export default function HeroSection() {
   ];
 
   const skills = [
-    { name: 'Deep Thinking', desc: 'Analyzing complex problems to uncover underlying patterns.' },
-    { name: 'Opencode', desc: 'Accelerating development workflows with AI-driven coding.' },
-    { name: 'Figma Make', desc: 'Rapidly prototyping layouts using generative UI tools.' },
-    { name: 'Google Gemini', desc: 'Enhancing research and content strategy through AI.' },
-    { name: 'Nanobanana', desc: 'Streamlining creative processes for faster iteration.' },
-    { name: 'Google Stitch', desc: 'Seamlessly integrating tools and automating processes.' },
-    { name: 'Manual Ideation', desc: 'Sketching and exploring foundational concepts by hand.' },
-    { name: 'Problem Discovery', desc: 'Identifying true user needs before rushing to solutions.' },
-    { name: 'Inclusive Design (AODA)', desc: 'Ensuring accessible digital experiences for all users.' },
-    { name: 'Cross-Functional Collaboration', desc: 'Bridging the gap between engineering, product, and design.' }
+    { name: 'Deep Thinking' },
+    { name: 'Opencode' },
+    { name: 'Figma Make' },
+    { name: 'Google Gemini' },
+    { name: 'Nanobanana' },
+    { name: 'Google Stitch' },
+    { name: 'Manual Ideation' },
+    { name: 'Problem Discovery' },
+    { name: 'Inclusive Design (AODA)' },
+    { name: 'Cross-Functional Collaboration' }
   ];
 
   const menuLinks = [
@@ -207,13 +207,9 @@ export default function HeroSection() {
           >
             {skills.map(skill => (
               <div key={skill.name} className="relative group">
-                <span className="inline-block px-3 py-1.5 bg-white/60 backdrop-blur-md border border-white/50 text-gray-800 text-[10px] uppercase tracking-widest font-bold rounded-full hover:bg-white hover:border-[#FF8CD1] transition-colors cursor-help shadow-sm">
+                <span className="inline-block px-4 py-2 bg-white/60 backdrop-blur-md border border-white/50 text-gray-800 text-[10px] uppercase tracking-widest font-bold rounded-full hover:bg-white hover:border-[#FF8CD1] transition-colors cursor-default shadow-sm">
                   {skill.name}
                 </span>
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#111] text-white text-[10px] font-sans px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-center shadow-xl">
-                  {skill.desc}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#111]"></div>
-                </div>
               </div>
             ))}
           </motion.div>
