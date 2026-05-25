@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 const caseStudies = [
   {
     id: 'mozilla',
-    title: 'Mozilla Workspace',
-    type: 'Graduate Capstone',
+    title: 'Mozilla Workspace Mode',
+    type: 'Imagining a fully integrated AI browser',
     coverImg: '/case-studies/mozilla/Meet Workspace Mode Cover photo.png',
     tags: ['UX Design', 'Prototyping', 'AI Integration'],
     rotation: -1.5,
@@ -21,7 +21,7 @@ const caseStudies = [
   },
   {
     id: 'loblaws',
-    title: 'Loblaws',
+    title: 'Loblaws Digital and Physical shelving experience',
     type: 'Design Strategy',
     coverImg: '/case-studies/loblaws/7.png',
     tags: ['Design Systems', 'Agile Strategy'],
@@ -38,7 +38,7 @@ const caseStudies = [
   {
     id: 'airbnb',
     title: 'Airbnb',
-    type: 'Feasibility Analysis',
+    type: 'Proposed Video Walkthrough Feature',
     coverImg: '/case-studies/airbnb case study cover.png',
     tags: ['UX Research', 'Business Strategy'],
     rotation: -2,
