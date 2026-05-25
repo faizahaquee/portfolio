@@ -1,4 +1,4 @@
-import { motion, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 
@@ -11,7 +11,7 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Mozilla logo.png',
-      size: '70px',
+      size: '40px',
     }
   },
   {
@@ -22,7 +22,7 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Loblaws logo.png',
-      size: '120px',
+      size: '80px',
     }
   },
   {
@@ -33,7 +33,7 @@ const caseStudies = [
     device: 'macbook',
     logo: {
       src: '/logos/Airbnb logo.png',
-      size: '60px',
+      size: '35px',
     }
   },
   {
@@ -44,10 +44,13 @@ const caseStudies = [
     device: 'mobile-new',
     logo: {
       src: '/logos/Vector.png',
-      size: '80px',
+      size: '50px',
     }
   }
 ];
+
+// Duplicate for seamless scroll
+const duplicatedCaseStudies = [...caseStudies, ...caseStudies];
 
 function StickerCard({ study }: { study: typeof caseStudies[0] }) {
   const deviceFrameClass = {
@@ -75,9 +78,12 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
             <img src={study.coverImg} alt={study.title} className="w-full h-full object-cover object-top" />
           </div>
         </motion.div>
-        <div className="text-center mt-4">
-          <h3 className="text-lg font-serif text-black leading-tight">{study.title}</h3>
-          <p className="font-sans text-xs text-gray-500 mt-1">{study.type}</p>
+        <div className="text-center mt-4 flex items-center justify-center gap-3">
+          <img src={study.logo.src} alt={`${study.title} logo`} style={{ height: study.logo.size }} className="object-contain" />
+          <div>
+            <h3 className="text-lg font-serif text-black leading-tight text-left">{study.title}</h3>
+            <p className="font-sans text-xs text-gray-500 mt-1 text-left">{study.type}</p>
+          </div>
         </div>
       </Link>
     </div>
@@ -86,7 +92,6 @@ function StickerCard({ study }: { study: typeof caseStudies[0] }) {
 
 export default function CaseStudiesSection() {
   const scrollRef = useRef(null);
-  const x = useMotionValue(0);
 
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
@@ -102,37 +107,15 @@ export default function CaseStudiesSection() {
         </motion.h2>
       </div>
       
-      <div className="w-full overflow-x-auto cursor-grab active:cursor-grabbing" ref={scrollRef}>
-        <motion.div
-          className="flex w-max gap-12 px-8"
-          style={{ x }}
-          drag="x"
-          dragConstraints={{
-            left: -((caseStudies.length * 520) - window.innerWidth + 200),
-            right: 0
-          }}
-          dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
-        >
-          {caseStudies.map((study) => (
-            <StickerCard key={study.id} study={study} />
-          ))}
-        </motion.div>
-      </div>
-      
-      <div className="text-center mt-24">
-        <div className="flex justify-center items-center gap-8 mb-8">
-          {caseStudies.map((study) => (
-            <motion.img
-              key={study.id}
-              src={study.logo.src}
-              alt={`${study.title} logo`}
-              className="h-8 object-contain"
-              style={{ height: parseFloat(study.logo.size) / 2 }}
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            />
+      <div className="w-full overflow-x-auto cursor-grab active:cursor-grabbing group" ref={scrollRef}>
+        <div className="flex w-max gap-12 px-8 animate-carousel group-hover:[animation-play-state:paused]">
+          {duplicatedCaseStudies.map((study, index) => (
+            <StickerCard key={`${study.id}-${index}`} study={study} />
           ))}
         </div>
+      </div>
+
+      <div className="text-center mt-24">
         <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="inline-flex items-center justify-center gap-3 bg-[#FF8CD1] text-black rounded-full px-10 py-5 text-sm font-sans font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-lg">
           Let's Build Something
         </a>

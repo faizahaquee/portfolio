@@ -114,17 +114,11 @@ h1, h2, h3, h4, h5, h6 {
 .iphone-16-frame > div {
   border-radius: 32px;
   overflow: hidden;
-  -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix for rounding corners on Safari */
-}
-
-.macbook-frame .w-full.h-full {
-  border-radius: 0 0 16px 16px;
-  overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
-.tablet-skeu-frame .w-full.h-full {
-  border-radius: 8px;
+.macbook-frame > div {
+  border-radius: 0 0 16px 16px;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
