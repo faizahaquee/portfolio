@@ -40,7 +40,7 @@ const allCaseStudies = [
     id: 'indigo',
     title: 'Indigo',
     type: 'Conceptual Community Book Club Feature',
-    coverImg: '/case-studies/Indigo Bookstore App – UI & Marketing Case Study (1)/indigo cover.png',
+    coverImg: '/case-studies/indigo_cover_new.png',
     device: 'mobile-new',
     logo: {
       src: '/logos/Vector.png',
