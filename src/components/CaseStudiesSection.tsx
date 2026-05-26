@@ -27,8 +27,8 @@ const allCaseStudies = [
   },
   {
     id: 'airbnb',
-    title: 'Airbnb',
-    type: 'Proposed Video Walkthrough Feature',
+    title: 'Airbnb Video Walkthrough Feature',
+    type: 'Feasibility Analysis',
     coverImg: '/case-studies/airbnb cover.png',
     device: 'macbook',
     logo: {
