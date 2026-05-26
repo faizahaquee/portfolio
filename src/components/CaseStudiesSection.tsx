@@ -27,8 +27,8 @@ const allCaseStudies = [
   },
   {
     id: 'airbnb',
-    title: 'Airbnb Video Walkthrough Feature',
-    type: 'Feasibility Analysis',
+    title: 'Airbnb',
+    type: 'Proposed Video Walkthrough Feature',
     coverImg: '/case-studies/airbnb cover.png',
     device: 'macbook',
     logo: {
@@ -55,12 +55,12 @@ const duplicatedCarouselStudies = [...carouselStudies, ...carouselStudies];
 
 function CarouselCard({ study }: { study: typeof allCaseStudies[0] }) {
   const deviceFrameClass = {
-    macbook: 'macbook-frame desktop-browser-frame rounded-[18px]',
+    macbook: 'macbook-frame desktop-browser-frame',
     'mobile-new': 'iphone-16-frame'
   }[study.device] || 'tablet-skeu-frame tablet-frame';
 
   const cardWidth = {
-    macbook: '420px',
+    macbook: '420px', // Slightly smaller for carousel
     'mobile-new': '200px'
   }[study.device] || '360px';
 
@@ -143,7 +143,7 @@ export default function CaseStudiesSection() {
       </div>
 
       {/* Tier 2: Supporting Projects Carousel */}
-      <div className="w-full overflow-x-auto cursor-grab active:cursor-grabbing group">
+      <div className="w-full flex overflow-x-auto group cursor-grab active:cursor-grabbing">
         <div className="flex w-max gap-12 px-8 animate-carousel group-hover:[animation-play-state:paused]">
           {duplicatedCarouselStudies.map((study, index) => (
             <CarouselCard key={`${study.id}-${index}`} study={study} />
