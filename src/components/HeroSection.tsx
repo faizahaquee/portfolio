@@ -26,16 +26,21 @@ export default function HeroSection() {
     { src: '/stickers/sticker_0.png', className: 'w-24 md:w-32 rotate-[-8deg] top-[5%] left-[8%]' },
     { src: '/stickers/sticker_2.png', className: 'w-32 md:w-48 rotate-[12deg] top-[35%] right-[5%]' },
     { src: '/stickers/sticker_5.png', className: 'w-24 md:w-36 rotate-[-15deg] bottom-[25%] left-[30%]' },
-    { src: '/stickers/sticker_8.png', className: 'w-28 md:w-40 rotate-[5deg] bottom-[10%] right-[15%]' }
+    { src: '/stickers/sticker_8.png', className: 'w-28 md:w-40 rotate-[5deg] bottom-[10%] right-[15%]' },
+    { src: '/stickers/react.png', className: 'w-20 md:w-24 rotate-[10deg] top-[15%] right-[25%]' },
+    { src: '/stickers/figma.png', className: 'w-16 md:w-20 rotate-[-12deg] top-[50%] left-[10%]' },
+    { src: '/stickers/adobe-cc.png', className: 'w-20 md:w-24 rotate-[8deg] bottom-[5%] left-[5%]' },
+    { src: '/stickers/pinterest.png', className: 'w-20 md:w-24 rotate-[-10deg] top-[10%] left-[45%]' },
+    { src: '/stickers/are-na.png', className: 'w-24 md:w-28 rotate-[15deg] bottom-[20%] right-[30%]' }
   ];
 
   const skills = [
-    { name: 'AI INTEGRATION' },
-    { name: 'SYSTEMS THINKING' },
-    { name: 'PRODUCT DEVELOPMENT' },
-    { name: 'DESIGN THINKING' },
-    { name: 'UX RESEARCH' },
-    { name: 'RAPID PROTOTYPING' }
+    { name: 'AI INTEGRATION', desc: 'Leveraging AI tools to accelerate research, ideation, and development.' },
+    { name: 'SYSTEMS THINKING', desc: 'Creating scalable and cohesive design systems for consistent user experiences.' },
+    { name: 'PRODUCT DEVELOPMENT', desc: 'Guiding projects from initial concept through to final launch and iteration.' },
+    { name: 'DESIGN THINKING', desc: 'Applying a human-centered approach to solve complex user problems.' },
+    { name: 'UX RESEARCH', desc: 'Conducting in-depth research to inform data-driven design decisions.' },
+    { name: 'RAPID PROTOTYPING', desc: 'Quickly building and testing interactive mockups to validate ideas.' }
   ];
 
   const menuLinks = [
@@ -203,9 +208,13 @@ export default function HeroSection() {
           >
             {skills.map(skill => (
               <div key={skill.name} className="relative group">
-                <span className="inline-block px-4 py-2 bg-white/60 backdrop-blur-md border border-white/50 text-gray-800 text-[10px] uppercase tracking-widest font-bold rounded-full hover:bg-white hover:border-[#FF8CD1] transition-colors cursor-default shadow-sm">
+                <span className="inline-block px-4 py-2 bg-white/60 backdrop-blur-md border border-white/50 text-gray-800 text-[10px] uppercase tracking-widest font-bold rounded-full hover:bg-white hover:border-[#FF8CD1] transition-colors cursor-help shadow-sm">
                   {skill.name}
                 </span>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#111] text-white text-[10px] font-sans px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-center shadow-xl">
+                  {skill.desc}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#111]"></div>
+                </div>
               </div>
             ))}
           </motion.div>
