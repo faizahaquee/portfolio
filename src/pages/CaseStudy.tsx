@@ -421,28 +421,14 @@ export default function CaseStudy() {
             image: '/case-studies/indigo/10.png'
         },
         {
-            heading: "Projected Impact",
-            list: [
-                "Repeat app use ↑ through social accountability",
-                "Book sales ↑ via club recommendations",
-                "User acquisition ↑ via shareable, invite-based model",
-                "Plum Rewards ↔ community = emotional loyalty"
-            ],
-            image: '/case-studies/indigo/11.png'
-        },
-        {
-            heading: "Let's Make Reading Social Again",
-            body: [
-                "With Book Clubs, Indigo becomes more than a retailer, it becomes a digital community for readers.",
-                "I’d love to bring this idea to your team and help Indigo build a product that people don’t just use, but return back to.",
-                "Thank you for your time and consideration, I would love to hear from you!"
-            ],
-            list: [
-                "Contact:",
-                "LinkedIn",
-                "faizahaquee@gmail.com"
-            ],
-            image: '/case-studies/indigo/12.png'
+          heading: "Financial Projections",
+          list: [
+            "Based on a $4.6M investment and an expected platform-wide conversion lift of 0.20%.",
+            "Conservative Case (10% adoption): -7.5% ROI",
+            "Break Even (11.6% adoption): 0.05% ROI",
+            "Base Case (25% adoption): $5.5M Incremental Revenue, $1.25M Incremental Net Income, achieving a 32.5% ROI."
+          ],
+          image: '/case-studies/airbnb slides/9. Financial Projections.png'
         }
       ]
     },
