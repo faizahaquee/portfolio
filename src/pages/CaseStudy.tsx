@@ -181,65 +181,89 @@ export default function CaseStudy() {
       description: 'A comprehensive project detailing design systems thinking interaction design and cross functional agile strategy for a physical to digital Loblaws initiative.',
       contentSections: [
         {
+          heading: "Project Overview",
+          list: [
+            "Duration: 16 Weeks",
+            "Role: Product Owner"
+          ]
+        },
+        {
           heading: "The Context & Challenge",
+          subheading: "Business Overview & Core Problem",
+          body: [
+            "Loblaw Companies Limited (L.TO) is a major Canadian retailer offering grocery, pharmacy, healthcare services, health & beauty, apparel, general merchandise, financial services, and wireless products.",
+            "Core Problem: Declining consumer trust due to ambiguous product origin labeling."
+          ],
           image: '/case-studies/loblaws/2.png'
         },
         {
+          subheading: "How Might We",
+          body: [
+            "How might we design a physical shelf-level display that helps shoppers trust and recognize Canadian-made products?"
+          ],
           image: '/case-studies/loblaws/4.png'
         },
         {
-          heading: "Scoping the Solution",
-          image: '/case-studies/loblaws/5.png'
+          heading: "Team Reflection: Charter",
+          subheading: "Reviewing our Process",
+          body: [
+            "The team charter proved invaluable in keeping us aligned on tasks, roles, and behavioral expectations. While it strengthened accountability and provided a clear visual overview of our sprint scope, we did encounter challenges. Our limited initial expertise in assigned roles sometimes made relying strictly on the charter feel restrictive. However, this process ultimately helped us identify team strengths and weaknesses, ensuring a successful execution of our sprints."
+          ],
+          image: '/case-studies/loblaws/21.png'
         },
         {
+          subheading: "Product Backlog (Part 2)",
+          list: [
+            "Accessibility Enhancements: Add tactile/raised design features and ensure high-contrast colors for readability.",
+            "Employee Tagging Guide: Create a 1-page guide for employees instructing them how to add and replace tags.",
+            "Feedback Summary: Conduct observational testing and consolidate usability and visibility feedback."
+          ],
           image: '/case-studies/loblaws/6.png'
         },
         {
           heading: "User Stories",
-          list: [
-             "Canadian shopper: I want to easily see where a product was made in Canada so that I can support local producers/farmers.",
-             "Canadian shopper: I want to access a product's information in-store to learn how and where it was prepared so that I feel confident in its origin.",
-             "Shopper with low vision: I want tactile and easy to understand shelf cues so that I can easily access origin details and shop comfortably.",
-             "Busy shopper: I want to quickly identify Canadian-made products so that I can spend less time deciding between products.",
-             "Store employee: I want to clearly tag and display Canadian-made products so that shoppers can easily identify them without needing my help.",
-             "Store manager: I want to know which products shoppers interact with most so that I can optimize placement and promotions for Canadian-made items."
+          subheading: "Defining User Needs",
+          body: [
+            "We crafted comprehensive user stories to capture the diverse needs of Loblaws’ ecosystem. This included everyday shoppers looking for local products, shoppers with visual impairments needing tactile cues, and store employees requiring an efficient tagging system. By defining these distinct perspectives, our team ensured that the final solution would be inclusive, practical, and valuable for all stakeholders involved."
           ],
           image: '/case-studies/loblaws/7.png'
         },
         {
           heading: "Sprint Backlog",
-          list: [
-             "1. Review and take note of existing labeling and in-store displays.",
-             "2. Define existing imagery or symbols/visual cues that represent Canadian branding (i.e. colors, maple leaf icons).",
-             "3. Sketch rough low-fidelity concepts of what the shelf-level display could look like.",
-             "4. Design and craft a 3D prototype imitating how the display would look/fit on a shelf of products.",
-             "5. Consider simple accessibility features that could be incorporated into the prototype.",
-             "6. Test with family members/friends or consult with AI to conduct user testing.",
-             "7. Consider testing results to finalize the features of the display.",
-             "8. Finalize the low-fidelity prototype and summarize findings."
+          subheading: "Project Tasks",
+          body: [
+            "Our team broke down the project into actionable tasks for our sprints. This involved a systematic approach: starting with an audit of existing in-store displays, brainstorming Canadian brand identifiers, and sketching low-fidelity concepts. We planned to build physical 3D prototypes to test accessibility features in real-world scenarios, iteratively refining our designs based on continuous user testing and feedback."
           ],
           image: '/case-studies/loblaws/8.png'
         },
         {
           heading: "Acceptance Criteria",
-          list: [
-             "Canadian shopper (see origin easily): Product origin must be clearly visible on product detail page, origin label must be readable at a glance.",
-             "Canadian shopper (access info in-store): Tags/QR codes must link to accurate origin & preparation info, Info must load quickly and be easy to understand.",
-             "Busy shopper (quick identification): Canadian-made products must have a distinct, instantly recognizable visual cue on shelves, Cue must work even among crowded displays.",
-             "Shopper with low vision (tactile cues): Tactile or high-contrast tags/icons must indicate origin, Braille or raised elements must be easy to locate by touch.",
-             "Store employee (clear tagging process): Tagging steps must be simple, intuitive, and prevent user error, Employees must be able to confirm correct placement.",
-             "Store manager (track engagement): System must track shopper interaction data accurately, Manager dashboard must display top-interacted Canadian-made products."
+          subheading: "Definition of Success",
+          body: [
+            "To keep our development objective, we established clear acceptance criteria for each user story. Success meant that a shopper could identify product origins at a glance, access detailed preparation info instantly, and rely on recognizable visual and tactile cues. For store operations, it required a simple, error-free tagging process for employees and an accurate engagement tracking system for management to measure the solution’s impact."
           ],
           image: '/case-studies/loblaws/9.png'
         },
         {
           heading: "The Ecosystem Solution",
+          subheading: "Sprint 2 Feedback",
+          body: [
+            "After testing our initial concepts, the team gathered critical feedback to refine our approach. Users appreciated the clear visual hierarchy and the addition of educational characters, but highlighted areas for improvement such as the placement and necessity of QR codes. This feedback loop allowed us to debate and iterate on the design, ensuring the signage worked cohesively as a complete system before moving forward."
+          ],
           image: '/case-studies/loblaws/14.png'
         },
         {
+          subheading: "Sprint 3 Deliverables",
+          body: [
+            "Applying the feedback from previous sprints, our team produced multiple high-fidelity options for the 'Made in Canada' tags. We expanded the solution into a broader 'Farm to Aisle' campaign, delivering large and small promotional posters designed to seamlessly integrate into Loblaws’ existing store environments and draw attention to the new tagging system."
+          ],
           image: '/case-studies/loblaws/15.png'
         },
         {
+          subheading: "Sprint 4 Final Deliverables",
+          body: [
+            "Finalized the 'Farm to Aisle' Shelf-Tagging Guide (Employee Handbook) detailing the five steps to apply a new tag. We included a digital version of the handbook with a clickable link to a feedback survey instead of a QR code, and provided clear examples of correct & incorrect placements, accessibility & safety checklists, and the Three Rs for recycling old tags."
+          ],
           image: '/case-studies/loblaws/20.png'
         },
         {
@@ -252,53 +276,26 @@ export default function CaseStudy() {
           image: '/case-studies/loblaws/21.png'
         },
         {
-          heading: "What Worked Well and What Didn't Work Well",
-          image: '/case-studies/loblaws/22.png'
-        },
-        {
-          image: '/case-studies/loblaws/23.png'
-        },
-        {
-          heading: "Sprint Review",
-          list: [
-             "Walk through user stories to show alignment with How Might We + acceptance criteria.",
-             "Connect each user story to final design features.",
-             "Show iteration: sketches -> low-fidelity -> final prototype.",
-             "Highlight improvements made through feedback.",
-             "Demo final increment: shelf-tag system + employee handbook.",
-             "Present in a store-like display to simulate real shelf complexity."
-          ],
-          image: '/case-studies/loblaws/24.png'
-        },
-        {
           heading: "Acceptance Criteria & Definition of Done",
-          list: [
-             "Relied on our acceptance criteria and definition of done to give weekly feedback to the development team.",
-             "At times was challenging to provide feedback without revisiting and double-checking the criteria we had set.",
-             "Some product backlog items needed adjustment as situations changed. (Example: When the team couldn't test prototypes on real store shelves, we revised the backlog to focus on testing printed prototypes in home environments instead.)",
-             "What to Improve for the Future: Revisit acceptance criteria more often to ensure they stay realistic and aligned with constraints.",
-             "What to Improve for the Future: Build in flexibility for exploratory testing or unexpected limitations.",
-             "What to Improve for the Future: Provide clearer guidance on how minor deviations from the definition of done should be handled."
+          subheading: "Evaluating Outcomes",
+          body: [
+            "We heavily relied on our acceptance criteria and definition of done to provide weekly, actionable feedback to the development team. While adapting product backlog items to unexpected constraints, like switching to at-home testing when in-store access fell through, we learned the importance of revisiting these criteria regularly. Moving forward, we aim to build more flexibility into our definitions to accommodate exploratory testing and clearer guidelines for minor deviations."
           ],
           image: '/case-studies/loblaws/25.png'
         },
         {
           heading: "Key Takeaways",
-          list: [
-            "Staying Within Role Boundaries: Clear separation between Product Owners and Scrum Masters. Product Owners: set vision + prioritize backlog. Scrum Masters: support team + remove obstacles. Impact: improved efficiency, clarity, and teamwork",
-            "Importance of Timing in One-Week Sprints: With quickly moving sprints, it was important to stay ahead. Early feedback and preparation prevented last-minute pressure. Impact: Maintained momentum and reduced stress for the Project Managers and the Development Team",
-            "Power of Effective Communication: Communication between the Product Management team and the Development Team was key. Strong communication led to smooth execution and a confident team. Kept all members aligned with the team goal. Impact: Ensured alignment and consistent progress"
+          subheading: "Lessons Learned",
+          body: [
+            "This sprint process underscored the importance of strong boundaries, timing, and communication. By clearly separating the visionary role of the Product Owner from the supportive, unblocking role of the Scrum Master, we achieved better efficiency and clarity. Additionally, preparing feedback early in the fast-paced one-week sprints prevented last-minute pressure, while open communication kept both management and development teams confidently aligned."
           ],
           image: '/case-studies/loblaws/26.png'
         },
         {
           heading: "Conclusion",
-          list: [
-             "Valuable Agile Introduction: Hands-on experience with agile project management.",
-             "Overcoming Challenges: Adapted to early issues with meeting structure, role, clarity, and assumption testing.",
-             "Importance of Team Structure: Clear roles, communication, and processes guided us to success.",
-             "Refined Project Approach: Strengthened HMW statement, improved user stories, and collaborated with the Development Team.",
-             "Lessons we Learned: Enhanced understanding of agile practices; highlighted organization, transparency, and responsiveness."
+          subheading: "Project Wrap-up",
+          body: [
+            "This project provided an invaluable, hands-on introduction to Agile project management. Despite initial hurdles with structure and assumption testing, establishing clear roles and refining our 'How Might We' approach guided us to success. It ultimately highlighted that organization, transparency, and responsiveness are just as crucial to a product's success as the design itself."
           ],
           image: '/case-studies/loblaws/27.png'
         }
@@ -411,24 +408,58 @@ export default function CaseStudy() {
             image: '/case-studies/indigo/9.png'
         },
         {
-            heading: "Social Media Growth & Promotion Opportunities",
-            list: [
-                "Share your book club on TikTok or IG: “Join our June Thriller Club!”",
-                "Weekly badges (e.g. “Page Turner”, “Host Hero”)",
-                "Invite 3 friends = unlock $5 off next read",
-                "Push campaigns: “Your club just picked a new book!”"
-            ],
-            image: '/case-studies/indigo/10.png'
+          heading: "Scoping the Solution",
+          subheading: "Product Backlog (Part 1)",
+          body: [
+            "We outlined a comprehensive product backlog focusing on the core deliverables needed to solve the problem. The initial scope prioritized designing distinct shelf-level tags to highlight Canadian-made products and creating educational signage to help shoppers interpret the new visual system quickly and effectively."
+          ],
+          image: '/case-studies/loblaws/5.png'
         },
         {
-          heading: "Financial Projections",
-          list: [
-            "Based on a $4.6M investment and an expected platform-wide conversion lift of 0.20%.",
-            "Conservative Case (10% adoption): -7.5% ROI",
-            "Break Even (11.6% adoption): 0.05% ROI",
-            "Base Case (25% adoption): $5.5M Incremental Revenue, $1.25M Incremental Net Income, achieving a 32.5% ROI."
+          subheading: "Product Backlog (Part 2)",
+          body: [
+            "The second half of our backlog emphasized inclusivity and operational feasibility. We scoped out accessibility enhancements like tactile elements and high-contrast designs, while also planning a comprehensive tagging guide for employees. The backlog ensured we prioritized both the shopper's experience and the staff's ease of implementation."
           ],
-          image: '/case-studies/airbnb slides/9. Financial Projections.png'
+          image: '/case-studies/loblaws/6.png'
+        },
+        {
+          heading: "User Stories",
+          subheading: "Defining User Needs",
+          body: [
+            "We crafted comprehensive user stories to capture the diverse needs of Loblaws’ ecosystem. This included everyday shoppers looking for local products, shoppers with visual impairments needing tactile cues, and store employees requiring an efficient tagging system. By defining these distinct perspectives, our team ensured that the final solution would be inclusive, practical, and valuable for all stakeholders involved."
+          ],
+          image: '/case-studies/loblaws/7.png'
+        },
+        {
+          heading: "Sprint Backlog",
+          subheading: "Project Tasks",
+          body: [
+            "Our team broke down the project into actionable tasks for our sprints. This involved a systematic approach: starting with an audit of existing in-store displays, brainstorming Canadian brand identifiers, and sketching low-fidelity concepts. We planned to build physical 3D prototypes to test accessibility features in real-world scenarios, iteratively refining our designs based on continuous user testing and feedback."
+          ],
+          image: '/case-studies/loblaws/8.png'
+        },
+        {
+          heading: "Acceptance Criteria",
+          subheading: "Definition of Success",
+          body: [
+            "To keep our development objective, we established clear acceptance criteria for each user story. Success meant that a shopper could identify product origins at a glance, access detailed preparation info instantly, and rely on recognizable visual and tactile cues. For store operations, it required a simple, error-free tagging process for employees and an accurate engagement tracking system for management to measure the solution’s impact."
+          ],
+          image: '/case-studies/loblaws/9.png'
+        },
+        {
+          heading: "The Ecosystem Solution",
+          subheading: "Sprint 2 Feedback",
+          body: [
+            "After testing our initial concepts, the team gathered critical feedback to refine our approach. Users appreciated the clear visual hierarchy and the addition of educational characters, but highlighted areas for improvement such as the placement and necessity of QR codes. This feedback loop allowed us to debate and iterate on the design, ensuring the signage worked cohesively as a complete system before moving forward."
+          ],
+          image: '/case-studies/loblaws/14.png'
+        },
+        {
+          subheading: "Sprint 3 Deliverables",
+          body: [
+            "Applying the feedback from previous sprints, our team produced multiple high-fidelity options for the 'Made in Canada' tags. We expanded the solution into a broader 'Farm to Aisle' campaign, delivering large and small promotional posters designed to seamlessly integrate into Loblaws’ existing store environments and draw attention to the new tagging system."
+          ],
+          image: '/case-studies/loblaws/15.png'
         }
       ]
     },
