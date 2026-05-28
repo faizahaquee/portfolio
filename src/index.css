@@ -51,6 +51,8 @@ h1, h2, h3, h4, h5, h6 {
 .macbook-frame {
   position: relative;
   padding-top: 28px; /* Space for the top bar */
+  border-radius: 18px;
+  overflow: hidden;
 }
 .macbook-frame::before {
   content: '';
@@ -110,18 +112,14 @@ h1, h2, h3, h4, h5, h6 {
   background: #111;
   border-radius: 40px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  overflow: hidden;
 }
 .iphone-16-frame > div {
   border-radius: 32px;
-  overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
-.macbook-frame > div {
-  border-radius: 0 0 16px 16px;
-  overflow: hidden;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-}
+
 
 .glass-overlay {
   backdrop-filter: blur(8px);

@@ -21,7 +21,7 @@ export default function ResumeSection() {
             </Link>
             
             <a 
-              href="/faiza_resume_ux_ui.pdf" 
+              href="/Faiza-Haque-Resume.jpg" 
               download
               className="flex items-center justify-center gap-3 border border-white text-white rounded-full px-8 py-4 text-sm font-sans font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >

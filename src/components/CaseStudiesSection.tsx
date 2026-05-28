@@ -114,8 +114,8 @@ export default function CaseStudiesSection() {
           viewport={{ once: true, margin: '-100px' }}
         >
           <Link to={`/case-study/${featuredStudy.id}`} className="block cursor-pointer group">
-            <div className="relative macbook-frame desktop-browser-frame bg-white shadow-2xl rounded-[18px]">
-              <div className="w-full h-full bg-gray-900 rounded-b-[18px]">
+            <div className="relative macbook-frame desktop-browser-frame bg-white shadow-2xl">
+              <div className="w-full h-full bg-gray-900">
                 <img src={featuredStudy.coverImg} alt={featuredStudy.title} className="w-full h-full object-cover object-top" />
               </div>
             </div>

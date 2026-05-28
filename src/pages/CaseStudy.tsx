@@ -32,12 +32,13 @@ export default function CaseStudy() {
   }, [id]);
 
   const [activeMedia, setActiveMedia] = useState<{ type: 'image' | 'video' | 'figma' | 'pdf', src: string } | null>(null);
+  const [fullScreenImage, setFullScreenImage] = useState<string | null>(null);
 
   // Mocking the case studies data
   const caseStudies: Record<string, CaseStudyData> = {
     'mozilla': {
       title: 'Mozilla Design Sprint: AI Workspace Mode',
-      figmaLink: 'https://www.figma.com/make/gcFPcMtDKe6H8S8NVR0I7i/Version-2?fullscreen=1&t=dPpu64vBlcoizOau-1',
+      figmaLink: 'https://www.figma.com/make/Fi4oDFl3Cnk79iWndxq4sa/Workspace-AI-browser--Version-4-?fullscreen=1&t=47TOQvBG3TPjDYl1-1',
       miroLink: 'https://miro.com/app/live-embed/uXjVGkNPxTQ=/?embedMode=view_only_without_ui&moveToViewport=-10322%2C-5409%2C13848%2C6556&embedId=244032640937',
       images: [
         "/case-studies/mozilla/Full Video Walkthrough.mov",
@@ -119,6 +120,10 @@ export default function CaseStudy() {
           image: "/case-studies/mozilla/Early prototyping.png"
         },
         {
+          heading: "User Journey Map",
+          image: "/case-studies/mozilla/Intensive 2 - Mozilla - User journey map (visual).jpg"
+        },
+        {
           heading: "Key Decisions & Navigating Ambiguity",
           subheading: "From Vague Feedback to a Focused Solution",
           body: [
@@ -130,7 +135,7 @@ export default function CaseStudy() {
         {
           heading: "What I Learned: A Lesson in Trust",
           body: [
-            "My biggest lesson was that with AI, the user experience is the trust experience. My initial wireframes for the 'Memory Dashboard' were functional but data-dense. They failed to provide the immediate sense of safety our user personas needed. I learned that you must design for the core emotional need first—a feeling of control and clarity—before layering in more complex features. This project solidified my belief that the more powerful the technology, the more simple and transparent its interface must be."
+            "My biggest lesson was that with AI, the user experience is the trust experience. My initial wireframes for the 'Memory Dashboard' were functional but data-dense. They failed to provide the immediate sense of safety our user personas needed. I learned that you must design for the core emotional need first, a feeling of control and clarity, before layering in more complex features. This project solidified my belief that the more powerful the technology, the more simple and transparent its interface must be."
           ]
         },
         {
@@ -153,58 +158,149 @@ export default function CaseStudy() {
     },
     'loblaws': {
       title: 'Loblaws Project Management & Design Strategy',
-      pdf: '/case-studies/updated loblaws slide.pdf',
+      figmaLink: 'https://www.figma.com/design/MNR0xgteqhy9SjV4nmDR6N/Loblaws-Shelf-Tagging-Guide?node-id=566-2&t=2P7MwDyLcgbjU9np-1',
       images: [
         '/case-studies/loblaws/2.png',
         '/case-studies/loblaws/4.png',
         '/case-studies/loblaws/5.png',
+        '/case-studies/loblaws/6.png',
         '/case-studies/loblaws/7.png',
+        '/case-studies/loblaws/8.png',
         '/case-studies/loblaws/9.png',
-        '/case-studies/loblaws/11.png',
-        '/case-studies/loblaws/12.png',
+        '/case-studies/loblaws/14.png',
+        '/case-studies/loblaws/15.png',
+        '/case-studies/loblaws/20.png',
+        '/case-studies/loblaws/21.png',
+        '/case-studies/loblaws/22.png',
+        '/case-studies/loblaws/23.png',
         '/case-studies/loblaws/24.png',
         '/case-studies/loblaws/25.png',
         '/case-studies/loblaws/26.png',
+        '/case-studies/loblaws/27.png',
       ],
       description: 'A comprehensive project detailing design systems thinking interaction design and cross functional agile strategy for a physical to digital Loblaws initiative.',
       contentSections: [
         {
-          heading: "Problem Discovery Definition & Goal Setting",
-          body: [
-            "We collaborated as a cross functional team to ensure that the core problem declining consumer trust due to ambiguous product origin labeling was well defined and rooted in objective user needs. We facilitated discovery sessions to align our team around clearly defined problem statements ultimately establishing the goal of building transparent trustworthy in store communication."
-          ],
+          heading: "The Context & Challenge",
           image: '/case-studies/loblaws/2.png'
         },
         {
-          heading: "Interaction Design & User Flows",
-          body: [
-            "Applying interaction design processes we focused on the interplay between words visuals space and behavior. We mapped out the shoppers journey creating user stories and service blueprints for distinct personas. This helped us pinpoint exactly where and how a physical shelf level display could intervene to build trust and recognize Canadian made products effortlessly."
-          ],
+          image: '/case-studies/loblaws/4.png'
+        },
+        {
+          heading: "Scoping the Solution",
           image: '/case-studies/loblaws/5.png'
         },
         {
-          heading: "Design Systems Thinking & Prototyping",
-          body: [
-            "Our solution heavily relied on Design Systems Thinking. We ensured that our design solutions utilized a consistent visual system leveraging recognizable patterns while proposing scalable bilingual solutions. We used prototyping tools utilizing components and auto layout to quickly iterate on high fidelity visual designs that matched Loblaws established brand tone and personality."
+          image: '/case-studies/loblaws/6.png'
+        },
+        {
+          heading: "User Stories",
+          list: [
+             "Canadian shopper: I want to easily see where a product was made in Canada so that I can support local producers/farmers.",
+             "Canadian shopper: I want to access a product's information in-store to learn how and where it was prepared so that I feel confident in its origin.",
+             "Shopper with low vision: I want tactile and easy to understand shelf cues so that I can easily access origin details and shop comfortably.",
+             "Busy shopper: I want to quickly identify Canadian-made products so that I can spend less time deciding between products.",
+             "Store employee: I want to clearly tag and display Canadian-made products so that shoppers can easily identify them without needing my help.",
+             "Store manager: I want to know which products shoppers interact with most so that I can optimize placement and promotions for Canadian-made items."
+          ],
+          image: '/case-studies/loblaws/7.png'
+        },
+        {
+          heading: "Sprint Backlog",
+          list: [
+             "1. Review and take note of existing labeling and in-store displays.",
+             "2. Define existing imagery or symbols/visual cues that represent Canadian branding (i.e. colors, maple leaf icons).",
+             "3. Sketch rough low-fidelity concepts of what the shelf-level display could look like.",
+             "4. Design and craft a 3D prototype imitating how the display would look/fit on a shelf of products.",
+             "5. Consider simple accessibility features that could be incorporated into the prototype.",
+             "6. Test with family members/friends or consult with AI to conduct user testing.",
+             "7. Consider testing results to finalize the features of the display.",
+             "8. Finalize the low-fidelity prototype and summarize findings."
+          ],
+          image: '/case-studies/loblaws/8.png'
+        },
+        {
+          heading: "Acceptance Criteria",
+          list: [
+             "Canadian shopper (see origin easily): Product origin must be clearly visible on product detail page, origin label must be readable at a glance.",
+             "Canadian shopper (access info in-store): Tags/QR codes must link to accurate origin & preparation info, Info must load quickly and be easy to understand.",
+             "Busy shopper (quick identification): Canadian-made products must have a distinct, instantly recognizable visual cue on shelves, Cue must work even among crowded displays.",
+             "Shopper with low vision (tactile cues): Tactile or high-contrast tags/icons must indicate origin, Braille or raised elements must be easy to locate by touch.",
+             "Store employee (clear tagging process): Tagging steps must be simple, intuitive, and prevent user error, Employees must be able to confirm correct placement.",
+             "Store manager (track engagement): System must track shopper interaction data accurately, Manager dashboard must display top-interacted Canadian-made products."
           ],
           image: '/case-studies/loblaws/9.png'
         },
         {
-          heading: "Inclusive Design & Accessibility",
-          body: [
-            "We prioritized Inclusive Design to ensure that our solutions could be experienced by everyone. We applied a deep understanding of accessibility requirements intentionally designing tactile cues high contrast colors and Braille integration to support shoppers with low vision proving that accessibility goes beyond legal requirements to fundamentally improve the product for everyone."
-          ],
-          image: '/case-studies/loblaws/12.png'
+          heading: "The Ecosystem Solution",
+          image: '/case-studies/loblaws/14.png'
         },
         {
-          heading: "Cross Functional Collaboration & Agile Sprints",
-          body: [
-            "Throughout the project we maintained strong cross functional collaboration. Operating in one week Agile Sprints the Product Management and Design teams maintained tight feedback loops. We acted as Candid Collaborators providing clear and direct feedback challenging norms and testing assumptions through early user research to validate our concepts before finalizing the low fidelity and high fidelity prototypes."
+          image: '/case-studies/loblaws/15.png'
+        },
+        {
+          image: '/case-studies/loblaws/20.png'
+        },
+        {
+          heading: "Team Reflection: Charter",
+          list: [
+             "How it Supported us: Helped us keep track of tasks, roles, and responsibilities; Encouraged consistent communication and weekly check-ins; Set clear behavioural expectations and strengthened accountability; Provided a visual overview of the project scope and kept us aligned with deliverables; Guided Product Owners in maintaining the product backlog and criteria for sprint work.",
+             "What we Learned: Helped identify team strengths and weaknesses, keeping us mindful of expectations; Supported our progress by showing where we were in the process and what was coming next; Contributed to the successful organization and execution of all Sprints.",
+             "Challenges we Noticed: Limited expertise in assigned roles made it difficult to fully apply some parts of the charter; Relying only on the charter sometimes felt restrictive when we lacked full role understanding."
+          ],
+          image: '/case-studies/loblaws/21.png'
+        },
+        {
+          heading: "What Worked Well and What Didn't Work Well",
+          image: '/case-studies/loblaws/22.png'
+        },
+        {
+          image: '/case-studies/loblaws/23.png'
+        },
+        {
+          heading: "Sprint Review",
+          list: [
+             "Walk through user stories to show alignment with How Might We + acceptance criteria.",
+             "Connect each user story to final design features.",
+             "Show iteration: sketches -> low-fidelity -> final prototype.",
+             "Highlight improvements made through feedback.",
+             "Demo final increment: shelf-tag system + employee handbook.",
+             "Present in a store-like display to simulate real shelf complexity."
           ],
           image: '/case-studies/loblaws/24.png'
         },
         {
+          heading: "Acceptance Criteria & Definition of Done",
+          list: [
+             "Relied on our acceptance criteria and definition of done to give weekly feedback to the development team.",
+             "At times was challenging to provide feedback without revisiting and double-checking the criteria we had set.",
+             "Some product backlog items needed adjustment as situations changed. (Example: When the team couldn't test prototypes on real store shelves, we revised the backlog to focus on testing printed prototypes in home environments instead.)",
+             "What to Improve for the Future: Revisit acceptance criteria more often to ensure they stay realistic and aligned with constraints.",
+             "What to Improve for the Future: Build in flexibility for exploratory testing or unexpected limitations.",
+             "What to Improve for the Future: Provide clearer guidance on how minor deviations from the definition of done should be handled."
+          ],
+          image: '/case-studies/loblaws/25.png'
+        },
+        {
+          heading: "Key Takeaways",
+          list: [
+            "Staying Within Role Boundaries: Clear separation between Product Owners and Scrum Masters. Product Owners: set vision + prioritize backlog. Scrum Masters: support team + remove obstacles. Impact: improved efficiency, clarity, and teamwork",
+            "Importance of Timing in One-Week Sprints: With quickly moving sprints, it was important to stay ahead. Early feedback and preparation prevented last-minute pressure. Impact: Maintained momentum and reduced stress for the Project Managers and the Development Team",
+            "Power of Effective Communication: Communication between the Product Management team and the Development Team was key. Strong communication led to smooth execution and a confident team. Kept all members aligned with the team goal. Impact: Ensured alignment and consistent progress"
+          ],
           image: '/case-studies/loblaws/26.png'
+        },
+        {
+          heading: "Conclusion",
+          list: [
+             "Valuable Agile Introduction: Hands-on experience with agile project management.",
+             "Overcoming Challenges: Adapted to early issues with meeting structure, role, clarity, and assumption testing.",
+             "Importance of Team Structure: Clear roles, communication, and processes guided us to success.",
+             "Refined Project Approach: Strengthened HMW statement, improved user stories, and collaborated with the Development Team.",
+             "Lessons we Learned: Enhanced understanding of agile practices; highlighted organization, transparency, and responsiveness."
+          ],
+          image: '/case-studies/loblaws/27.png'
         }
       ]
     },
@@ -224,68 +320,142 @@ export default function CaseStudy() {
       description: 'UI & Marketing Case Study for the Indigo Bookstore App.',
       contentSections: [
         {
+          heading: "Sprint Overview",
+          subheading: "Project Details & Roles",
+          list: [
+            "Duration: 1 week (Self - Initiated)",
+            "My Roles: UI Designer + Marketing Lead, Prototyper",
+            "Addressed to: Seyfi Atasoy (Talent Acquisition Manager | Indigo)"
+          ],
+          image: '/case-studies/indigo/1.png'
+        },
+        {
           heading: "The Opportunity",
-          subheading: "Understanding what's missing in the current Indigo app experience.",
+          subheading: "Indigo is more than just a bookstore.",
           body: [
-            "Indigo isn't just a bookstore - it's a lifestyle. However, the app experience didn't reflect the emotional connection of reading or the in-store 'third space' vibe. Readers felt alone in digital spaces, with no sense of shared discovery, leading to low repeat engagement after purchase."
-          ]
-        },
-        {
-          heading: "The Big Idea: Custom Book Clubs",
-          body: [
-            "A feature that lets users create, join, and personalize book clubs within the Indigo app. The core idea is to bring back the joy of reading together - digitally."
+            "But the app experience doesn’t reflect the emotional connection of reading or the in-store “third space” vibe."
           ],
           list: [
-            "Create a club (public or private)",
-            "Customize name, vibe, genre, and invite friends",
-            "Discuss, share reactions, and set reading timelines",
-            "Earn rewards by finishing books as a group"
-          ],
-          image: '/case-studies/indigo-flow.png'
-        },
-        {
-          heading: "Product & Marketing Goals",
-          list: [
-            "UX Goals: Increase app session time, drive emotional engagement with social features, and personalize the user journey.",
-            "Marketing Goals: Create shareable hooks for attracting users, position Indigo as a lifestyle brand, and create a community 'third space' that users desire."
+              "Readers feel alone in digital spaces",
+              "No sense of shared discovery",
+              "Low repeat engagement after purchase"
           ]
         },
         {
-          heading: "User Persona: Amy",
-          body: [
-            "Amy is a 26-year-old Social Media Coordinator in Toronto. She's a horror-loving, creative bookworm who posts regularly on BookTok. Reading is both a personal escape and a social hobby."
-          ],
-          list: [
-            "Pain Points: Uses multiple apps to manage book clubs, feels recs aren't tailored to her taste, wants a more social Indigo app experience.",
-            "Goals: Connect with friends through reading, discover curated horror recommendations, build her TikTok presence, and support Indigo as her go-to bookstore."
-          ]
+          heading: "Product Goals",
+          subheading: "For UX/Product",
+            list: [
+                "Increase app session time & DAUs",
+                "Drive emotional engagement with social features",
+                "Personalize the user journey"
+            ],
+          image: '/case-studies/indigo/3.png'
         },
         {
-          heading: "Design Direction & Visual Style",
-          body: [
-            "Using Indigo's typography (Futura & Apris-Regular), we utilized branded colors with a vibrant accent for 'club' tags. We opted for rounded cards and soft UI elements to feel warm and inviting, consistent with Indigo's in-store sensory brand."
-          ]
+          heading: "Marketing Goals",
+          subheading: "For Marketing",
+            list: [
+                "Create shareable hooks for attracting users",
+                "Position Indigo as a lifestyle brand, not just a retailer",
+                "Creating a community/“third space” that users desire"
+            ]
         },
         {
-          heading: "Original Ideation & Systems Thinking",
-          body: [
-            "This project relied entirely on original conceptualization and human-centered design principles. I utilized Figma's Auto Layout and components to rapidly generate and iterate on visual UI elements that seamlessly fit the Indigo brand, ensuring every screen felt meticulously crafted and cohesive without the use of AI generation."
-          ]
+            heading: "Meet Amy",
+            body: [
+                "Name: Amy",
+                "Age: 26",
+                "Location: Toronto, Canada",
+                "Job Title: Social Media Coordinator",
+                "Plum+ Member: ✅",
+                "Tech Comfort: High"
+            ],
+            list: [
+                "About Amy: A horror-loving, creative bookworm who posts regularly on BookTok. She enjoys shopping at Indigo, especially during seasonal events, and often reads with friends. Reading is both a personal escape and a social hobby for Amy."
+            ],
+            image: '/case-studies/indigo/5.png'
         },
         {
-          heading: "Growth Strategy & Projected Impact",
-          list: [
-            "Social Media Growth: Share your book club on TikTok or IG ('Join our June Thriller Club!').",
-            "Referrals: Invite 3 friends to unlock $5 off your next read.",
-            "Retention: Weekly badges (e.g., 'Page Turner', 'Host Hero') and push campaigns for new book picks.",
-            "Projected Impact: Increased repeat app usage through social accountability, higher book sales via club recommendations, and stronger emotional loyalty leveraging Plum Rewards."
-          ]
+            heading: "Pain Points & Goals",
+            list: [
+                "Pain Points: No easy way to organize group reads, Uses multiple apps to manage book clubs, Feels recs aren’t tailored to her taste, Wants a more social Indigo app experience",
+                "Goals: Connect with friends through reading, Discover curated horror recs, Build her TikTok presence, Support Indigo as her go-to bookstore"
+            ],
+            image: '/case-studies/indigo/6.png'
+        },
+        {
+            heading: "Visual Style and Brand Fit",
+            list: [
+                "Using Indigo’s typeface (Futura & Apris-Regular)",
+                "Branded colour with vibrant accent for “club” tags",
+                "Rounded cards and soft UI elements to feel warm & inviting",
+                "Consistent with Indigo’s in-store sensory brand and current app design"
+            ],
+            image: '/case-studies/indigo/7.png'
+        },
+        {
+            heading: "User Flow",
+            image: '/case-studies/indigo/8.png'
+        },
+        {
+            heading: "How it Works",
+            subheading: "User Flow:",
+            list: [
+                "Tap “Book Clubs” tab",
+                "Browse public clubs (created by Indigo) or start your own",
+                "Customize club: name, photo, tags, invite",
+                "Add a current read + timeline",
+                "Get alerts: “2 days left to finish,” “New chapter discussion posted”",
+                "Earn Plum points for completing a club book"
+            ],
+            image: '/case-studies/indigo/9.png'
+        },
+        {
+            heading: "Social Media Growth & Promotion Opportunities",
+            list: [
+                "Share your book club on TikTok or IG: “Join our June Thriller Club!”",
+                "Weekly badges (e.g. “Page Turner”, “Host Hero”)",
+                "Invite 3 friends = unlock $5 off next read",
+                "Push campaigns: “Your club just picked a new book!”"
+            ],
+            image: '/case-studies/indigo/10.png'
+        },
+        {
+            heading: "Projected Impact",
+            list: [
+                "Repeat app use ↑ through social accountability",
+                "Book sales ↑ via club recommendations",
+                "User acquisition ↑ via shareable, invite-based model",
+                "Plum Rewards ↔ community = emotional loyalty"
+            ],
+            image: '/case-studies/indigo/11.png'
+        },
+        {
+            heading: "Let's Make Reading Social Again",
+            body: [
+                "With Book Clubs, Indigo becomes more than a retailer, it becomes a digital community for readers.",
+                "I’d love to bring this idea to your team and help Indigo build a product that people don’t just use, but return back to.",
+                "Thank you for your time and consideration, I would love to hear from you!"
+            ],
+            list: [
+                "Contact:",
+                "LinkedIn",
+                "faizahaquee@gmail.com"
+            ],
+            image: '/case-studies/indigo/12.png'
         }
       ]
     },
     'airbnb': {
       title: 'Airbnb Feasibility Analysis',
       pdf: '/case-studies/Feasibility Analysis (airbnb).pdf',
+      images: [
+          '/case-studies/airbnb slides/5. Market Identification.png',
+          '/case-studies/airbnb slides/7. Org. Structure.png',
+          '/case-studies/airbnb slides/8. Project Schedule.png',
+          '/case-studies/airbnb slides/9. Financial Projections.png',
+          '/case-studies/airbnb slides/AIRBNB Comparative Evaluation Matrix.png'
+      ],
       description: 'A comprehensive feasibility analysis focusing on UX research and business strategy for Airbnb.',
       contentSections: [
         {
@@ -312,27 +482,169 @@ export default function CaseStudy() {
           ]
         },
         {
-          heading: "Marketplace & Identification",
+          heading: "Marketplace",
           body: [
             "Targeting the growing short-term rental market (projected to reach $142.55B by 2026), native video walkthroughs can reduce 'not as described' refund claims, potentially boosting profitability by 14% per listing.",
             "With nearly 60% of buyers preferring properties with 360-degree or video walkthroughs, this integration would give Airbnb a significant competitive edge over Vrbo and Booking.com."
           ]
         },
         {
+            heading: "Market Identification",
+            image: "/case-studies/airbnb slides/5. Market Identification.png"
+        },
+        {
+          heading: "Comparative Evaluation Matrix",
+          body: [
+            "We conducted a Comparative Evaluation Matrix on three cases to find which one is the most feasible based on the following factors. Because UX cases can be used as a means to business value, not just aesthetics."
+          ],
+          image: '/case-studies/airbnb slides/AIRBNB Comparative Evaluation Matrix.png'
+        },
+        {
           heading: "Organization Structure",
           body: [
             "The project utilizes a matrix-style collaboration built within Airbnb's existing structure rather than creating a new organization.",
             "Key teams include Engineering, UX Design, Research and Testing, Trust & Safety, and Marketing, all coordinated by a Product/Project Manager under the guidance of Airbnb Strategic Leadership."
-          ]
+          ],
+          image: '/case-studies/airbnb slides/7. Org. Structure.png'
         },
         {
-          heading: "Financial Projections",
+          heading: "The Context & Challenge",
+          subheading: "Business Overview & Core Problem",
+          image: '/case-studies/loblaws/2.png'
+        },
+        {
+          subheading: "How Might We",
+          image: '/case-studies/loblaws/4.png'
+        },
+        {
+          heading: "Scoping the Solution",
+          subheading: "Product Backlog",
+          image: '/case-studies/loblaws/5.png'
+        },
+        {
+          subheading: "Product Backlog (Continued)",
+          image: '/case-studies/loblaws/6.png'
+        },
+        {
+          heading: "User Stories",
+          subheading: "Defining User Needs",
           list: [
-            "Based on a $4.6M investment and an expected platform-wide conversion lift of 0.20%.",
-            "Conservative Case (10% adoption): -7.5% ROI",
-            "Break Even (11.6% adoption): 0.05% ROI",
-            "Base Case (25% adoption): $5.5M Incremental Revenue, $1.25M Incremental Net Income, achieving a 32.5% ROI."
-          ]
+             "Canadian shopper: I want to easily see where a product was made in Canada so that I can support local producers/farmers.",
+             "Canadian shopper: I want to access a product's information in-store to learn how and where it was prepared so that I feel confident in its origin.",
+             "Shopper with low vision: I want tactile and easy to understand shelf cues so that I can easily access origin details and shop comfortably.",
+             "Busy shopper: I want to quickly identify Canadian-made products so that I can spend less time deciding between products.",
+             "Store employee: I want to clearly tag and display Canadian-made products so that shoppers can easily identify them without needing my help.",
+             "Store manager: I want to know which products shoppers interact with most so that I can optimize placement and promotions for Canadian-made items."
+          ],
+          image: '/case-studies/loblaws/7.png'
+        },
+        {
+          heading: "Sprint Backlog",
+          subheading: "Project Tasks",
+          list: [
+             "1. Review and take note of existing labeling and in-store displays.",
+             "2. Define existing imagery or symbols/visual cues that represent Canadian branding (i.e. colors, maple leaf icons).",
+             "3. Sketch rough low-fidelity concepts of what the shelf-level display could look like.",
+             "4. Design and craft a 3D prototype imitating how the display would look/fit on a shelf of products.",
+             "5. Consider simple accessibility features that could be incorporated into the prototype.",
+             "6. Test with family members/friends or consult with AI to conduct user testing.",
+             "7. Consider testing results to finalize the features of the display.",
+             "8. Finalize the low-fidelity prototype and summarize findings."
+          ],
+          image: '/case-studies/loblaws/8.png'
+        },
+        {
+          heading: "Acceptance Criteria",
+          subheading: "Definition of Success",
+          list: [
+             "Canadian shopper (see origin easily): Product origin must be clearly visible on product detail page, origin label must be readable at a glance.",
+             "Canadian shopper (access info in-store): Tags/QR codes must link to accurate origin & preparation info, Info must load quickly and be easy to understand.",
+             "Busy shopper (quick identification): Canadian-made products must have a distinct, instantly recognizable visual cue on shelves, Cue must work even among crowded displays.",
+             "Shopper with low vision (tactile cues): Tactile or high-contrast tags/icons must indicate origin, Braille or raised elements must be easy to locate by touch.",
+             "Store employee (clear tagging process): Tagging steps must be simple, intuitive, and prevent user error, Employees must be able to confirm correct placement.",
+             "Store manager (track engagement): System must track shopper interaction data accurately, Manager dashboard must display top-interacted Canadian-made products."
+          ],
+          image: '/case-studies/loblaws/9.png'
+        },
+        {
+          heading: "The Ecosystem Solution",
+          subheading: "Sprint 2 Feedback",
+          image: '/case-studies/loblaws/14.png'
+        },
+        {
+          subheading: "Sprint 3 Deliverables",
+          image: '/case-studies/loblaws/15.png'
+        },
+        {
+          subheading: "Sprint 4 Final Deliverables",
+          image: '/case-studies/loblaws/20.png'
+        },
+        {
+          heading: "Team Reflection: Charter",
+          subheading: "Reviewing our Process",
+          list: [
+             "How it Supported us: Helped us keep track of tasks, roles, and responsibilities; Encouraged consistent communication and weekly check-ins; Set clear behavioural expectations and strengthened accountability; Provided a visual overview of the project scope and kept us aligned with deliverables; Guided Product Owners in maintaining the product backlog and criteria for sprint work.",
+             "What we Learned: Helped identify team strengths and weaknesses, keeping us mindful of expectations; Supported our progress by showing where we were in the process and what was coming next; Contributed to the successful organization and execution of all Sprints.",
+             "Challenges we Noticed: Limited expertise in assigned roles made it difficult to fully apply some parts of the charter; Relying only on the charter sometimes felt restrictive when we lacked full role understanding."
+          ],
+          image: '/case-studies/loblaws/21.png'
+        },
+        {
+          heading: "What Worked Well and What Didn't Work Well",
+          subheading: "Challenges",
+          image: '/case-studies/loblaws/22.png'
+        },
+        {
+          subheading: "Scrum Meetings",
+          image: '/case-studies/loblaws/23.png'
+        },
+        {
+          heading: "Sprint Review",
+          subheading: "Final Presentation",
+          list: [
+             "Walk through user stories to show alignment with How Might We + acceptance criteria.",
+             "Connect each user story to final design features.",
+             "Show iteration: sketches -> low-fidelity -> final prototype.",
+             "Highlight improvements made through feedback.",
+             "Demo final increment: shelf-tag system + employee handbook.",
+             "Present in a store-like display to simulate real shelf complexity."
+          ],
+          image: '/case-studies/loblaws/24.png'
+        },
+        {
+          heading: "Acceptance Criteria & Definition of Done",
+          subheading: "Evaluating Outcomes",
+          list: [
+             "Relied on our acceptance criteria and definition of done to give weekly feedback to the development team.",
+             "At times was challenging to provide feedback without revisiting and double-checking the criteria we had set.",
+             "Some product backlog items needed adjustment as situations changed. (Example: When the team couldn't test prototypes on real store shelves, we revised the backlog to focus on testing printed prototypes in home environments instead.)",
+             "What to Improve for the Future: Revisit acceptance criteria more often to ensure they stay realistic and aligned with constraints.",
+             "What to Improve for the Future: Build in flexibility for exploratory testing or unexpected limitations.",
+             "What to Improve for the Future: Provide clearer guidance on how minor deviations from the definition of done should be handled."
+          ],
+          image: '/case-studies/loblaws/25.png'
+        },
+        {
+          heading: "Key Takeaways",
+          subheading: "Lessons Learned",
+          list: [
+            "Staying Within Role Boundaries: Clear separation between Product Owners and Scrum Masters. Product Owners: set vision + prioritize backlog. Scrum Masters: support team + remove obstacles. Impact: improved efficiency, clarity, and teamwork",
+            "Importance of Timing in One-Week Sprints: With quickly moving sprints, it was important to stay ahead. Early feedback and preparation prevented last-minute pressure. Impact: Maintained momentum and reduced stress for the Project Managers and the Development Team",
+            "Power of Effective Communication: Communication between the Product Management team and the Development Team was key. Strong communication led to smooth execution and a confident team. Kept all members aligned with the team goal. Impact: Ensured alignment and consistent progress"
+          ],
+          image: '/case-studies/loblaws/26.png'
+        },
+        {
+          heading: "Conclusion",
+          subheading: "Project Wrap-up",
+          list: [
+             "Valuable Agile Introduction: Hands-on experience with agile project management.",
+             "Overcoming Challenges: Adapted to early issues with meeting structure, role, clarity, and assumption testing.",
+             "Importance of Team Structure: Clear roles, communication, and processes guided us to success.",
+             "Refined Project Approach: Strengthened HMW statement, improved user stories, and collaborated with the Development Team.",
+             "Lessons we Learned: Enhanced understanding of agile practices; highlighted organization, transparency, and responsiveness."
+          ],
+          image: '/case-studies/loblaws/27.png'
         }
       ]
     }
@@ -352,8 +664,8 @@ export default function CaseStudy() {
         }
       }
       
-      // Prioritize PDF if it's the loblaws case study
-      if (id === 'loblaws' && caseStudy.pdf) {
+      // Prioritize PDF if it's the loblaws or airbnb case study
+      if ((id === 'loblaws' || id === 'airbnb') && caseStudy.pdf) {
         setActiveMedia({ type: 'pdf', src: caseStudy.pdf });
         return;
       }
@@ -418,13 +730,15 @@ export default function CaseStudy() {
                   View Prototype Video
                 </button>
               )}
-              {caseStudy.figmaLink && (
-                <button 
-                  onClick={() => setActiveMedia({ type: 'figma', src: caseStudy.figmaLink! })}
-                  className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'figma' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
+              {caseStudy.figmaLink && id !== 'airbnb' && (
+                <a 
+                  href={caseStudy.figmaLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors border border-black text-black hover:bg-black hover:text-white"
                 >
-                  View Figma Prototype
-                </button>
+                  View Figma Prototype ↗
+                </a>
               )}
               {caseStudy.miroLink && (
                 <a 
@@ -441,7 +755,7 @@ export default function CaseStudy() {
                   onClick={() => setActiveMedia({ type: 'pdf', src: caseStudy.pdf! })}
                   className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'pdf' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
                 >
-                  {id === 'loblaws' ? 'View PDF Slideshow' : 'View PDF Doc'}
+                  {id === 'loblaws' || id === 'airbnb' ? 'View PDF Slideshow' : 'View PDF Doc'}
                 </button>
               )}
             </div>
@@ -488,7 +802,8 @@ export default function CaseStudy() {
                            key={activeMedia.src}
                            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
                            src={activeMedia.src} alt="Visual Artifact" 
-                           className="w-full h-full object-contain rounded-2xl"
+                           className="w-full h-full object-contain rounded-2xl cursor-zoom-in"
+                           onClick={() => setFullScreenImage(activeMedia.src)}
                         />
                      )}
                   </AnimatePresence>
@@ -545,14 +860,20 @@ export default function CaseStudy() {
                       {/* Inline Image for Context */}
                       {section.image && (
                         <div 
-                          className="mt-6 mb-8 cursor-pointer rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-shadow group"
-                          onClick={() => setActiveMedia({ type: 'image', src: section.image! })}
+                          className="mt-6 mb-8 cursor-zoom-in rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-shadow group relative"
+                          onClick={() => {
+                            setActiveMedia({ type: 'image', src: section.image! });
+                            setFullScreenImage(section.image!);
+                          }}
                         >
                           <img 
                             src={section.image} 
                             alt={section.heading} 
                             className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                           />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <span className="bg-white/90 text-black px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-sm shadow-lg">View Full Screen</span>
+                          </div>
                         </div>
                       )}
                     </motion.div>
@@ -573,10 +894,14 @@ export default function CaseStudy() {
                       })}
                       viewport={{ margin: "-40% 0px -40% 0px" }}
                       className="cursor-pointer group flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-[#FF8CD1] hover:bg-pink-50/50 transition-colors"
-                      onClick={() => setActiveMedia({
-                        type: img.endsWith('.mp4') || img.endsWith('.mov') ? 'video' : 'image',
-                        src: img
-                      })}
+                      onClick={() => {
+                        const isVideo = img.endsWith('.mp4') || img.endsWith('.mov');
+                        setActiveMedia({
+                          type: isVideo ? 'video' : 'image',
+                          src: img
+                        });
+                        if (!isVideo) setFullScreenImage(img);
+                      }}
                     >
                       <span className="text-sm font-sans font-bold text-gray-600 group-hover:text-black transition-colors uppercase tracking-widest">
                         {img.endsWith('.mp4') || img.endsWith('.mov') ? 'Video Asset' : 'Image Asset'} {idx + 1}
@@ -590,6 +915,25 @@ export default function CaseStudy() {
           </div>
         </motion.div>
       </div>
+
+      {/* Full Screen Image Modal */}
+      <AnimatePresence>
+        {fullScreenImage && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8 cursor-zoom-out"
+            onClick={() => setFullScreenImage(null)}
+          >
+            <img 
+              src={fullScreenImage} 
+              alt="Full screen view" 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
