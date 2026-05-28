@@ -492,6 +492,20 @@ export default function CaseStudy() {
             "Key teams include Engineering, UX Design, Research and Testing, Trust & Safety, and Marketing, all coordinated by a Product/Project Manager under the guidance of Airbnb Strategic Leadership."
           ],
           image: '/case-studies/airbnb slides/7. Org. Structure.png'
+        },
+        {
+            heading: "Project Schedule",
+            image: "/case-studies/airbnb slides/8. Project Schedule.png"
+        },
+        {
+          heading: "Financial Projections",
+          list: [
+            "Based on a $4.6M investment and an expected platform-wide conversion lift of 0.20%.",
+            "Conservative Case (10% adoption): -7.5% ROI",
+            "Break Even (11.6% adoption): 0.05% ROI",
+            "Base Case (25% adoption): $5.5M Incremental Revenue, $1.25M Incremental Net Income, achieving a 32.5% ROI."
+          ],
+          image: '/case-studies/airbnb slides/9. Financial Projections.png'
         }
       ]
     }
