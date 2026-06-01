@@ -287,7 +287,7 @@ export default function CaseStudy() {
           heading: "Key Takeaways",
           subheading: "Lessons Learned",
           body: [
-            "This sprint process underscored the importance of strong boundaries, timing, and communication. By clearly separating the visionary role of the Product Owner from the supportive, unblocking role of the Scrum Master, we achieved better efficiency and clarity. Additionally, preparing feedback early in the fast-paced one-week sprints prevented last-minute pressure, while open communication kept both management and development teams confidently aligned."
+            "This sprint process highlighted the importance of strong boundaries, timing, and communication. By clearly separating the visionary role of the Product Owner from the supportive, unblocking role of the Scrum Master, we achieved better efficiency and clarity. Additionally, preparing feedback early in the fast-paced one-week sprints prevented last-minute pressure, while open communication kept both management and development teams confidently aligned."
           ],
           image: '/case-studies/loblaws/26.png'
         },
@@ -475,6 +475,13 @@ export default function CaseStudy() {
       ],
       description: 'A comprehensive feasibility analysis focusing on UX research and business strategy for Airbnb.',
       contentSections: [
+        {
+          heading: "Project Overview",
+          list: [
+            "Duration: 16 weeks",
+            "Role: UX Market Research"
+          ]
+        },
         {
           heading: "Executive Summary",
           body: [
