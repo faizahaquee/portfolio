@@ -46,6 +46,17 @@ const allCaseStudies = [
       src: '/logos/Vector.png',
       size: '50px',
     }
+  },
+  {
+    id: 'aida',
+    title: 'Aida',
+    type: 'Health & Caregiver Tracking App',
+    coverImg: '/case-studies/aida/Opening App Screen.png',
+    device: 'mobile-new',
+    logo: {
+      src: '/logos/aida-logo.png',
+      size: '40px',
+    }
   }
 ];
 

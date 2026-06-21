@@ -546,6 +546,101 @@ export default function CaseStudy() {
           image: '/case-studies/airbnb slides/9. Financial Projections.png'
         }
       ]
+    },
+    'aida': {
+      title: 'Aida AgeTech Expo',
+      pdf: '/case-studies/aida/Aida.pdf',
+      figmaLink: 'https://www.figma.com/proto/zggkbVpGLIkuJ3USRzxX3C/Aida---AgeTech-Expo?node-id=1-102&t=ayS3ueMNz5EyXL4i-1',
+      description: 'A one-stop platform helping caregivers stay focused on care by simplifying learning, tracking, and coordination through AI-driven assistance.',
+      contentSections: [
+        {
+          heading: "Our Mission",
+          subheading: "The Problem & Solution",
+          body: [
+            "Many individuals are thrown into caregiving without training, resulting in severe mental health effects for 74% of caregivers. While education exists, it is often hard to access and coordinate in real-time.",
+            "Our solution, Aida, is a one-stop platform that offers bite-sized learning, an AI chatbot for instant guidance, a collaborative care log, and smart suggestions based on caregiver needs."
+          ],
+          image: '/case-studies/aida/3.png'
+        },
+        {
+          heading: "Product Overview",
+          subheading: "Aida Interface",
+          body: [
+            "Aida features an intuitive Search Engine, a 'Your Bubble' collaborative space, Profile management, and extensive Accessibility settings to support caregivers comprehensively."
+          ],
+          image: '/case-studies/aida/4.png'
+        },
+        {
+          heading: "Education",
+          subheading: "Philosophy & Materials",
+          body: [
+            "Aida provides quick, easy, AI-suggested content perfect for busy caregivers, helping them learn about topics from bed sores to dementia without struggling to make lesson plans.",
+            "Materials include videos, animations, quizzes, and simulations, outsourced to knowledge partners for high-quality, reputable educational content."
+          ],
+          image: '/case-studies/aida/5.png'
+        },
+        {
+          heading: "Tracking Capabilities",
+          subheading: "Physical & Bubble Tracking",
+          body: [
+            "Caregivers can use pre-made buttons for commonly tracked symptoms, enabling easy logging and physical tracking. The 'Bubble Tracking' ensures that all logged information is readily available and updated for everyone involved in the care recipient's circle."
+          ],
+          image: '/case-studies/aida/6.png'
+        },
+        {
+          subheading: "AI Tracking Integration",
+          body: [
+            "Aida’s AI summarizes notes from chats to create daily logged symptoms, finds and presents trends, and notifies caregivers of changes. It uses these symptoms to suggest tailored educational content dynamically."
+          ],
+          image: '/case-studies/aida/7.png'
+        },
+        {
+          heading: "AI Integration",
+          subheading: "GPT-4 Implementation",
+          body: [
+            "Powered by GPT-4, Aida features a chatbot that accepts text and photo inputs, provides educational summaries, and updates responses based on caregiver interactions.",
+            "The model is trained on pre-existing information from our knowledge partners and caregiver-logged symptoms."
+          ],
+          image: '/case-studies/aida/8.png'
+        },
+        {
+          heading: "Our Future Path",
+          subheading: "Seed to Growth Roadmap",
+          body: [
+            "We are planning an evolution from the Pre-Seed stage (partnering with universities and licensing AI) through the Seed stage (continuous AI training and personalized prompts) to the Growth stage (syncing wearable data and expanding to healthcare organizations)."
+          ],
+          image: '/case-studies/aida/9.png'
+        },
+        {
+          heading: "Knowledge Partners",
+          subheading: "Academic Support",
+          body: [
+            "Aida is supported by renowned institutions like Schlegel Villages, McMaster University (MIRA), University of Toronto, and the Canadian Institute of Health Research, specializing in aging, dementia, and life course research."
+          ],
+          image: '/case-studies/aida/11.png'
+        },
+        {
+          heading: "Funding & Production",
+          subheading: "Financial Backing & Content Creation",
+          body: [
+            "We have identified key funding sources such as Age-Well, IA Knowledge Mobilization, and envisAGE to support development.",
+            "Production partners like broadcast2world, AXS Studio, and MVP will provide the necessary animations, AR simulations, and interactive e-learning modules."
+          ],
+          image: '/case-studies/aida/12.png'
+        },
+        {
+          subheading: "Production Companies",
+          image: '/case-studies/aida/13.png'
+        },
+        {
+          heading: "System Architecture",
+          subheading: "AI-driven Care Assistant",
+          body: [
+            "Aida combines context from caregiver logs, natural language Q&A, and empathetic guidance. It uses a structured prompt constructor feeding into an LLM (GPT-4) to generate caregiver-facing UI chat reports, explanations, and safety advice."
+          ],
+          image: '/case-studies/aida/14.png'
+        }
+      ]
     }
   };
 
@@ -563,8 +658,8 @@ export default function CaseStudy() {
         }
       }
       
-      // Prioritize PDF if it's the loblaws or airbnb case study
-      if ((id === 'loblaws' || id === 'airbnb') && caseStudy.pdf) {
+      // Prioritize PDF if it's the loblaws, airbnb, or aida case study
+      if ((id === 'loblaws' || id === 'airbnb' || id === 'aida') && caseStudy.pdf) {
         setActiveMedia({ type: 'pdf', src: caseStudy.pdf });
         return;
       }
@@ -654,7 +749,7 @@ export default function CaseStudy() {
                   onClick={() => setActiveMedia({ type: 'pdf', src: caseStudy.pdf! })}
                   className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'pdf' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
                 >
-                  {id === 'loblaws' || id === 'airbnb' ? 'View PDF Slideshow' : 'View PDF Doc'}
+                  {id === 'loblaws' || id === 'airbnb' || id === 'aida' ? 'View PDF Slideshow' : 'View PDF Doc'}
                 </button>
               )}
             </div>
