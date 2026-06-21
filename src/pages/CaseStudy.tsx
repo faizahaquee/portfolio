@@ -658,8 +658,8 @@ export default function CaseStudy() {
         }
       }
       
-      // Prioritize PDF if it's the loblaws, airbnb, or aida case study
-      if ((id === 'loblaws' || id === 'airbnb' || id === 'aida') && caseStudy.pdf) {
+      // Prioritize PDF if it's the loblaws or airbnb case study
+      if ((id === 'loblaws' || id === 'airbnb') && caseStudy.pdf) {
         setActiveMedia({ type: 'pdf', src: caseStudy.pdf });
         return;
       }
@@ -745,12 +745,23 @@ export default function CaseStudy() {
                 </a>
               )}
               {caseStudy.pdf && (
-                <button 
-                  onClick={() => setActiveMedia({ type: 'pdf', src: caseStudy.pdf! })}
-                  className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'pdf' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
-                >
-                  {id === 'loblaws' || id === 'airbnb' || id === 'aida' ? 'View PDF Slideshow' : 'View PDF Doc'}
-                </button>
+                id === 'aida' || id === 'indigo' ? (
+                  <a 
+                    href={caseStudy.pdf}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors border border-black text-black hover:bg-black hover:text-white"
+                  >
+                    {id === 'aida' ? 'View PDF Slideshow ↗' : 'View PDF Doc ↗'}
+                  </a>
+                ) : (
+                  <button 
+                    onClick={() => setActiveMedia({ type: 'pdf', src: caseStudy.pdf! })}
+                    className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors ${activeMedia?.type === 'pdf' ? 'bg-[#FF8CD1] text-black border border-[#FF8CD1]' : 'border border-black text-black hover:bg-black hover:text-white'}`}
+                  >
+                    {id === 'loblaws' || id === 'airbnb' ? 'View PDF Slideshow' : 'View PDF Doc'}
+                  </button>
+                )
               )}
             </div>
           </div>
