@@ -153,18 +153,6 @@ export default function CaseStudy() {
             "Through rigorous user testing, we identified key areas where trust and transparency could be further solidified. Moving forward, the focus will be on refining the Memory Dashboard’s granularity and pushing our high-fidelity prototypes into code to validate the contextual overlay interactions within a live browser environment."
           ],
           image: "/case-studies/mozilla/Key Findings from User Testing.png"
-        },
-        {
-          heading: "Key Takeaways and Thoughts",
-          body: [
-            "I have no background in Health, I went to the information session all alone. but i jumped into this as a curious researcher and designer, finding my team members, gathering our strengths and carrying our team into the finalist round from 36 teams to to 8! it was a great and humbling expereince and I am very happy I got to be a part of it."
-          ]
-        },
-        {
-          image: '/case-studies/aida/group-photo.jpg'
-        },
-        {
-          image: '/case-studies/aida/team-photo.jpg'
         }
       ]
     },
@@ -566,6 +554,15 @@ export default function CaseStudy() {
       description: 'A one-stop platform helping caregivers stay focused on care by simplifying learning, tracking, and coordination through AI-driven assistance.',
       contentSections: [
         {
+          heading: "Sprint Overview",
+          subheading: "Project Details & Roles",
+          list: [
+            "Duration: 11 days",
+            "My Roles: UI Designer + Research and Design Lead, Prototyper",
+            "Addressed to: Centre for Aging + Brain Health Innovation (CABHI), the Network for Aging Research (NAR), and Velocity at the University of Waterloo"
+          ]
+        },
+        {
           heading: "Our Mission",
           subheading: "The Problem & Solution",
           body: [
@@ -651,6 +648,18 @@ export default function CaseStudy() {
             "Aida combines context from caregiver logs, natural language Q&A, and empathetic guidance. It uses a structured prompt constructor feeding into an LLM (GPT-4) to generate caregiver-facing UI chat reports, explanations, and safety advice."
           ],
           image: '/case-studies/aida/14.png'
+        },
+        {
+          heading: "Key Takeaways and Thoughts",
+          body: [
+            "I have no background in Health, I went to the information session all alone. but i jumped into this as a curious researcher and designer, finding my team members, gathering our strengths and carrying our team into the finalist round from 36 teams to to 8! it was a great and humbling expereince and I am very happy I got to be a part of it."
+          ]
+        },
+        {
+          image: '/case-studies/aida/group-photo.jpg'
+        },
+        {
+          image: '/case-studies/aida/team-photo.jpg'
         }
       ]
     }
