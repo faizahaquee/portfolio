@@ -153,6 +153,18 @@ export default function CaseStudy() {
             "Through rigorous user testing, we identified key areas where trust and transparency could be further solidified. Moving forward, the focus will be on refining the Memory Dashboard’s granularity and pushing our high-fidelity prototypes into code to validate the contextual overlay interactions within a live browser environment."
           ],
           image: "/case-studies/mozilla/Key Findings from User Testing.png"
+        },
+        {
+          heading: "Key Takeaways and Thoughts",
+          body: [
+            "I have no background in Health, I went to the information session all alone. but i jumped into this as a curious researcher and designer, finding my team members, gathering our strengths and carrying our team into the finalist round from 36 teams to to 8! it was a great and humbling expereince and I am very happy I got to be a part of it."
+          ]
+        },
+        {
+          image: '/case-studies/aida/group-photo.jpg'
+        },
+        {
+          image: '/case-studies/aida/team-photo.jpg'
         }
       ]
     },
