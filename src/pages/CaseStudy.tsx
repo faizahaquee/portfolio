@@ -20,6 +20,7 @@ type CaseStudyData = {
   contentSections?: ContentSection[];
   figmaLink?: string;
   miroLink?: string;
+  workBoardLink?: string;
 };
 
 export default function CaseStudy() {
@@ -204,19 +205,17 @@ export default function CaseStudy() {
           image: '/case-studies/loblaws/4.png'
         },
         {
-          heading: "Team Reflection: Charter",
-          subheading: "Reviewing our Process",
+          heading: "Scoping the Solution",
+          subheading: "Product Backlog (Part 1)",
           body: [
-            "The team charter proved invaluable in keeping us aligned on tasks, roles, and behavioral expectations. While it strengthened accountability and provided a clear visual overview of our sprint scope, we did encounter challenges. Our limited initial expertise in assigned roles sometimes made relying strictly on the charter feel restrictive. However, this process ultimately helped us identify team strengths and weaknesses, ensuring a successful execution of our sprints."
+            "We outlined a comprehensive product backlog focusing on the core deliverables needed to solve the problem. The initial scope prioritized designing distinct shelf-level tags to highlight Canadian-made products and creating educational signage to help shoppers interpret the new visual system quickly and effectively."
           ],
-          image: '/case-studies/loblaws/21.png'
+          image: '/case-studies/loblaws/5.png'
         },
         {
           subheading: "Product Backlog (Part 2)",
-          list: [
-            "Accessibility Enhancements: Add tactile/raised design features and ensure high-contrast colors for readability.",
-            "Employee Tagging Guide: Create a 1-page guide for employees instructing them how to add and replace tags.",
-            "Feedback Summary: Conduct observational testing and consolidate usability and visibility feedback."
+          body: [
+            "The second half of our backlog emphasized inclusivity and operational feasibility. We scoped out accessibility enhancements like tactile elements and high-contrast designs, while also planning a comprehensive tagging guide for employees. The backlog ensured we prioritized both the shopper's experience and the staff's ease of implementation."
           ],
           image: '/case-studies/loblaws/6.png'
         },
@@ -268,12 +267,34 @@ export default function CaseStudy() {
         },
         {
           heading: "Team Reflection: Charter",
-          list: [
-             "How it Supported us: Helped us keep track of tasks, roles, and responsibilities; Encouraged consistent communication and weekly check-ins; Set clear behavioural expectations and strengthened accountability; Provided a visual overview of the project scope and kept us aligned with deliverables; Guided Product Owners in maintaining the product backlog and criteria for sprint work.",
-             "What we Learned: Helped identify team strengths and weaknesses, keeping us mindful of expectations; Supported our progress by showing where we were in the process and what was coming next; Contributed to the successful organization and execution of all Sprints.",
-             "Challenges we Noticed: Limited expertise in assigned roles made it difficult to fully apply some parts of the charter; Relying only on the charter sometimes felt restrictive when we lacked full role understanding."
+          subheading: "Reviewing our Process",
+          body: [
+            "The team charter proved invaluable in keeping us aligned on tasks, roles, and behavioral expectations. While it strengthened accountability and provided a clear visual overview of our sprint scope, we did encounter challenges. Our limited initial expertise in assigned roles sometimes made relying strictly on the charter feel restrictive. However, this process ultimately helped us identify team strengths and weaknesses, ensuring a successful execution of our sprints."
           ],
           image: '/case-studies/loblaws/21.png'
+        },
+        {
+          heading: "What Worked Well and What Didn't Work Well",
+          subheading: "Challenges",
+          body: [
+            "Despite facing logistical hurdles like finding common meeting times for a team of seven, we successfully adapted to our new roles and maintained consistent communication via Teams. Early confusion around role expectations and translating the 'How Might We' statement for developers were significant hurdles, but navigating these ambiguities ultimately led to a solid, unified direction for our final deliverables."
+          ],
+          image: '/case-studies/loblaws/22.png'
+        },
+        {
+          subheading: "Scrum Meetings",
+          body: [
+            "Our Scrum meetings became vital touchpoints for clarifying feedback and getting everyone on the same page. However, because none of us had prior project management experience, early meetings without a clear agenda felt awkward. We quickly learned that drafting structured agendas beforehand was essential to guiding discussions and reducing friction, making the meetings much more effective."
+          ],
+          image: '/case-studies/loblaws/23.png'
+        },
+        {
+          heading: "Sprint Review",
+          subheading: "Final Presentation",
+          body: [
+            "At the conclusion of our sprints, the team presented the final ecosystem solution. We walked stakeholders through our user stories to demonstrate alignment with the original 'How Might We' statement, showcasing the iterative journey from rough sketches to a polished, physical shelf-tag prototype. Demonstrating the system in a simulated store environment allowed us to prove its real-world viability and highlight the improvements driven by continuous feedback."
+          ],
+          image: '/case-studies/loblaws/24.png'
         },
         {
           heading: "Acceptance Criteria & Definition of Done",
@@ -408,58 +429,38 @@ export default function CaseStudy() {
             image: '/case-studies/indigo/9.png'
         },
         {
-          heading: "Scoping the Solution",
-          subheading: "Product Backlog (Part 1)",
-          body: [
-            "We outlined a comprehensive product backlog focusing on the core deliverables needed to solve the problem. The initial scope prioritized designing distinct shelf-level tags to highlight Canadian-made products and creating educational signage to help shoppers interpret the new visual system quickly and effectively."
+          heading: "Social Media Growth & Promotion Opportunities",
+          list: [
+            "Share your book club on TikTok or IG: “Join our June Thriller Club!”",
+            "Weekly badges (e.g., 'Page Turner', 'Host Hero')",
+            "Invite 3 friends = unlock $5 off next read",
+            "Push campaigns: “Your club just picked a new book!”"
           ],
-          image: '/case-studies/loblaws/5.png'
+          image: '/case-studies/indigo/10.png'
         },
         {
-          subheading: "Product Backlog (Part 2)",
-          body: [
-            "The second half of our backlog emphasized inclusivity and operational feasibility. We scoped out accessibility enhancements like tactile elements and high-contrast designs, while also planning a comprehensive tagging guide for employees. The backlog ensured we prioritized both the shopper's experience and the staff's ease of implementation."
-          ],
-          image: '/case-studies/loblaws/6.png'
+            heading: "Projected Impact",
+            list: [
+                "Repeat app use ↑ through social accountability",
+                "Book sales ↑ via club recommendations",
+                "User acquisition ↑ via shareable, invite-based model",
+                "Plum Rewards ↔ community = emotional loyalty"
+            ],
+            image: '/case-studies/indigo/11.png'
         },
         {
-          heading: "User Stories",
-          subheading: "Defining User Needs",
-          body: [
-            "We crafted comprehensive user stories to capture the diverse needs of Loblaws’ ecosystem. This included everyday shoppers looking for local products, shoppers with visual impairments needing tactile cues, and store employees requiring an efficient tagging system. By defining these distinct perspectives, our team ensured that the final solution would be inclusive, practical, and valuable for all stakeholders involved."
-          ],
-          image: '/case-studies/loblaws/7.png'
-        },
-        {
-          heading: "Sprint Backlog",
-          subheading: "Project Tasks",
-          body: [
-            "Our team broke down the project into actionable tasks for our sprints. This involved a systematic approach: starting with an audit of existing in-store displays, brainstorming Canadian brand identifiers, and sketching low-fidelity concepts. We planned to build physical 3D prototypes to test accessibility features in real-world scenarios, iteratively refining our designs based on continuous user testing and feedback."
-          ],
-          image: '/case-studies/loblaws/8.png'
-        },
-        {
-          heading: "Acceptance Criteria",
-          subheading: "Definition of Success",
-          body: [
-            "To keep our development objective, we established clear acceptance criteria for each user story. Success meant that a shopper could identify product origins at a glance, access detailed preparation info instantly, and rely on recognizable visual and tactile cues. For store operations, it required a simple, error-free tagging process for employees and an accurate engagement tracking system for management to measure the solution’s impact."
-          ],
-          image: '/case-studies/loblaws/9.png'
-        },
-        {
-          heading: "The Ecosystem Solution",
-          subheading: "Sprint 2 Feedback",
-          body: [
-            "After testing our initial concepts, the team gathered critical feedback to refine our approach. Users appreciated the clear visual hierarchy and the addition of educational characters, but highlighted areas for improvement such as the placement and necessity of QR codes. This feedback loop allowed us to debate and iterate on the design, ensuring the signage worked cohesively as a complete system before moving forward."
-          ],
-          image: '/case-studies/loblaws/14.png'
-        },
-        {
-          subheading: "Sprint 3 Deliverables",
-          body: [
-            "Applying the feedback from previous sprints, our team produced multiple high-fidelity options for the 'Made in Canada' tags. We expanded the solution into a broader 'Farm to Aisle' campaign, delivering large and small promotional posters designed to seamlessly integrate into Loblaws’ existing store environments and draw attention to the new tagging system."
-          ],
-          image: '/case-studies/loblaws/15.png'
+            heading: "Let's Make Reading Social Again",
+            body: [
+                "With Book Clubs, Indigo becomes more than a retailer, it becomes a digital community for readers.",
+                "I’d love to bring this idea to your team and help Indigo build a product that people don’t just use, but return back to.",
+                "Thank you for your time and consideration, I would love to hear from you!"
+            ],
+            list: [
+                "Contact:",
+                "LinkedIn",
+                "faizahaquee@gmail.com"
+            ],
+            image: '/case-studies/indigo/12.png'
         }
       ]
     },
@@ -551,6 +552,7 @@ export default function CaseStudy() {
       title: 'Aida AgeTech Expo',
       pdf: '/case-studies/aida/Aida.pdf',
       figmaLink: 'https://www.figma.com/proto/zggkbVpGLIkuJ3USRzxX3C/Aida---AgeTech-Expo?node-id=1-102&t=ayS3ueMNz5EyXL4i-1',
+      workBoardLink: 'https://www.figma.com/board/fRtwOoS1F4L5Uyd1pAEM7S/Aida-Work-Research--AgeTech-Innovation-Challenge?node-id=0-1&t=32pX1Y7etcvf9X1Z-1',
       description: 'A one-stop platform helping caregivers stay focused on care by simplifying learning, tracking, and coordination through AI-driven assistance.',
       contentSections: [
         {
@@ -563,6 +565,13 @@ export default function CaseStudy() {
           ]
         },
         {
+          heading: "The Challenge: Designing for the Dual-Care Burden",
+          body: [
+            "As a research and design team, we wanted to look beyond the surface level of aging technology and address the systemic pressure felt by the families supporting older adults. We focused our lens on individuals caught in the middle—balancing childcare and eldercare at once. To anchor our primary and secondary research, we formulated a core overarching challenge:",
+            "How might we design a supportive ecosystem that reduces the logistical time burden on dual-caregivers, while actively prioritizing their mental health and providing opportunities for respite?"
+          ]
+        },
+        {
           heading: "Our Mission",
           subheading: "The Problem & Solution",
           body: [
@@ -572,12 +581,20 @@ export default function CaseStudy() {
           image: '/case-studies/aida/3.png'
         },
         {
+          heading: "Problem Space",
+          image: "/case-studies/aida/problem-space.png"
+        },
+        {
           heading: "Product Overview",
           subheading: "Aida Interface",
           body: [
             "Aida features an intuitive Search Engine, a 'Your Bubble' collaborative space, Profile management, and extensive Accessibility settings to support caregivers comprehensively."
           ],
           image: '/case-studies/aida/4.png'
+        },
+        {
+            heading: "Design & Ideation",
+            image: "/case-studies/aida/design-ideation.png"
         },
         {
           heading: "Education",
@@ -652,7 +669,7 @@ export default function CaseStudy() {
         {
           heading: "Key Takeaways and Thoughts",
           body: [
-            "I have no background in Health, I went to the information session all alone. but i jumped into this as a curious researcher and designer, finding my team members, gathering our strengths and carrying our team into the finalist round from 36 teams to to 8! it was a great and humbling expereince and I am very happy I got to be a part of it."
+            "Diving into the healthcare space with no prior background was a defining moment in my growth as a researcher and designer. Attending the initial information session entirely on my own, I relied on baseline curiosity and a human-centered framework to quickly untangle a highly complex domain. I took the initiative to assemble a cross-functional team, mapping our diverse strengths to establish a collaborative, fast-iterating workflow. Together, we navigated a competitive field of 36 teams to finish as one of the top 8 finalists. The AgeTech Innovation Challenge presented by the Centre for Aging + Brain Health Innovation (CABHI), the Network for Aging Research (NAR), and Velocity, at the University of Waterloo, was a deeply humbling experience. It proved to me how a curious mindset and a dedicated design process can transform an unfamiliar, intricate ecosystem into an experience that genuinely communicates care."
           ]
         },
         {
@@ -754,6 +771,16 @@ export default function CaseStudy() {
                 >
                   View Figma Prototype ↗
                 </a>
+              )}
+              {caseStudy.workBoardLink && (
+                  <a 
+                    href={caseStudy.workBoardLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-xs font-sans font-bold uppercase tracking-widest transition-colors border border-black text-black hover:bg-black hover:text-white"
+                  >
+                    View Work Board ↗
+                  </a>
               )}
               {caseStudy.miroLink && (
                 <a 
