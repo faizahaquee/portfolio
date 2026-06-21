@@ -553,6 +553,26 @@ export default function CaseStudy() {
       pdf: '/case-studies/aida/Aida.pdf',
       figmaLink: 'https://www.figma.com/proto/zggkbVpGLIkuJ3USRzxX3C/Aida---AgeTech-Expo?node-id=1-102&t=ayS3ueMNz5EyXL4i-1',
       workBoardLink: 'https://www.figma.com/board/fRtwOoS1F4L5Uyd1pAEM7S/Aida-Work-Research--AgeTech-Innovation-Challenge?node-id=0-1&t=32pX1Y7etcvf9X1Z-1',
+      images: [
+        '/case-studies/aida/1.png',
+        '/case-studies/aida/11.png',
+        '/case-studies/aida/12.png',
+        '/case-studies/aida/13.png',
+        '/case-studies/aida/14.png',
+        '/case-studies/aida/3.png',
+        '/case-studies/aida/4.png',
+        '/case-studies/aida/5.png',
+        '/case-studies/aida/6.png',
+        '/case-studies/aida/7.png',
+        '/case-studies/aida/8.png',
+        '/case-studies/aida/9.png',
+        '/case-studies/aida/Aida.png',
+        '/case-studies/aida/Design Ideation.png',
+        '/case-studies/aida/Group Photo 1.jpg',
+        '/case-studies/aida/Group Photo 2.jpg',
+        '/case-studies/aida/Opening App Screen.png',
+        '/case-studies/aida/Problem Space.png'
+      ],
       description: 'A one-stop platform helping caregivers stay focused on care by simplifying learning, tracking, and coordination through AI-driven assistance.',
       contentSections: [
         {
