@@ -1,6 +1,7 @@
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import CaseStudiesSection from '../components/CaseStudiesSection';
+import ClientsSection from '../components/ClientsSection';
 import GraphicDesignSection from '../components/GraphicDesignSection';
 import PhotographyCarouselSection from '../components/PhotographyCarouselSection';
 import ResumeSection from '../components/ResumeSection';
@@ -10,6 +11,7 @@ export default function Home() {
     <div className="w-full min-h-screen bg-[var(--color-bg-base)]">
       <HeroSection />
       <CaseStudiesSection />
+      <ClientsSection />
       <GraphicDesignSection />
       <PhotographyCarouselSection />
       <AboutSection />

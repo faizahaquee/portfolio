@@ -43,7 +43,7 @@ export default function CaseStudy() {
       miroLink: 'https://miro.com/app/live-embed/uXjVGkNPxTQ=/?embedMode=view_only_without_ui&moveToViewport=-10322%2C-5409%2C13848%2C6556&embedId=244032640937',
       images: [
         "/case-studies/mozilla/Full Video Walkthrough.mov",
-        "/case-studies/mozilla/Rounf 1 Prototype User Testing.mp4",
+        "/case-studies/mozilla/Round 1 Prototype User Testing.mp4",
         "/case-studies/mozilla/SWOT.png",
         "/case-studies/mozilla/KPI's.png",
         "/case-studies/mozilla/User Testing Overview.png"
@@ -324,7 +324,7 @@ export default function CaseStudy() {
     },
     'indigo': {
       title: 'Indigo Bookstore App',
-      pdf: '/case-studies/Indigo Bookstore App - UI Marketing Case Study.pdf',
+      pdf: '/case-studies/Indigo Bookstore App – UI & Marketing Case Study (1)/Indigo Bookstore App – UI & Marketing Case Study.pdf',
       figmaLink: 'https://www.figma.com/proto/FdOTACSQ64baOtSdZ56Pfv/Indigo-Book-Club-UI-Prototype?node-id=1-4&p=f&t=RBDFBbfwdv5TGI0G-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4',
       images: [
         '/case-studies/Indigo Bookstore App \u2013 UI & Marketing Case Study (1)/indigo cover.png',
@@ -550,7 +550,7 @@ export default function CaseStudy() {
     },
     'aida': {
       title: 'Aida AgeTech Expo',
-      pdf: '/case-studies/aida/Aida.pdf',
+      pdf: '/case-studies/FInal Copy of Aida - Finalists Presentation Pitch.pdf',
       figmaLink: 'https://www.figma.com/proto/zggkbVpGLIkuJ3USRzxX3C/Aida---AgeTech-Expo?node-id=1-102&t=ayS3ueMNz5EyXL4i-1',
       workBoardLink: 'https://www.figma.com/board/fRtwOoS1F4L5Uyd1pAEM7S/Aida-Work-Research--AgeTech-Innovation-Challenge?node-id=0-1&t=32pX1Y7etcvf9X1Z-1',
       images: [
@@ -588,8 +588,9 @@ export default function CaseStudy() {
           heading: "The Challenge: Designing for the Dual-Care Burden",
           body: [
             "As a research and design team, we wanted to look beyond the surface level of aging technology and address the systemic pressure felt by the families supporting older adults. We focused our lens on individuals caught in the middle—balancing childcare and eldercare at once. To anchor our primary and secondary research, we formulated a core overarching challenge:",
-            "How might we design a supportive ecosystem that reduces the logistical time burden on dual-caregivers, while actively prioritizing their mental health and providing opportunities for respite?"
-          ]
+            "How might we design a supportive ecosystem that reduces the logistical time burden on dual-caregivers, while actively prioritizing their mental health and and providing opportunities for respite?"
+          ],
+          image: "/case-studies/aida/Problem Space.png"
         },
         {
           heading: "Our Mission",
@@ -599,10 +600,6 @@ export default function CaseStudy() {
             "Our solution, Aida, is a one-stop platform that offers bite-sized learning, an AI chatbot for instant guidance, a collaborative care log, and smart suggestions based on caregiver needs."
           ],
           image: '/case-studies/aida/3.png'
-        },
-        {
-          heading: "Problem Space",
-          image: "/case-studies/aida/problem-space.png"
         },
         {
           heading: "Product Overview",
@@ -658,6 +655,26 @@ export default function CaseStudy() {
           image: '/case-studies/aida/9.png'
         },
         {
+          heading: "System Architecture",
+          subheading: "AI-driven Care Assistant",
+          body: [
+            "Aida combines context from caregiver logs, natural language Q&A, and empathetic guidance. It uses a structured prompt constructor feeding into an LLM (GPT-4) to generate caregiver-facing UI chat reports, explanations, and safety advice."
+          ],
+          image: '/case-studies/aida/14.png'
+        },
+        {
+          heading: "Key Takeaways and Thoughts",
+          body: [
+            "Diving into the healthcare space with no prior background was a defining moment in my growth as a researcher and designer. Attending the initial information session entirely on my own, I relied on curiosity and a human-centered framework to quickly analyze a complex problem space. I took the initiative to assemble a cross-functional team, mapping our diverse strengths to establish a collaborative, fast-iterating workflow. Together, we navigated a competitive field of 36 teams to finish as one of the Top 8 finalists. The AgeTech Innovation Challenge presented by the Centre for Aging + Brain Health Innovation (CABHI), the Network for Aging Research (NAR), and Velocity, at the University of Waterloo, was a deeply humbling experience. It proved to me how a curious mindset and a dedicated design process can transform an unfamiliar, intricate ecosystem into an experience that genuinely communicates care."
+          ]
+        },
+        {
+          image: '/case-studies/aida/Group Photo 1.jpg'
+        },
+        {
+          image: '/case-studies/aida/Group Photo 2.jpg'
+        },
+        {
           heading: "Knowledge Partners",
           subheading: "Academic Support",
           body: [
@@ -678,26 +695,6 @@ export default function CaseStudy() {
           subheading: "Production Companies",
           image: '/case-studies/aida/13.png'
         },
-        {
-          heading: "System Architecture",
-          subheading: "AI-driven Care Assistant",
-          body: [
-            "Aida combines context from caregiver logs, natural language Q&A, and empathetic guidance. It uses a structured prompt constructor feeding into an LLM (GPT-4) to generate caregiver-facing UI chat reports, explanations, and safety advice."
-          ],
-          image: '/case-studies/aida/14.png'
-        },
-        {
-          heading: "Key Takeaways and Thoughts",
-          body: [
-            "Diving into the healthcare space with no prior background was a defining moment in my growth as a researcher and designer. Attending the initial information session entirely on my own, I relied on baseline curiosity and a human-centered framework to quickly untangle a highly complex domain. I took the initiative to assemble a cross-functional team, mapping our diverse strengths to establish a collaborative, fast-iterating workflow. Together, we navigated a competitive field of 36 teams to finish as one of the top 8 finalists. The AgeTech Innovation Challenge presented by the Centre for Aging + Brain Health Innovation (CABHI), the Network for Aging Research (NAR), and Velocity, at the University of Waterloo, was a deeply humbling experience. It proved to me how a curious mindset and a dedicated design process can transform an unfamiliar, intricate ecosystem into an experience that genuinely communicates care."
-          ]
-        },
-        {
-          image: '/case-studies/aida/group-photo.jpg'
-        },
-        {
-          image: '/case-studies/aida/team-photo.jpg'
-        }
       ]
     }
   };

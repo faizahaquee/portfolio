@@ -54,7 +54,7 @@ export default function Resume() {
               Share
             </button>
             <a 
-              href="/Faiza-Haque-Resume.jpg" 
+              href="/Faiza-Haque-Resume.pdf" 
               download
               className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#111] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#FF8CD1] transition-colors shadow-md"
             >
@@ -88,7 +88,7 @@ export default function Resume() {
             <section>
               <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 text-center">Summary</h2>
               <p className="text-center max-w-3xl mx-auto text-gray-700 leading-relaxed text-sm md:text-base">
-                Multidisciplinary UX Researcher & Systems Designer with a Master's in Digital Experience Innovation. Expert at applying Systems Thinking and Human-Centered Design to solve complex accessibility challenges. Proven track record of leading cross-functional "Sprint" teams and conducting deep-dive product audits for industry case studies.
+                Multidisciplinary UX Researcher & Systems Designer with a Master’s in Digital Experience Innovation. Expert at applying Systems Thinking and Human-Centered Design to solve complex accessibility challenges. Proven ability to lead cross-functional Agile teams and conduct rigorous UX product audits for enterprise-scale case studies.
               </p>
             </section>
 
@@ -116,23 +116,27 @@ export default function Resume() {
                   <div className="space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-gray-900 mb-1">UX Research</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed">UX Audits, Usability Testing (SUS), Affinity Mapping, Perceptual Mapping, User Personas</p>
+                      <p className="text-xs text-gray-600 leading-relaxed">User Research, Usability Testing, System Usability Scale (SUS), UX Audits, Affinity Mapping, User Personas</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-gray-900 mb-1">UI/Product Design</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed">Figma (Prototyping & Design Systems), Interaction Design, Information Architecture, Adobe Creative Suite</p>
+                      <h3 className="text-sm font-bold text-gray-900 mb-1">Product Design</h3>
+                      <p className="text-xs text-gray-600 leading-relaxed">User Flows, Wireframing, Prototyping, Interaction Design, Information Architecture, Design Systems</p>
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-gray-900 mb-1">Systems Design</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed">System Mapping, Root Cause Analysis, Stakeholder Mapping, Feedback Loops & Ecosystem Modeling</p>
+                      <p className="text-xs text-gray-600 leading-relaxed">Systems Mapping, Root Cause Analysis, Stakeholder Mapping, Feedback Loops & Ecosystem Modelling</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-gray-900 mb-1">Methodologies</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed">Agile/Scrum, Human-Centered Design (HCD), Design Sprints, WCAG 2.1 Accessibility Compliance</p>
+                      <h3 className="text-sm font-bold text-gray-900 mb-1">Methods & Accessibility</h3>
+                      <p className="text-xs text-gray-600 leading-relaxed">Human-Centered Design (HCD), Agile/Scrum, Design Sprints, WCAG 2.1 Accessibility</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-gray-900 mb-1">Technical Skills</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed">OpenCode, GitHub, HTML/CSS, Google Gemini, Google Stitch, Figma Make, Google Analytics, Miro, Data Visualization</p>
+                      <h3 className="text-sm font-bold text-gray-900 mb-1">Tools</h3>
+                      <p className="text-xs text-gray-600 leading-relaxed">Figma, Adobe Creative Suite, Miro, Google Analytics, GitHub</p>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900 mb-1">AI Prototyping & Development</h3>
+                      <p className="text-xs text-gray-600 leading-relaxed">Claude Code, OpenCode, Google Stitch, Figma Make</p>
                     </div>
                   </div>
                 </section>
@@ -146,13 +150,13 @@ export default function Resume() {
                     <div>
                       <div className="flex flex-col sm:flex-row justify-between items-start mb-1.5 gap-2">
                         <h3 className="text-base font-bold text-gray-900">Design Lead for Mozilla | MDEI Intensive II</h3>
-                        <span className="text-xs font-medium text-gray-500 whitespace-nowrap">April 2026 - April 2026</span>
+                        <span className="text-xs font-medium text-gray-500 whitespace-nowrap">April 2026</span>
                       </div>
                       <p className="text-xs text-gray-500 font-sans mb-3">University of Waterloo, School of Interaction Design and Business • Waterloo, ON</p>
                       <ul className="space-y-2 text-sm text-gray-700 leading-relaxed list-none">
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Agentic Interface Design:</strong> Served as Design Lead for a rapid 2-week sprint focused on evolving the Firefox browsing experience into a proactive, fully integrated Al browser capable of multi-tab information synthesis.</li>
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Systemic Transparency:</strong> Designed high-fidelity prototypes that solve the "black box" Al problem by making automated reasoning and data access fully visible and user-controllable without manual prompting.</li>
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Evidence-Based Iteration:</strong> Aligned agentic Al features with core Mozilla principles of privacy and ethics, ensuring a high-trust experience for fully integrated browser environments.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Agentic Interface Design:</strong> Served as Design Lead for a rapid 2-week sprint focused on evolving the Firefox browsing experience into a proactive, fully integrated AI browser capable of multi-tab information synthesis.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Systemic Transparency:</strong> Designed high-fidelity prototypes that solve the "black box" AI problem by making automated reasoning and data access fully visible and user-controllable without manual prompting.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Evidence-Based Iteration:</strong> Aligned agentic AI features with core Mozilla principles of privacy and ethics, ensuring a high-trust experience for fully integrated browser environments.</li>
                       </ul>
                     </div>
                     <div>
@@ -162,11 +166,12 @@ export default function Resume() {
                       </div>
                       <p className="text-xs text-gray-500 font-sans mb-3">Applied Design and Strategy Projects: Loblaws, Cineplex, Airbnb, Indigo • Waterloo, ON</p>
                       <ul className="space-y-2 text-sm text-gray-700 leading-relaxed list-none">
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Loblaws:</strong> Acted as the primary bridge between the management and technical teams, delegating weekly Agile Sprints and overseeing the production of management-level prototypes.</li>
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Cineplex:</strong> Directed the research-to-design pipeline for mobile prototypes, utilizing "Agile Sprints" to iterate based on user friction points and business requirements using Figma.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Loblaws:</strong> Spearheaded cross-functional alignment between management and technical teams, facilitating weekly Agile sprints to deliver high-fidelity management-level prototypes.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Cineplex:</strong> Directed the research-to-design pipeline for mobile prototypes, utilizing Agile sprints to iterate based on user friction points and business requirements using Figma.</li>
                         <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Airbnb Video Walkthrough:</strong> Conducted a comprehensive Feasibility Analysis and UX Audit, validating a feature proposal that projected a 0.20% conversion lift and $24.4M in incremental revenue.</li>
                         <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">UX Audits (Indigo & Partiful):</strong> Executed heuristic evaluations and accessibility audits focusing on navigation hierarchy and user mental models to increase conversion and retention.</li>
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Research Synthesis:</strong> Facilitated "Affinity Mapping" and "Information Architecture" restructuring using Miro/FigJam to simplify complex checkout and booking flows.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Aida (AgeTech Innovation Challenge):</strong> Organized the end-to-end research and UX design for a digital ecosystem supporting multi-generational caregivers. Formed a cross-functional team to tackle complex healthcare workflows, designing features to reduce cognitive overhead and provide user respite.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span><strong className="text-gray-800">Research Synthesis:</strong> Facilitated affinity mapping and information architecture restructuring using Miro/FigJam to simplify complex checkout and booking flows.</li>
                       </ul>
                     </div>
                   </div>
@@ -182,7 +187,7 @@ export default function Resume() {
                       </div>
                       <p className="text-xs text-gray-500 font-sans mb-3">Clients: Xelune, Capulus Coffee House • Toronto, ON / New York, NY</p>
                       <ul className="space-y-2 text-sm text-gray-700 leading-relaxed list-none">
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Collaborate with clients to define project direction and deliver design solutions aligned with brand goals and target audience needs.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Partner closely with stakeholders to define project scope and translate business objectives into user-centered design solutions.</li>
                         <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Apply UX/UI principles to branding and physical touchpoints, creating cohesive visual systems for lifestyle and hospitality brands using Figma and Adobe Illustrator.</li>
                         <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Manage end-to-end digital production, ensuring visual assets align with target market user preferences and modern interface standards for social and web platforms.</li>
                       </ul>
@@ -205,7 +210,7 @@ export default function Resume() {
                       </div>
                       <p className="text-xs text-gray-500 font-sans mb-3">Fife House • Toronto, ON</p>
                       <ul className="space-y-2 text-sm text-gray-700 leading-relaxed list-none">
-                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Optimized UI/UX for web and newsletter platforms, improving navigation and typography to ensure "WCAG 2.1 compliance" and a seamless responsive experience across devices.</li>
+                        <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Optimized UI/UX for web and newsletter platforms, improving navigation and typography to ensure WCAG 2.1 compliance and a seamless responsive experience across devices.</li>
                         <li className="relative pl-5"><span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></span>Leveraged Google Analytics to monitor user behavior, iterating on site architecture to increase digital engagement by 8.5%.</li>
                       </ul>
                     </div>
